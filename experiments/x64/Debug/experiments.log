@@ -1,0 +1,30 @@
+﻿  main.cpp
+C:\Users\pc\Desktop\sfml projects\experiments project\experiments\main.cpp(54,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\pc\Desktop\sfml projects\experiments project\experiments\main.cpp(55,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\pc\Desktop\sfml projects\experiments project\experiments\main.cpp(57,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\experiments project\experiments\main.cpp(57,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\experiments project\experiments\main.cpp(67,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\pc\Desktop\sfml projects\experiments project\experiments\main.cpp(100,137): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\experiments project\experiments\main.cpp(102,115): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\experiments project\experiments\main.cpp(103,120): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  experiments.vcxproj -> C:\Users\pc\Desktop\sfml projects\experiments project\experiments\x64\Debug\experiments.exe
