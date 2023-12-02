@@ -37,26 +37,51 @@ void initialize_plan(sf::VertexArray& plan) {
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125 - 10, W_HEIGHT * 0.2)));          // max value label
 }
 
-void draw_curve(std::vector<unsigned>& values,sf::VertexArray& curve) {
-
-   
+void draw_curve(std::vector<unsigned>& values, sf::VertexArray& curve) {     // noise reduction version
     unsigned maximum = values[0];
+
     for (auto num : values) {
         if (maximum < num) maximum = num;
     }
 
-   
     unsigned int x_values = 0;
-  
-    std::cout << maximum;
-    for (auto num : values) { 
+    int step = std::max(1, static_cast<int>(std::floor(values.size() / 30.0)));
+
+    for (int i = 0; i < values.size(); i += step) {
+        int sum = 0;
+        int numElements = std::min(step, static_cast<int>(values.size()) - i);
+
+        for (int j = i; j < i + numElements; j++) {
+            sum += values[j];
+        }
+
+        int y = -static_cast<double>(sum/numElements) / maximum * 0.6 * W_HEIGHT + W_HEIGHT * 0.8;
+        int x = i * 0.625 * W_WIDTH / values.size() + W_WIDTH * 0.125;
+
+        curve.append(sf::Vertex(sf::Vector2f(x, y)));
+        x_values += numElements;
+
+        std::cout << "x : " << x << "  y : " << y << std::endl;
+    }
+}
+
+
+void draw_curve2(std::vector<unsigned>& values, sf::VertexArray& curve) {                  // plotting the real graph 
+    unsigned maximum = values[0];
+
+    for (auto num : values) {
+        if (maximum < num) maximum = num;
+    }
+    unsigned int x_values = 0;
+    for (auto num : values) {
         std::cout << num << std::endl;
-       int x = x_values * 0.625 * W_WIDTH / values.size() + W_WIDTH * 0.125;
-        int y =  (-static_cast<double>(num) / maximum * 0.6 * W_HEIGHT) + W_HEIGHT * 0.8;
+        int x = x_values * 0.625 * W_WIDTH / values.size() + W_WIDTH * 0.125;
+        int y = (-static_cast<double>(num) / maximum * 0.6 * W_HEIGHT) + W_HEIGHT * 0.8;
         std::cout << "x : " << x << "  y : " << y << std::endl;
         curve.append(sf::Vertex(sf::Vector2f(x, y)));
         x_values++;
-       }
+    }                                                                                      
+
 }
 
 std::vector<unsigned> values(300);
@@ -64,7 +89,7 @@ std::vector<unsigned> values(300);
 
 
 int main() {
-    srand(time(0));
+    
     sf::Font font;
     font.loadFromFile("Roboto-Medium.ttf");
     sf::Text start_date("2023/01/01",font,15);
@@ -88,10 +113,10 @@ int main() {
     sf::VertexArray plan(sf::Lines);
     initialize_plan(plan);
 
-    fill_vector(values, 15000, 30000);
+    fill_vector(values, 14000, 30000);
 
     sf::VertexArray curve(sf::LinesStrip);
-    draw_curve(values, curve);
+    draw_curve2(values, curve);
 
     unsigned minimum = *std::min_element(values.begin(), values.end());
     unsigned maximum = *std::max_element(values.begin(), values.end());
