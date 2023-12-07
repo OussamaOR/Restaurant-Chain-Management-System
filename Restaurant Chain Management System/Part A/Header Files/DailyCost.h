@@ -1,18 +1,21 @@
 #pragma once
-#include "Date.h"
-enum DailyPayments {
-    DailyRent,
-    EmployeesPayments,
-    Electricity,
-    Gas,
-    Vegetables,
-    Meats,
-    OtherIngredients,
-    PublicitySpending
+#include "date.h"
+enum costType
+{
+    rent,
+    employeePayments,
+    electricity,
+    gas,
+    vegetables,
+    meats,
+    otherIngredients,
+    publicitySpending
 };
-
-class DailyCost
+class dailyCost
 {
     Date date;
-    double costs[8];
+    costType costType[8];
+    // getters
+    // setters
+    // function to retun total daily cost (summing all the elements of the array)
 };
