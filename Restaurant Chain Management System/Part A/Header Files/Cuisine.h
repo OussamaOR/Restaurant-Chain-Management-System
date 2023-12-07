@@ -26,6 +26,4 @@ private:
 };
 #endif
 
-//function to return the monthlysales (summing up all the daily sales for a given month) ==> month o(logn)
-//function to return the total sales of a cuisine (summing up all the daily sales) ==> year
-//function to display the prize winners for the 5 cuisines on a given month 
+
