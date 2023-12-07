@@ -23,7 +23,6 @@ private:
     CuisineType cuisineType;
     salesBST dailySales;
     ratingsBST monthlyRating;
-    // function of total dailysales
 };
 #endif
 
