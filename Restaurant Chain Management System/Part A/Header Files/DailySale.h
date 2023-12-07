@@ -3,4 +3,6 @@
 struct DailySale{
     Date date;
     double dailysaleAmount;
+// getters
+    // setters
 };
