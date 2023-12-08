@@ -12,12 +12,6 @@ private:
     void validateDate();
     int daysInMonth(int, int) const;
     bool isLeapYear(int) const;
-    // comparison operators overloading
-    bool operator==(const Date &other) const;
-    bool operator>=(const Date &other) const;
-    bool operator<=(const Date &other) const;
-    bool operator>(const Date &other) const;
-    bool operator<(const Date &other) const;
 
 public:
     Date();
@@ -29,5 +23,12 @@ public:
     void setMonth(int);
     void setYear(int);
     void displayDate() const;
+    
+    // comparison operators overloading
+    bool operator==(const Date &other) const;
+    bool operator>=(const Date &other) const;
+    bool operator<=(const Date &other) const;
+    bool operator>(const Date &other) const;
+    bool operator<(const Date &other) const;
 };
 #endif
