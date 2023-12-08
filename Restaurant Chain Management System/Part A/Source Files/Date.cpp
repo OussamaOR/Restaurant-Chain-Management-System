@@ -1,7 +1,5 @@
 #include "../Header Files/Date.h"
 #include <iostream>
-#include "Date.h"
-#include <iostream>
 #include <stdexcept>
 
 // Default constructor sets initial date to January 1, 2000
