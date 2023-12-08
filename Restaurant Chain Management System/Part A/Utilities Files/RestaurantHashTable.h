@@ -1,30 +1,33 @@
 #ifndef RESTAURANTHASHTABLE_H
 #define RESTAURANTHASHTABLE_H
 #include "../Header Files/Restaurant.h"
+#include <vector>
+#include <functional>
+#include <stdexcept>
 
-class RestaurantHashTable {
+class RestaurantHashTable
+{
 private:
-    static const int TABLE_SIZE = 2000;
-    Restaurant* table[TABLE_SIZE];
+    std::vector<Restaurant> table;
+    int currentSize;
+    int maxSize;
+    const double loadFactor;
+
+    size_t hashFunction(int key) const;
+    size_t hashFunction2(int key) const;
+    size_t linearProbing(size_t index, int attempt) const;
+    size_t doubleHashing(size_t index, int attempt) const;
+    void rehash();
 
 public:
     RestaurantHashTable();
-    ~RestaurantHashTable();
-
-    // Hash functions
-    int hashFunction(int key);
-
-    // Probing methods
-    int linearProbe(int index, int attempt);
-    int quadraticProbe(int index, int attempt);
-    int doubleHash(int index, int attempt);
-
-    // Hash table operations
-    void insert(const Restaurant& restaurant);
+    void insert(const Restaurant &restaurant);
     void remove(int restaurantId);
-    Restaurant* search(int restaurantId);
+    bool search(int restaurantId, Restaurant &result) const;
 
-    // Helper functions
-    void rehash();
+private:
+    size_t findIndex(int restaurantId) const;
 };
+
 #endif
+
