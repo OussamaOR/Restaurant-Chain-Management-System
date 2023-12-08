@@ -10,6 +10,7 @@ void dailyCost::setDailyCost(float d_costs[8]){
     costs[publicitySpending] = d_costs[7];
 }
 dailyCost::dailyCost(){
+    Date date;
     for(int i = 0;i<8;i++){
         costs[i] = 0.0;
     }

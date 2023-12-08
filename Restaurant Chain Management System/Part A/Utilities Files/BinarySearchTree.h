@@ -1,4 +1,4 @@
-
+#pragma once
 template<typename Object>
 class BinarySearchTree {
     private:
