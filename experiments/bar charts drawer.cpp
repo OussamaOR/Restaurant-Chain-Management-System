@@ -4,8 +4,16 @@
 #include <ctime>
 #include "bar charts drawer.h"
 #include "constants.h";
-#include "utilities.h"
 
+unsigned generate_random_interv(unsigned x, unsigned y) {        // including both
+	if (x > y) std::swap(x, y);
+	return (rand() % (y - x + 1)) + x;
+}
+void fill_vector(std::vector<unsigned>& vec, unsigned low , unsigned high) {
+	for (int i = 0;i < vec.size();i++) {
+		vec[i] = generate_random_interv(low, high);
+	}
+}
 
 static void initialize_plan(sf::VertexArray& plan) {
 	plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125, W_HEIGHT * 0.8)));

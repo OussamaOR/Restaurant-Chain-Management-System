@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <cmath>
 #include <ctime>
-#include "utilities.h"
 #include "curve drawer.h"
 #include "constants.h"
 // the origin of the plan is (WINDOW_WIDTH * 0.125, WINDOW_HEIGHT * 0.8)
@@ -10,6 +9,15 @@
 // end of x-axis is (WINDOW_WIDTH * 0.75 , WINDOW_HEIGHT * 0.8)
 // 
 
+unsigned generate_random_interv(unsigned x, unsigned y) {        // including both
+	if (x > y) std::swap(x, y);
+	return (rand() % (y - x + 1)) + x;
+}
+void fill_vector(std::vector<unsigned>& vec, unsigned low , unsigned high) {
+	for (int i = 0;i < vec.size();i++) {
+		vec[i] = generate_random_interv(low, high);
+	}
+}
 
 void initialize_plan(sf::VertexArray& plan) {
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125, W_HEIGHT * 0.8)));
