@@ -13,7 +13,6 @@ Cuisine::Cuisine(CuisineType type, const salesBST & daily,const  ratingsBST & mo
 //copy constructor
 Cuisine::Cuisine(const Cuisine& other)
     : cuisineType(other.cuisineType), dailySales(other.dailySales), monthlyRating(other.monthlyRating) {
-    // Other copying if needed
 }
 
 //getters
@@ -41,3 +40,15 @@ void Cuisine::setDailySales(const salesBST& daily) {
 void Cuisine::setMonthlyRatings(const ratingsBST& monthly) {
     monthlyRating = monthly;
 }
+
+//operator overloading 
+// Overloading the assignment operator for Cuisine class
+Cuisine& Cuisine::operator=(const Cuisine& other) {
+    if (this != &other) {  // Avoid self-assignment
+        cuisineType = other.cuisineType;
+        dailySales = other.dailySales;
+        monthlyRating = other.monthlyRating;
+    }
+    return *this;
+}
+

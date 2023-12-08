@@ -1,23 +1,20 @@
 #pragma once
 #ifndef RESTAURANT_H
 #define RESTAURANT_H
-#include <iostream>
 #include "Cuisine.h"
 #include "costsBST.h"
-using namespace std;
-
 // location
 enum Location
 {
     district,
     wilaya,
-    country
+    country,
 };
 // restaurant type
 enum class RestaurantType
 {
     OWNED,
-    FRANCHISED
+    FRANCHISED,
 };
 // restaurant class
 class Restaurant 
@@ -27,17 +24,17 @@ private:
     string restaurantName;
     int numOfEmployees;
     RestaurantType restaurantType;
-    Location location[3];
+    string location[3];
     costsBST dailyCosts;
     Cuisine cuisines[5];
 
 public:
     // default constructor
     Restaurant();
-    // constructor
-    Restaurant(int, int, RestaurantType, const string &, Location[], const costsBST &, const Cuisine[]);
+    // constructor with parameters
+    Restaurant(int, int, RestaurantType, const string &, string[], const costsBST &, const Cuisine[]);
     // constructor to initialize the location array and cuisines array elements one by one
-    Restaurant(int, int, RestaurantType, const string &, Location, Location, Location, const costsBST &,
+    Restaurant(int, int, RestaurantType, const string &, string, string, string, const costsBST &,
                Cuisine, Cuisine, Cuisine, Cuisine, Cuisine);
     // copy constructor
     Restaurant(const Restaurant &);
@@ -47,11 +44,11 @@ public:
     string getRestaurantName() const;
     int getNumOfEmployees() const;
     RestaurantType getRestaurantType() const;
-    Location getDistrict() const;
-    Location getWilaya() const;
-    Location getCountry() const;
-    const Location *getFullLocation() const;
-    costsBST getDailyCosts() const;
+    string getDistrict() const;
+    string getWilaya() const;
+    string getCountry() const;
+    const string *getFullLocation() const;
+    const costsBST & getDailyCosts() const;
     Cuisine getCuisine(CuisineType) const;
     const Cuisine *getAllCuisines() const;
 
@@ -60,10 +57,10 @@ public:
     void setRestaurantName(const string &name);
     void setNumOfEmployees(int employees);
     void setRestaurantType(RestaurantType type);
-    void setDistrict(Location );
-    void setWilaya(Location ) ;
-    void setCountry(Location ) ;
-    void setFullLocation(Location ,Location ,Location);
+    void setDistrict(string );
+    void setWilaya(string ) ;
+    void setCountry(string ) ;
+    void setFullLocation(string ,string ,string);
     void setFullLocation(const Location []);
     void setDailyCosts(const costsBST &costs);
     void setCuisine(Cuisine );

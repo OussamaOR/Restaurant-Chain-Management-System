@@ -55,6 +55,7 @@ public:
     // You can add it for the max sale on a month if you see it's useful
     DailySale getMinDailySale() const;
     DailySale getMaxDailySale() const;
+    salesBST& operator=(const salesBST& );
 
 private:
     // Structure to represent a node in the BST
@@ -87,6 +88,7 @@ private:
     BinaryNode *findMax(BinaryNode *t) const;
     void makeEmpty(BinaryNode *&t);
     BinaryNode *clone(BinaryNode *t) const;
+    BinaryNode* copyTree(const BinaryNode* ) const;
 };
 
 // Implementation of public member functions goes here

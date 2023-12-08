@@ -211,4 +211,24 @@ salesBST::BinaryNode *salesBST::clone(BinaryNode *t) const {
         return new BinaryNode{t->dailySale, clone(t->left), clone(t->right)};
 }
 
+// Implementation of copy assignment operator
+salesBST& salesBST::operator=(const salesBST& other) {
+    if (this != &other) { // Avoid self-assignment
+        makeEmpty(root); // Clear the current tree
+        root = copyTree(other.root); // Copy the tree from rhs
+    }
+    return *this;
+}
+
+// Helper function to copy the tree
+salesBST::BinaryNode* salesBST::copyTree(const BinaryNode* t) const {
+    if (t == nullptr) {
+        return nullptr;
+    }
+
+    // Recursively copying the nodes
+    BinaryNode* newNode = new BinaryNode(t->dailySale, copyTree(t->left), copyTree(t->right));
+    return newNode;
+}
+
 

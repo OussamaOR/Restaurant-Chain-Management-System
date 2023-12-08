@@ -33,6 +33,7 @@ public:
     void setCuisineType(CuisineType );
     void setDailySales(const salesBST&);
     void setMonthlyRatings(const ratingsBST&);
+    Cuisine& operator=(const Cuisine& );
 };
 #endif
 
