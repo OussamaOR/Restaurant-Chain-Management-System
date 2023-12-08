@@ -12,7 +12,6 @@ Date::Date() : day(1), month(1), year(2000)
     catch (const std::invalid_argument &e)
     {
         std::cerr << "Error in default constructor: " << e.what() << std::endl;
-        // You can add additional error handling logic or rethrow the exception if needed.
     }
 }
 
@@ -26,7 +25,6 @@ Date::Date(int d, int m, int y) : day(d), month(m), year(y)
     catch (const std::invalid_argument &e)
     {
         std::cerr << "Error in parameterized constructor: " << e.what() << std::endl;
-        // You can add additional error handling logic or rethrow the exception if needed.
     }
 }
 
@@ -63,7 +61,6 @@ void Date::setDay(int d)
     catch (const std::invalid_argument &e)
     {
         std::cerr << "Error in setDay: " << e.what() << std::endl;
-        // You can add additional error handling logic or rethrow the exception if needed.
     }
 }
 
@@ -84,7 +81,6 @@ void Date::setMonth(int m)
     catch (const std::invalid_argument &e)
     {
         std::cerr << "Error in setMonth: " << e.what() << std::endl;
-        // You can add additional error handling logic or rethrow the exception if needed.
     }
 }
 
@@ -105,7 +101,6 @@ void Date::setYear(int y)
     catch (const std::invalid_argument &e)
     {
         std::cerr << "Error in setYear: " << e.what() << std::endl;
-        // You can add additional error handling logic or rethrow the exception if needed.
     }
 }
 
