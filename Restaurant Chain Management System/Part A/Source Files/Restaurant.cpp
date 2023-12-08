@@ -11,7 +11,7 @@ Restaurant::Restaurant()
 
 // Constructor with parameters
 Restaurant::Restaurant(int id, int numEmployees, RestaurantType type, const string &name,
-                       string loc[], const costsBST &costs, const Cuisine cuisines[])
+                       string loc[], const Costs &costs, const Cuisine cuisines[])
     : restaurantId(id), restaurantName(name), numOfEmployees(numEmployees),
       restaurantType(type), dailyCosts(costs) {
     for (int i = 0; i < 3; ++i) {
@@ -25,7 +25,7 @@ Restaurant::Restaurant(int id, int numEmployees, RestaurantType type, const stri
 // Constructor to initialize location and cuisines one by one
 Restaurant::Restaurant(int id, int numEmployees, RestaurantType type, const string &name,
                        string district, string wilaya, string country,
-                       const costsBST &costs, Cuisine cuisine1, Cuisine cuisine2,
+                       const Costs &costs, Cuisine cuisine1, Cuisine cuisine2,
                        Cuisine cuisine3, Cuisine cuisine4, Cuisine cuisine5)
     : restaurantId(id), restaurantName(name), numOfEmployees(numEmployees),
       restaurantType(type), dailyCosts(costs) {
@@ -86,7 +86,7 @@ const string *Restaurant::getFullLocation() const {
     return location;
 }
 
-const costsBST &Restaurant::getDailyCosts() const {
+const Costs &Restaurant::getDailyCosts() const {
     return dailyCosts;
 }
 
@@ -145,7 +145,7 @@ void Restaurant::setFullLocation(const Location loc[]) {
     }
 }
 
-void Restaurant::setDailyCosts(const costsBST &costs) {
+void Restaurant::setDailyCosts(const Costs &costs) {
     dailyCosts = costs;
 }
 
