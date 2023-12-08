@@ -5,13 +5,29 @@
 // Default constructor sets initial date to January 1, 2000
 Date::Date() : day(1), month(1), year(2000)
 {
-    validateDate(); // Validate the initial date
+    try
+    {
+        validateDate(); // Validate the initial date
+    }
+    catch (const std::invalid_argument &e)
+    {
+        std::cerr << "Error in default constructor: " << e.what() << std::endl;
+        // You can add additional error handling logic or rethrow the exception if needed.
+    }
 }
 
 // Parameterized constructor to set date during object creation
 Date::Date(int d, int m, int y) : day(d), month(m), year(y)
 {
-    validateDate(); // Validate the provided date
+    try
+    {
+        validateDate(); // Validate the provided date
+    }
+    catch (const std::invalid_argument &e)
+    {
+        std::cerr << "Error in parameterized constructor: " << e.what() << std::endl;
+        // You can add additional error handling logic or rethrow the exception if needed.
+    }
 }
 
 // Getter methods for day, month, and year
@@ -33,39 +49,63 @@ int Date::getYear() const
 // Setter methods with validation for day, month, and year
 void Date::setDay(int d)
 {
-    if (isValidDay(d, month, year))
+    try
     {
-        day = d;
+        if (isValidDay(d, month, year))
+        {
+            day = d;
+        }
+        else
+        {
+            throw std::invalid_argument("Invalid day");
+        }
     }
-    else
+    catch (const std::invalid_argument &e)
     {
-        throw std::invalid_argument("Invalid day");
+        std::cerr << "Error in setDay: " << e.what() << std::endl;
+        // You can add additional error handling logic or rethrow the exception if needed.
     }
 }
 
 void Date::setMonth(int m)
 {
-    if (isValidMonth(m))
+    try
     {
-        month = m;
-        setDay(day); // Adjust day if necessary after changing the month
+        if (isValidMonth(m))
+        {
+            month = m;
+            setDay(day); // Adjust day if necessary after changing the month
+        }
+        else
+        {
+            throw std::invalid_argument("Invalid month");
+        }
     }
-    else
+    catch (const std::invalid_argument &e)
     {
-        throw std::invalid_argument("Invalid month");
+        std::cerr << "Error in setMonth: " << e.what() << std::endl;
+        // You can add additional error handling logic or rethrow the exception if needed.
     }
 }
 
 void Date::setYear(int y)
 {
-    if (isValidYear(y))
+    try
     {
-        year = y;
-        setDay(day); // Adjust day if necessary after changing the year
+        if (isValidYear(y))
+        {
+            year = y;
+            setDay(day); // Adjust day if necessary after changing the year
+        }
+        else
+        {
+            throw std::invalid_argument("Invalid year");
+        }
     }
-    else
+    catch (const std::invalid_argument &e)
     {
-        throw std::invalid_argument("Invalid year");
+        std::cerr << "Error in setYear: " << e.what() << std::endl;
+        // You can add additional error handling logic or rethrow the exception if needed.
     }
 }
 
@@ -123,13 +163,14 @@ bool Date::isLeapYear(int y) const
 {
     return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
 }
+
 // Equal to operator (==)
 bool Date::operator==(const Date &other) const
 {
     return (year == other.year) && (month == other.month) && (day == other.day);
 }
-// operators oveloading
-//  Greater than or equal to operator (>=)
+
+// Greater than or equal to operator (>=)
 bool Date::operator>=(const Date &other) const
 {
     if (year > other.year)
