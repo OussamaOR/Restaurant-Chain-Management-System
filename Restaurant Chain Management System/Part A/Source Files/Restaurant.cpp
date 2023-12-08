@@ -1,9 +1,6 @@
-#include "Part A/Header Files/Restaurant.h"
 #include<iostream>
 using namespace std;
-#include "Restaurant.h"
-
-#include "Restaurant.h"
+#include "Restaurant-Chain-Management-System/Restaurant Chain Management System/Part A/Header Files/Restaurant.h"
 
 // Default constructor
 Restaurant::Restaurant()

@@ -1,6 +1,6 @@
 #ifndef RESTAURANTHASHTABLE_H
 #define RESTAURANTHASHTABLE_H
-#include "Restaurant.h"
+#include "Restaurant-Chain-Management-System/Restaurant Chain Management System/Part A/Header Files/Restaurant.h"
 
 class RestaurantHashTable {
 private:
