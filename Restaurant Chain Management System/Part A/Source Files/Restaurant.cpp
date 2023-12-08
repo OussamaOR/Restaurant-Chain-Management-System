@@ -167,3 +167,11 @@ void Restaurant::setAllCuisines(const Cuisine cuisineArray[5]) {
         cuisines[i] = cuisineArray[i];
     }
 }
+
+//functions to be used in the hashtable
+void Restaurant::setState(EntryState newState) {
+        state = newState;
+}
+EntryState Restaurant::getState() const {
+        return state;
+}

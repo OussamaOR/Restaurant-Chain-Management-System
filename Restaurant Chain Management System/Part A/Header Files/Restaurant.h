@@ -16,6 +16,8 @@ enum class RestaurantType
     OWNED,
     FRANCHISED,
 };
+//entry state 
+enum EntryState { ACTIVE, DELETED, EMPTY };
 // restaurant class
 class Restaurant 
 {
@@ -27,6 +29,9 @@ private:
     string location[3];
     Costs dailyCosts;
     Cuisine cuisines[5];
+
+    //the state is needed for the hashtable
+    EntryState state;
 
 public:
     // default constructor
@@ -65,6 +70,9 @@ public:
     void setDailyCosts(const Costs &costs);
     void setCuisine(Cuisine );
     void setAllCuisines(const Cuisine cuisineArray[5]);
+    //functions to be used in the hashtable 
+    void setState(EntryState );
+    EntryState getState() const;
 };
 
 #endif
