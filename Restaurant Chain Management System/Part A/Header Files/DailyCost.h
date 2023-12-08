@@ -14,7 +14,11 @@ enum costType
 class dailyCost
 {
     Date date;
-    costType costType[8];
+    float costs[8];
+    public:
+     dailyCost();
+    dailyCost(Date,float[8]);
+    float totalDailyCost();
     // getters
     // setters
     // function to retun total daily cost (summing all the elements of the array)
