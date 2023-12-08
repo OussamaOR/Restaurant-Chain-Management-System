@@ -1,4 +1,4 @@
-#include "Restaurant-Chain-Management-System/Restaurant Chain Management System/Part A/Utilities Files/RestaurantHashTable.h"
+#include "../Utilities Files/RestaurantHashTable.h"
 #include <cmath>
 
 //finding prime numbers functions
@@ -23,93 +23,119 @@ int findPreviousPrime(int num) {
     }
     return num;
 }
+size_t RestaurantHashTable::hashFunction(int key) const
+{
+    return key % maxSize;
+}
 
-//default constructor
-RestaurantHashTable::RestaurantHashTable() {
-    for (int i = 0; i < TABLE_SIZE; ++i) {
-        table[i] = nullptr;
+size_t RestaurantHashTable::hashFunction2(int key) const{
+    return findPreviousPrime(maxSize) - (key % findPreviousPrime(maxSize));
+}
+
+size_t RestaurantHashTable::linearProbing(size_t index, int attempt) const
+{
+    return (index + attempt) % maxSize;
+}
+
+size_t RestaurantHashTable::doubleHashing(size_t index, int attempt) const
+{
+    size_t hash1 = hashFunction(index);
+    size_t hash2 = hashFunction2(index);
+    return (hash1 + attempt * hash2) % maxSize;
+}
+
+void RestaurantHashTable::rehash()
+{
+    std::vector<Restaurant> oldTable = table;
+    table.clear();
+    currentSize = 0;
+    maxSize *= 2;
+    table.resize(maxSize);
+
+    for (const auto &restaurant : oldTable)
+    {
+        if (restaurant.getState() == ACTIVE)
+        {
+            insert(restaurant);
+        }
     }
 }
 
-//destructor
-RestaurantHashTable::~RestaurantHashTable() {
-    for (int i = 0; i < TABLE_SIZE; ++i) {
-        delete table[i];
+RestaurantHashTable::RestaurantHashTable() : currentSize(0), maxSize(2000), loadFactor(0.75)
+{
+    table.resize(maxSize);
+}
+
+void RestaurantHashTable::insert(const Restaurant &restaurant)
+{
+    if (currentSize >= maxSize * loadFactor)
+    {
+        rehash();
     }
-}
 
-//hash function
-int RestaurantHashTable::hashFunction(int key) {
-    return key % TABLE_SIZE;
-}
-
-//quadratic probing
-int RestaurantHashTable::quadraticProbe(int index, int attempt) {
-    return (index + attempt * attempt) % TABLE_SIZE;
-}
-
-//hash table operations (insertion)
-void RestaurantHashTable::insert(const Restaurant& restaurant) {
     int key = restaurant.getRestaurantId();
-    int index = hashFunction(key);
+    size_t index = hashFunction(key);
+    size_t originalIndex = index;
 
     int attempt = 0;
-    while (table[index] != nullptr && table[index]->getState() != EntryState::EMPTY) {
-        if (table[index]->getRestaurantId() == key && table[index]->getState() != EntryState::DELETED) {
-            // Restaurant with the same key already exists (duplicate), handle accordingly
-            return;
+    while (table[index].getState() == ACTIVE)
+    {
+        index = linearProbing(originalIndex, ++attempt);
+
+        if (index == originalIndex)
+        {
+            throw std::overflow_error("Table is full");
         }
-
-        attempt++;
-        index = quadraticProbe(index, attempt);
     }
 
-    if (table[index] == nullptr) {
-        table[index] = new Restaurant(restaurant);
-    } else {
-        // Reuse the existing entry
-        *table[index] = restaurant;
-    }
-
-    table[index]->setState(EntryState::ACTIVE);
+    table[index] = restaurant;
+    table[index].setState(ACTIVE);
+    currentSize++;
 }
 
-//hash table operations (deletion)
-void RestaurantHashTable::remove(int restaurantId) {
-    int index = hashFunction(restaurantId);
+void RestaurantHashTable::remove(int restaurantId)
+{
+    size_t index = findIndex(restaurantId);
+    if (index != maxSize)
+    {
+        table[index].setState(DELETED);
+        currentSize--;
+    }
+}
+
+bool RestaurantHashTable::search(int restaurantId, Restaurant &result) const
+{
+    size_t index = findIndex(restaurantId);
+    if (index != maxSize && table[index].getState() == ACTIVE)
+    {
+        result = table[index];
+        return true;
+    }
+    return false;
+}
+
+size_t RestaurantHashTable::findIndex(int restaurantId) const
+{
+    size_t index = hashFunction(restaurantId);
+    size_t originalIndex = index;
 
     int attempt = 0;
-    while (table[index] != nullptr) {
-        if (table[index]->getRestaurantId() == restaurantId && table[index]->getState() != EntryState::DELETED) {
-            table[index]->setState(EntryState::DELETED);
-            return;
+    while (table[index].getState() != EMPTY)
+    {
+        if (table[index].getState() == ACTIVE && table[index].getRestaurantId() == restaurantId)
+        {
+            return index;
         }
 
-        attempt++;
-        index = quadraticProbe(index, attempt);
-    }
-}
+        index = linearProbing(originalIndex, ++attempt);
 
-//hash table operations (searching)
-Restaurant* RestaurantHashTable::search(int restaurantId) {
-    int index = hashFunction(restaurantId);
-
-    int attempt = 0;
-    while (table[index] != nullptr) {
-        if (table[index]->getRestaurantId() == restaurantId && table[index]->getState() != EntryState::DELETED) {
-            return table[index];
+        if (index == originalIndex)
+        {
+            break;
         }
-
-        attempt++;
-        index = quadraticProbe(index, attempt);
     }
 
-    return nullptr;
+    return maxSize;
 }
 
-//rehash function
-void RestaurantHashTable::rehash() {
-    int newSize = findNextPrime(TABLE_SIZE * 2);
-    
-}
 
