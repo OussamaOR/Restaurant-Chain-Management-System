@@ -92,6 +92,12 @@ const costsBST &Restaurant::getDailyCosts() const {
 
 Cuisine Restaurant::getCuisine(CuisineType type) const {
    
+       for(int i=0;i<5;i++)
+       {
+        if(cuisines[i].getCuisineType()==type)
+        return cuisines[i];
+       }
+       return Cuisine(); //returing default cuisine if the cuisine was not found
 }
 
 const Cuisine *Restaurant::getAllCuisines() const {
@@ -144,7 +150,16 @@ void Restaurant::setDailyCosts(const costsBST &costs) {
 }
 
 void Restaurant::setCuisine(Cuisine cuisine) {
-    
+      if(cuisine.getCuisineType()==CuisineType::ALGERIAN)
+      cuisines[0]=cuisine;
+      if(cuisine.getCuisineType()==CuisineType::SYRIAN)
+      cuisines[1]=cuisine;
+      if(cuisine.getCuisineType()==CuisineType::CHINESE)
+      cuisines[2]=cuisine;
+      if(cuisine.getCuisineType()==CuisineType::INDIAN)
+      cuisines[3]=cuisine;
+      if(cuisine.getCuisineType()==CuisineType::EUROPEAN)
+      cuisines[4]=cuisine;
 }
 
 void Restaurant::setAllCuisines(const Cuisine cuisineArray[5]) {
