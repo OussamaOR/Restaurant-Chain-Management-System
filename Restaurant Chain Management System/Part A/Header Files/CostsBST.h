@@ -4,7 +4,7 @@
 class Costs {
     private:
     BinarySearchTree<dailyCost> costsBST;
-
-    public:
     
+    public:
+
 };
