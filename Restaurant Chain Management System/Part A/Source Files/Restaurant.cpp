@@ -91,9 +91,7 @@ const costsBST &Restaurant::getDailyCosts() const {
 }
 
 Cuisine Restaurant::getCuisine(CuisineType type) const {
-    // Implement this based on your design for CuisineType
-    // Return the Cuisine object corresponding to the given type
-    // Example: return cuisines[type];
+   
 }
 
 const Cuisine *Restaurant::getAllCuisines() const {
@@ -146,9 +144,7 @@ void Restaurant::setDailyCosts(const costsBST &costs) {
 }
 
 void Restaurant::setCuisine(Cuisine cuisine) {
-    // Implement this based on your design for Cuisine
-    // Set the Cuisine object in the appropriate array index
-    // Example: cuisines[cuisine.getType()] = cuisine;
+    
 }
 
 void Restaurant::setAllCuisines(const Cuisine cuisineArray[5]) {
