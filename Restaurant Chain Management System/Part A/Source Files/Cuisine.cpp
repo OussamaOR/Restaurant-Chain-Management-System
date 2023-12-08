@@ -1,7 +1,7 @@
-#include"Cuisine.h"
+#include"../Header Files/Cuisine.h"
 #include<iostream>
 using namespace std;
-#include "Cuisine.h"
+
 
 //default constructor
 Cuisine::Cuisine() : cuisineType(CuisineType::ALGERIAN), dailySales(), monthlyRating() {}

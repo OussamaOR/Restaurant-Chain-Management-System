@@ -1,8 +1,8 @@
 #pragma once
 #ifndef CUISINE_H
 #define CUISINE_H
-#include "Restaurant-Chain-Management-System/Restaurant Chain Management System/Part A/Header Files/RatingsBST.h"
-#include "Restaurant-Chain-Management-System/Restaurant Chain Management System/Part A/Header Files/SalesBST.h"
+#include "RatingsBST.h"
+#include "SalesBST.h"
 // THE TYPE OF THE CUISINE
 enum class CuisineType
 {
