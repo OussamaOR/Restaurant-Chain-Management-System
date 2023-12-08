@@ -108,7 +108,7 @@ int Date::daysInMonth(int m, int y) const
 {
     static const int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     int days = daysInMonth[m];
-    
+
     // Check for leap year and adjust days in February if necessary
     if (m == 2 && isLeapYear(y))
     {
@@ -123,5 +123,80 @@ bool Date::isLeapYear(int y) const
 {
     return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
 }
+// Equal to operator (==)
+bool Date::operator==(const Date &other) const
+{
+    return (year == other.year) && (month == other.month) && (day == other.day);
+}
+// operators oveloading
+//  Greater than or equal to operator (>=)
+bool Date::operator>=(const Date &other) const
+{
+    if (year > other.year)
+        return true;
+    else if (year < other.year)
+        return false;
 
+    // Years are equal, compare months
+    if (month > other.month)
+        return true;
+    else if (month < other.month)
+        return false;
 
+    // Years and months are equal, compare days
+    return day >= other.day;
+}
+
+// Less than or equal to operator (<=)
+bool Date::operator<=(const Date &other) const
+{
+    if (year < other.year)
+        return true;
+    else if (year > other.year)
+        return false;
+
+    // Years are equal, compare months
+    if (month < other.month)
+        return true;
+    else if (month > other.month)
+        return false;
+
+    // Years and months are equal, compare days
+    return day <= other.day;
+}
+
+// Greater than operator (>)
+bool Date::operator>(const Date &other) const
+{
+    if (year > other.year)
+        return true;
+    else if (year < other.year)
+        return false;
+
+    // Years are equal, compare months
+    if (month > other.month)
+        return true;
+    else if (month < other.month)
+        return false;
+
+    // Years and months are equal, compare days
+    return day > other.day;
+}
+
+// Less than operator (<)
+bool Date::operator<(const Date &other) const
+{
+    if (year < other.year)
+        return true;
+    else if (year > other.year)
+        return false;
+
+    // Years are equal, compare months
+    if (month < other.month)
+        return true;
+    else if (month > other.month)
+        return false;
+
+    // Years and months are equal, compare days
+    return day < other.day;
+}
