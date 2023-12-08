@@ -1,8 +1,8 @@
 #pragma once
 #ifndef RESTAURANT_H
 #define RESTAURANT_H
-#include "Cuisine.h"
-#include "costsBST.h"
+#include "Restaurant-Chain-Management-System/Restaurant Chain Management System/Part A/Header Files/Cuisine.h"
+#include "Restaurant-Chain-Management-System/Restaurant Chain Management System/Part A/Header Files/CostsBST.h"
 // location
 enum Location
 {
@@ -16,6 +16,8 @@ enum class RestaurantType
     OWNED,
     FRANCHISED,
 };
+//entry state 
+enum EntryState { ACTIVE, DELETED, EMPTY };
 // restaurant class
 class Restaurant 
 {
@@ -25,16 +27,19 @@ private:
     int numOfEmployees;
     RestaurantType restaurantType;
     string location[3];
-    costsBST dailyCosts;
+    Costs dailyCosts;
     Cuisine cuisines[5];
+
+    //the state is needed for the hashtable
+    EntryState state;
 
 public:
     // default constructor
     Restaurant();
     // constructor with parameters
-    Restaurant(int, int, RestaurantType, const string &, string[], const costsBST &, const Cuisine[]);
+    Restaurant(int, int, RestaurantType, const string &, string[], const Costs &, const Cuisine[]);
     // constructor to initialize the location array and cuisines array elements one by one
-    Restaurant(int, int, RestaurantType, const string &, string, string, string, const costsBST &,
+    Restaurant(int, int, RestaurantType, const string &, string, string, string, const Costs &,
                Cuisine, Cuisine, Cuisine, Cuisine, Cuisine);
     // copy constructor
     Restaurant(const Restaurant &);
@@ -48,7 +53,7 @@ public:
     string getWilaya() const;
     string getCountry() const;
     const string *getFullLocation() const;
-    const costsBST & getDailyCosts() const;
+    const Costs & getDailyCosts() const;
     Cuisine getCuisine(CuisineType) const;
     const Cuisine *getAllCuisines() const;
 
@@ -62,9 +67,12 @@ public:
     void setCountry(string ) ;
     void setFullLocation(string ,string ,string);
     void setFullLocation(const Location []);
-    void setDailyCosts(const costsBST &costs);
+    void setDailyCosts(const Costs &costs);
     void setCuisine(Cuisine );
     void setAllCuisines(const Cuisine cuisineArray[5]);
+    //functions to be used in the hashtable 
+    void setState(EntryState );
+    EntryState getState() const;
 };
 
 #endif
