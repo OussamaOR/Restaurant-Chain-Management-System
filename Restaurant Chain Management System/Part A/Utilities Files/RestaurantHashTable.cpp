@@ -52,13 +52,15 @@ void RestaurantHashTable::rehash()
     maxSize *= 2;
     table.resize(maxSize);
 
-    for (const Restaurant &restaurant : oldTable)
+    for (std::vector<Restaurant>::const_iterator it = oldTable.begin(); it != oldTable.end(); ++it)
+{
+    const Restaurant &restaurant = *it;
+
+    if (restaurant.getState() == ACTIVE)
     {
-        if (restaurant.getState() == ACTIVE)
-        {
-            insert(restaurant);
-        }
+        insert(restaurant);
     }
+}
 }
 
 RestaurantHashTable::RestaurantHashTable() : currentSize(0), maxSize(2000), loadFactor(0.75)
