@@ -4,7 +4,7 @@
 #include "RatingsBST.h"
 #include "SalesBST.h"
 // THE TYPE OF THE CUISINE
-enum class CuisineType
+enum  CuisineType
 {
     ALGERIAN,
     SYRIAN,
