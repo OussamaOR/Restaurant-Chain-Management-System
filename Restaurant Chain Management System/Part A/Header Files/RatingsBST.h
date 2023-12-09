@@ -1,12 +1,33 @@
-#pragma once
-#include "MonthlyRating.h"
+#ifndef BSTRATING_H
+#define BSTRATING_H
+#include "MonthRating.h"
+#include <utility>
+#include <vector>
+#include <iostream>
+using namespace std;
 
-class ratingsBST
+class bstrating
 {
-    monthlyRating root;
-    // insertion
-    // deletion + useful funcions for BST (ISEMPTY() , CONTAINS()..,ETC)
-    //function to return  the max and min rating
-    //function to retun the average rating for a given year (summing all the ratings and deviding by 12)
+    public:
+        bstrating(MonthRating );
+        virtual ~bstrating();
+        //bstrating(const bstrating& other);
+        float ccalculate_yearrating(bstrating* , int );
+        void makeEmpty( bstrating*& );
+        void printDailyratingdetails(bstrating* );
+        void printMonthlyRating(bstrating* );
+        void remove_Mrating(MonthRating&  ,bstrating*& );
+        void insert_Mrating(MonthRating&  ,bstrating*& );
+        bstrating* getLeft() const {return left;};
+        bstrating* getRight() const {return right;};
+        MonthRating getData() const{return data ;};
+    protected:
+   MonthRating data;
+   bstrating* left;
+   bstrating* right;
+    private:
+    void calculate_yearrating_helper(bstrating*, int , float& );
 
 };
+
+#endif // BSTRATING_H
