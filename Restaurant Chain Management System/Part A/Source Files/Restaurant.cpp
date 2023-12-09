@@ -4,13 +4,13 @@ using namespace std;
 
 // Default constructor
 Restaurant::Restaurant()
-    : restaurantId(0), numOfEmployees(0), restaurantType(RestaurantType::OWNED) {}
+    : restaurantId(0), numOfEmployees(0), restaurantType(RestaurantType::OWNED), state(EntryState::EMPTY){}
 
 // Constructor with parameters
 Restaurant::Restaurant(int id, int numEmployees, RestaurantType type, const string &name,
                        string loc[], const Costs &costs, const Cuisine cuisines[])
     : restaurantId(id), restaurantName(name), numOfEmployees(numEmployees),
-      restaurantType(type), dailyCosts(costs) {
+      restaurantType(type), dailyCosts(costs), state(EntryState::EMPTY) {
     for (int i = 0; i < 3; ++i) {
         location[i] = loc[i];
     }
@@ -25,7 +25,7 @@ Restaurant::Restaurant(int id, int numEmployees, RestaurantType type, const stri
                        const Costs &costs, Cuisine cuisine1, Cuisine cuisine2,
                        Cuisine cuisine3, Cuisine cuisine4, Cuisine cuisine5)
     : restaurantId(id), restaurantName(name), numOfEmployees(numEmployees),
-      restaurantType(type), dailyCosts(costs) {
+      restaurantType(type), dailyCosts(costs), state(EntryState::EMPTY) {
     location[Location::district] = district;
     location[Location::district] = wilaya;
     location[Location::district] = country;
@@ -41,7 +41,7 @@ Restaurant::Restaurant(int id, int numEmployees, RestaurantType type, const stri
 Restaurant::Restaurant(const Restaurant &other)
     : restaurantId(other.restaurantId), restaurantName(other.restaurantName),
       numOfEmployees(other.numOfEmployees), restaurantType(other.restaurantType),
-      dailyCosts(other.dailyCosts) {
+      dailyCosts(other.dailyCosts),state(other.state) {
     for (int i = 0; i < 3; ++i) {
         location[i] = other.location[i];
     }
