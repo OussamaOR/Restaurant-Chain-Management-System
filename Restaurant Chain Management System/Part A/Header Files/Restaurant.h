@@ -13,7 +13,7 @@ enum Location
     country,
 };
 // restaurant type
-enum class RestaurantType
+enum RestaurantType
 {
     OWNED,
     FRANCHISED,
