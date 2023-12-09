@@ -172,3 +172,18 @@ void Restaurant::setState(EntryState newState) {
 EntryState Restaurant::getState() const {
         return state;
 }
+int main()
+{
+    string Locations[3]={"alger centre","alger","algerie"};
+    Costs co1;
+    salesBST s1;
+    ratingsBST r1;
+    Cuisine c1(CuisineType::ALGERIAN,s1,r1);
+    Cuisine c2(CuisineType::SYRIAN,s1,r1);
+    Cuisine c3(CuisineType::CHINESE,s1,r1);
+    Cuisine c4(CuisineType::INDIAN,s1,r1);
+    Cuisine c5(CuisineType::EUROPEAN,s1,r1);
+    Cuisine cuisines[5]={c1,c2,c3,c4,c5};
+    Restaurant resto1(1630100002,12,RestaurantType::OWNED,"r1",Locations,co1,cuisines);
+    cout<<"restaurant id "<<resto1.getRestaurantId()<<endl;
+}
