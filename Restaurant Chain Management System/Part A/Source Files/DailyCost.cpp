@@ -15,6 +15,14 @@ dailyCost::dailyCost(){
         costs[i] = 0.0;
     }
 }
+dailyCost::dailyCost(Date d_cost){
+    date.setDay(d_cost.getDay());
+    date.setMonth(d_cost.getMonth());
+    date.setYear(d_cost.getYear());
+    for(int i =0;i<8;i++){
+        costs[i] = 0.f;
+    }
+}
 dailyCost::dailyCost(Date cost_date,float cost_arr[8]): date(cost_date) {
     setDailyCost(cost_arr);
 }
@@ -30,4 +38,14 @@ bool dailyCost::operator<(const dailyCost& other){
 }
 bool dailyCost::operator>(const dailyCost& other){
     return date > other.date;
+}
+void dailyCost::setDate(const Date& d){
+    date.setDay(d.getDay());
+    date.setMonth(d.getMonth());
+    date.setYear(d.getYear());
+}
+void dailyCost::setCosts(float cost_arr[8]){
+    for(int i = 0;i<8;i++){
+        costs[i] = cost_arr[i];
+    }
 }

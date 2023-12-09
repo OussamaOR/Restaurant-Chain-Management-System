@@ -1,4 +1,4 @@
-#include "../Utilities Files/RestaurantHashTable.h"
+#include "../Header Files/RestaurantHashTable.h"
 #include <cmath>
 
 //finding prime numbers functions

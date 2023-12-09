@@ -18,11 +18,14 @@ class dailyCost
     public:
     dailyCost();
     void setDailyCost(float[8]);
+    dailyCost(Date);
     dailyCost(Date,float[8]);
     float totalDailyCost();
     bool operator>(const dailyCost& );
     bool operator<(const dailyCost& );
     
+    void setDate(const Date&);
+    void setCosts(float [8]);
     // getters
     // setters
     // function to retun total daily cost (summing all the elements of the array)

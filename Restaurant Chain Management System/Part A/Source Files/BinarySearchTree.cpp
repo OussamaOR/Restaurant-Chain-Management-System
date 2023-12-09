@@ -1,6 +1,6 @@
 // BinarySearchTree.cpp
 
-#include "BinarySearchTree.h"
+#include "../Header Files/BinarySearchTree.h"
 #include <iostream>
 
 // Constructor
@@ -108,6 +108,3 @@ void BinarySearchTree<T>::destroyTree(Node* root) {
     }
 }
 
-// Explicit instantiation for the types used
-template class BinarySearchTree<int>;
-// Add more explicit instantiations for other types if needed
