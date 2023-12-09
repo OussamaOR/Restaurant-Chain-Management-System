@@ -12,7 +12,7 @@ class BinarySearchTree {
     public:
     BinarySearchTree();
     ~BinarySearchTree();
-    void insert(const Object& );
+    void insert(const Object& ) ;
     void remove(const Object& );
     void printInOrder() const;
     private:

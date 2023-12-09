@@ -21,8 +21,8 @@ class dailyCost
     dailyCost(Date);
     dailyCost(Date,float[8]);
     float totalDailyCost();
-    bool operator>(const dailyCost& );
-    bool operator<(const dailyCost& );
+    bool operator>(const dailyCost& ) const;
+    bool operator<(const dailyCost& )const;
     
     void setDate(const Date&);
     void setCosts(float [8]);

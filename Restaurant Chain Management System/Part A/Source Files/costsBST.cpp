@@ -9,7 +9,7 @@
 #include <fstream>
 
 using namespace std;
-void Costs::fill_costsBST(const dailyCost& d_cost){
+void Costs::fill_costsBST(const dailyCost& d_cost)  {
     dailyCostsBST.insert(d_cost);
 }
 void prog(){

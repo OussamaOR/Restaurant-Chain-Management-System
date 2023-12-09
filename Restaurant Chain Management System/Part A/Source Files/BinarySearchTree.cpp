@@ -17,7 +17,7 @@ BinarySearchTree<T>::~BinarySearchTree() {
 
 // Insert a value into the tree
 template <typename T>
-void BinarySearchTree<T>::insert(const T& value) {
+void BinarySearchTree<T>::insert(const T& value)  {
     root = insertHelper(root, value);
 }
 

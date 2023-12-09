@@ -33,10 +33,10 @@ float dailyCost::totalDailyCost(){
     }
     return total;
 }
-bool dailyCost::operator<(const dailyCost& other){
+bool dailyCost::operator<(const dailyCost& other) const {
     return date < other.date;
 }
-bool dailyCost::operator>(const dailyCost& other){
+bool dailyCost::operator>(const dailyCost& other) const {
     return date > other.date;
 }
 void dailyCost::setDate(const Date& d){

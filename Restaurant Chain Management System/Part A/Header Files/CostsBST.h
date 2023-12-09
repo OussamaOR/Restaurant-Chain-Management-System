@@ -6,5 +6,5 @@ class Costs {
     BinarySearchTree<dailyCost> dailyCostsBST;
 
     public:
-    void fill_costsBST(const dailyCost&);
+    void fill_costsBST(const  dailyCost&) ;
 };
