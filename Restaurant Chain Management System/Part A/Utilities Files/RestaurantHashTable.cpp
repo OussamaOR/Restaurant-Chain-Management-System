@@ -52,7 +52,7 @@ void RestaurantHashTable::rehash()
     maxSize *= 2;
     table.resize(maxSize);
 
-    for (const auto &restaurant : oldTable)
+    for (const Restaurant &restaurant : oldTable)
     {
         if (restaurant.getState() == ACTIVE)
         {
