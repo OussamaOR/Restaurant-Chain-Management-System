@@ -2,7 +2,6 @@
 #include "../Header Files/dailyCost.h"
 #include "../Header Files/costsBST.h"
 #include "../Header Files/Date.h"
-
 #include <iostream>
 #include <vector>
 #include <ctime>
@@ -12,6 +11,54 @@ using namespace std;
 void Costs::fill_costsBST(const dailyCost& d_cost)  {
     dailyCostsBST.insert(d_cost);
 }
+float Costs::max_sale(BinarySearchTree<dailyCost>::Node* root,float& current = 0.f){
+   
+    if(root == nullptr) return;
+
+    if(current < root->data.getTotal()) current = root -> data.getTotal();
+
+    max_sale(root->left,current);
+    max_sale(root->right,current);
+    return current;
+}
+float Costs::min_sale(BinarySearchTree<dailyCost>::Node* root,float& current = static_cast<float>(INT32_MAX)){
+   
+    if(root == nullptr) return;
+
+    if(current > root->data.getTotal()) current = root -> data.getTotal();
+
+    min_sale(root->left,current);
+    min_sale(root->right,current);
+    return current;
+}
+float Costs::total_onmonth(BinarySearchTree<dailyCost>::Node* root,float& total = 0,int month,int year){
+    if(root == nullptr) return;
+    if(root->data.getDate().getYear() == year and root->data.getDate().getMonth() == month) total += root->data.getTotal();
+
+    total_onmonth(root->left,total);
+    total_onmonth(root->right,total);
+    return total;
+}
+float Costs::total_onyear(BinarySearchTree<dailyCost>::Node* root,float& total = 0,int month){
+     if(root == nullptr) return;
+    if( root->data.getDate().getMonth() == month) total += root->data.getTotal();
+
+    total_onmonth(root->left,total);
+    total_onmonth(root->right,total);
+    return total;
+}
+float Costs::total_onperiod(BinarySearchTree<dailyCost>::Node* root,float& total = 0,Date start_date,Date end_date){
+    if(root == nullptr) return;
+    if(root->data.getDate() >= start_date and root->data.getDate() <= end_date) total += root->data.getTotal();
+
+    total_onmonth(root->left,total);
+    total_onmonth(root->right,total);
+    return total;
+}
+
+
+
+
 void prog(){
     ifstream dailycosts_file("../../Database/dailycosts.csv");
     if(!dailycosts_file.is_open()){

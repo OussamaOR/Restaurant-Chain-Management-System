@@ -15,6 +15,7 @@ class dailyCost
 {
     Date date;
     float costs[8];
+    float total;
     public:
     dailyCost();
     void setDailyCost(float[8]);
@@ -26,6 +27,8 @@ class dailyCost
     
     void setDate(const Date&);
     void setCosts(float [8]);
+    float getTotal();
+    Date getDate();
     // getters
     // setters
     // function to retun total daily cost (summing all the elements of the array)

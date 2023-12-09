@@ -8,12 +8,16 @@ void dailyCost::setDailyCost(float d_costs[8]){
     costs[meats] = d_costs[5];
     costs[otherIngredients] = d_costs[6];
     costs[publicitySpending] = d_costs[7];
+    for(int i = 0;i<8;i++){
+        total += costs[i];
+    }
 }
 dailyCost::dailyCost(){
     Date date;
     for(int i = 0;i<8;i++){
         costs[i] = 0.0;
     }
+    total = 0.f;
 }
 dailyCost::dailyCost(Date d_cost){
     date.setDay(d_cost.getDay());
@@ -22,9 +26,11 @@ dailyCost::dailyCost(Date d_cost){
     for(int i =0;i<8;i++){
         costs[i] = 0.f;
     }
+    total = 0.f;
 }
 dailyCost::dailyCost(Date cost_date,float cost_arr[8]): date(cost_date) {
     setDailyCost(cost_arr);
+    
 }
 float dailyCost::totalDailyCost(){
     float total = 0;
@@ -48,4 +54,10 @@ void dailyCost::setCosts(float cost_arr[8]){
     for(int i = 0;i<8;i++){
         costs[i] = cost_arr[i];
     }
+}
+float dailyCost::getTotal(){
+    return total;
+}
+Date dailyCost::getDate(){
+    return date;
 }
