@@ -10,7 +10,7 @@ class MonthRating
         virtual ~MonthRating();
         void set_RatingDates(int , int );
         std::pair<int, int> get_RatingDates();
-        void print_RatingDates();
+        void print_RatingDates() const;
         void insert_dayrating(int n);
         void printdilyrating() const;
         float averagerating();
