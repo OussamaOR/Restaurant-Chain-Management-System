@@ -17,9 +17,7 @@ Cuisine::Cuisine(const Cuisine& other)
 //move constructor
 Cuisine::Cuisine(Cuisine &&other)
     : cuisineType(other.cuisineType), dailySales(other.dailySales), monthlyRating(other.monthlyRating)
-{
-    other.cuisineType = ALGERIAN;//setting the source object to a valid state
-}
+{}
 //getters
 CuisineType Cuisine::getCuisineType() const {
     return cuisineType;
@@ -49,7 +47,7 @@ void Cuisine::setMonthlyRatings(const ratingsBST& monthly) {
 //operator overloading 
 // Overloading the assignment operator for Cuisine class
 Cuisine& Cuisine::operator=(const Cuisine& other) {
-    if (this != &other) {  // Avoid self-assignment
+    if (this != &other) { 
         cuisineType = other.cuisineType;
         dailySales = other.dailySales;
         monthlyRating = other.monthlyRating;

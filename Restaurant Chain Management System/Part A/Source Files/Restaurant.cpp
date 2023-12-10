@@ -114,7 +114,7 @@ Cuisine Restaurant::getCuisine(CuisineType type) const {
             return cuisines[i];
         }
     }
-    return Cuisine();  // Returning default cuisine if not found
+    return Cuisine();  // Returning default cuisine if the cuisine was not found
 }
 
 const Cuisine *Restaurant::getAllCuisines() const {
