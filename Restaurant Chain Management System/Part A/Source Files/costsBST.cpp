@@ -11,50 +11,63 @@ using namespace std;
 void Costs::fill_costsBST(const dailyCost& d_cost)  {
     dailyCostsBST.insert(d_cost);
 }
-float Costs::max_sale(BinarySearchTree<dailyCost>::Node* root,float& current = 0.f){
-   
-    if(root == nullptr) return;
+float Costs::max_sale(BinarySearchTree<dailyCost>::Node* root, float& current) {
+    if (root == nullptr) return current;
 
-    if(current < root->data.getTotal()) current = root -> data.getTotal();
+    if (current < root->data.getTotal()) current = root->data.getTotal();
 
-    max_sale(root->left,current);
-    max_sale(root->right,current);
+    max_sale(root->left, current);
+    max_sale(root->right, current);
+
     return current;
 }
-float Costs::min_sale(BinarySearchTree<dailyCost>::Node* root,float& current = static_cast<float>(INT32_MAX)){
-   
-    if(root == nullptr) return;
 
-    if(current > root->data.getTotal()) current = root -> data.getTotal();
+float Costs::min_sale(BinarySearchTree<dailyCost>::Node* root, float& current) {
+    if (root == nullptr) return current;
 
-    min_sale(root->left,current);
-    min_sale(root->right,current);
+    if (current > root->data.getTotal()) current = root->data.getTotal();
+
+    min_sale(root->left, current);
+    min_sale(root->right, current);
+
     return current;
 }
-float Costs::total_onmonth(BinarySearchTree<dailyCost>::Node* root,float& total = 0,int month,int year){
-    if(root == nullptr) return;
-    if(root->data.getDate().getYear() == year and root->data.getDate().getMonth() == month) total += root->data.getTotal();
 
-    total_onmonth(root->left,total);
-    total_onmonth(root->right,total);
+float Costs::total_onmonth(BinarySearchTree<dailyCost>::Node* root, float& total, int month, int year) {
+    if (root == nullptr) return total;
+
+    if (root->data.getDate().getYear() == year && root->data.getDate().getMonth() == month)
+        total += root->data.getTotal();
+
+    total_onmonth(root->left, total, month, year);
+    total_onmonth(root->right, total, month, year);
+
     return total;
 }
-float Costs::total_onyear(BinarySearchTree<dailyCost>::Node* root,float& total = 0,int month){
-     if(root == nullptr) return;
-    if( root->data.getDate().getMonth() == month) total += root->data.getTotal();
 
-    total_onmonth(root->left,total);
-    total_onmonth(root->right,total);
+float Costs::total_onyear(BinarySearchTree<dailyCost>::Node* root, float& total, int year) {
+    if (root == nullptr) return total;
+
+    if (root->data.getDate().getYear() == year) total += root->data.getTotal();
+
+    total_onyear(root->left, total, year);
+    total_onyear(root->right, total, year);
+
     return total;
 }
-float Costs::total_onperiod(BinarySearchTree<dailyCost>::Node* root,float& total = 0,Date start_date,Date end_date){
-    if(root == nullptr) return;
-    if(root->data.getDate() >= start_date and root->data.getDate() <= end_date) total += root->data.getTotal();
 
-    total_onmonth(root->left,total);
-    total_onmonth(root->right,total);
+float Costs::total_onperiod(BinarySearchTree<dailyCost>::Node* root, float& total, Date start_date, Date end_date) {
+    if (root == nullptr) return total;
+
+    if (root->data.getDate() >= start_date && root->data.getDate() <= end_date)
+        total += root->data.getTotal();
+
+    total_onperiod(root->left, total, start_date, end_date);
+    total_onperiod(root->right, total, start_date, end_date);
+
     return total;
 }
+
 
 
 
