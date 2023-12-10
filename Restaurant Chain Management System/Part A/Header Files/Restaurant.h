@@ -45,6 +45,8 @@ public:
                Cuisine, Cuisine, Cuisine, Cuisine, Cuisine);
     // copy constructor
     Restaurant(const Restaurant &);
+    // Move constructor
+    Restaurant(Restaurant &&);
 
     // Getters
     int getRestaurantId() const;
@@ -75,6 +77,9 @@ public:
     //functions to be used in the hashtable 
     void setState(EntryState );
     EntryState getState() const;
+
+    // Destructor
+    ~Restaurant();
 };
 
 #endif

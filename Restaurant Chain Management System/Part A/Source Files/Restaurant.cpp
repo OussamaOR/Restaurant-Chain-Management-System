@@ -49,6 +49,26 @@ Restaurant::Restaurant(const Restaurant &other)
         cuisines[i] = other.cuisines[i];
     }
 }
+// Move constructor
+Restaurant::Restaurant(Restaurant &&other)
+    : restaurantId(other.restaurantId),
+      restaurantName(std::move(other.restaurantName)),
+      numOfEmployees(other.numOfEmployees),
+      restaurantType(other.restaurantType),
+      dailyCosts(std::move(other.dailyCosts)),
+      state(other.state)
+{
+    // Moving location 
+    for (int i = 0; i < 3; ++i)
+    {
+        location[i] = std::move(other.location[i]);
+    }
+    //moving the cuisines array elements
+    for (int i = 0; i < 5; ++i)
+    {
+        cuisines[i] = std::move(other.cuisines[i]);
+    }
+}
 
 // Getters
 int Restaurant::getRestaurantId() const {
