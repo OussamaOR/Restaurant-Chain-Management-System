@@ -21,7 +21,11 @@ class bstrating
         bstrating* getLeft() const {return left;};
         bstrating* getRight() const {return right;};
         MonthRating getData() const{return data ;};
+        float getmounthlyrating();
+        float get_maxrating(bstrating* );
+        float get_minrating(bstrating* );
     protected:
+   float mrating;
    MonthRating data;
    bstrating* left;
    bstrating* right;
