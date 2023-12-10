@@ -15,10 +15,8 @@ DailySale::DailySale(const DailySale &other)
 
 // Move constructor 
 DailySale::DailySale(DailySale &&other)
-    : date(std::move(other.date)), dailySaleAmount(other.dailySaleAmount)
+    : date(other.date), dailySaleAmount(other.dailySaleAmount)
 {
-    
-     other.date = {}; 
      other.dailySaleAmount = 0.0;
 }
 // Constructors
@@ -27,7 +25,7 @@ salesBST::salesBST() : root(nullptr) {}
 
 salesBST::salesBST(const salesBST &rhs) : root(clone(rhs.root)) {}
 
-salesBST::salesBST(salesBST &&rhs) : root(std::move(rhs.root)) {
+salesBST::salesBST(salesBST &&rhs) : root(rhs.root) {
     rhs.root = nullptr;
 }
 
@@ -81,7 +79,7 @@ DailySale salesBST::getMaxDailySale() const {
 
 void salesBST::insert(const DailySale &dailySale, BinaryNode *&t) {
     if (t == nullptr)
-        t = new BinaryNode{dailySale, nullptr, nullptr};
+        t = new BinaryNode(dailySale, nullptr, nullptr);
     else if (dailySale.date < t->dailySale.date)
         insert(dailySale, t->left);
     else if (t->dailySale.date < dailySale.date)
@@ -122,7 +120,7 @@ bool salesBST::contains(const Date &date, BinaryNode *t) const {
 
 DailySale salesBST::getSalesAtDate(const Date &date, BinaryNode *t) const {
     if (t == nullptr)
-        return DailySale{Date{}, 0.0}; // Return an empty DailySale if not found
+        return DailySale(Date(), 0.0); // Return an empty DailySale if not found
 
     if (date < t->dailySale.date)
         return getSalesAtDate(date, t->left);
@@ -176,7 +174,7 @@ double salesBST::getTotalSalesInYear(int year, BinaryNode *t) const {
 
 DailySale salesBST::getMinDailySale(BinaryNode *t) const {
     if (t == nullptr)
-        return DailySale{Date{}, 0.0}; // Return an empty DailySale if the tree is empty
+        return DailySale(Date(), 0.0); // Return an empty DailySale if the tree is empty
 
     while (t->left != nullptr)
         t = t->left;
@@ -186,7 +184,7 @@ DailySale salesBST::getMinDailySale(BinaryNode *t) const {
 
 DailySale salesBST::getMaxDailySale(BinaryNode *t) const {
     if (t == nullptr)
-        return DailySale{Date{}, 0.0}; // Return an empty DailySale if the tree is empty
+        return DailySale(Date(), 0.0); // Return an empty DailySale if the tree is empty
 
     while (t->right != nullptr)
         t = t->right;
@@ -227,7 +225,7 @@ salesBST::BinaryNode *salesBST::clone(BinaryNode *t) const {
     if (t == nullptr)
         return nullptr;
     else
-        return new BinaryNode{t->dailySale, clone(t->left), clone(t->right)};
+        return new BinaryNode(t->dailySale, clone(t->left), clone(t->right));
 }
 
 // Implementation of copy assignment operator

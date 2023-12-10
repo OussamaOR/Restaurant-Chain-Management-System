@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 #include "../Header Files/Restaurant.h"
+#include<utility>
 
 // Default constructor
 Restaurant::Restaurant()
@@ -27,8 +28,8 @@ Restaurant::Restaurant(int id, int numEmployees, RestaurantType type, const stri
     : restaurantId(id), restaurantName(name), numOfEmployees(numEmployees),
       restaurantType(type), dailyCosts(costs), state(EntryState::EMPTY) {
     location[Location::district] = district;
-    location[Location::district] = wilaya;
-    location[Location::district] = country;
+    location[Location::wilaya] = wilaya;
+    location[Location::country] = country;
 
     cuisines[0] = cuisine1;
     cuisines[1] = cuisine2;
@@ -52,21 +53,21 @@ Restaurant::Restaurant(const Restaurant &other)
 // Move constructor
 Restaurant::Restaurant(Restaurant &&other)
     : restaurantId(other.restaurantId),
-      restaurantName(std::move(other.restaurantName)),
+      restaurantName(other.restaurantName),
       numOfEmployees(other.numOfEmployees),
       restaurantType(other.restaurantType),
-      dailyCosts(std::move(other.dailyCosts)),
+      dailyCosts(other.dailyCosts),
       state(other.state)
 {
     // Moving location 
     for (int i = 0; i < 3; ++i)
     {
-        location[i] = std::move(other.location[i]);
+        location[i] = other.location[i];
     }
     //moving the cuisines array elements
     for (int i = 0; i < 5; ++i)
     {
-        cuisines[i] = std::move(other.cuisines[i]);
+        cuisines[i] = other.cuisines[i];
     }
 }
 
@@ -108,13 +109,12 @@ const Costs &Restaurant::getDailyCosts() const {
 }
 
 Cuisine Restaurant::getCuisine(CuisineType type) const {
-   
-       for(int i=0;i<5;i++)
-       {
-        if(cuisines[i].getCuisineType()==type)
-        return cuisines[i];
-       }
-       return Cuisine(); //returing default cuisine if the cuisine was not found
+    for (int i = 0; i < 5; i++) {
+        if (cuisines[i].getCuisineType() == type) {
+            return cuisines[i];
+        }
+    }
+    return Cuisine();  // Returning default cuisine if not found
 }
 
 const Cuisine *Restaurant::getAllCuisines() const {
