@@ -38,8 +38,12 @@ void  MonthRating::set_RatingDates(int a, int b){
  pair<int, int> MonthRating:: get_RatingDates(){
       return ratingdate;
  }
-void  MonthRating::print_RatingDates(){
- cout<<"month:"<<ratingdate.first<<" "<<"year:"<<ratingdate.second<<endl;
+void  MonthRating::print_RatingDates()const{
+std::string months[] = {
+        "January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"};
+ std::cout<<months[ratingdate.first]<<" "<<ratingdate.second<<" : ";
  }
 
  //insert function
