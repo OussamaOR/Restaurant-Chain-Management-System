@@ -1,15 +1,13 @@
 #pragma once
 template<typename Object>
 class BinarySearchTree {
-    private:
+    public:
     struct Node {
         Object data;
         Node* right;
         Node* left;
         Node(const Object& obj):data(obj),left(0),right(0){}
     };
-    Node* root;
-    public:
     BinarySearchTree();
     ~BinarySearchTree();
     void insert(const Object& ) ;
@@ -21,4 +19,7 @@ class BinarySearchTree {
     Node* findMin(Node* root) const;
     void printInOrderHelper(Node* root) const;
     void destroyTree(Node* root);
+
+    private:
+    Node* root;
 };
