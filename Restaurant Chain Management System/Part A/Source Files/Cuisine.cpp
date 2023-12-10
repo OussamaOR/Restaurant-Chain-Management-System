@@ -6,7 +6,7 @@ using namespace std;
 //default constructor
 Cuisine::Cuisine() : cuisineType(CuisineType::ALGERIAN), dailySales(), monthlyRating() {}
 
-//constructor
+//constructor with parameters 
 Cuisine::Cuisine(CuisineType type, const salesBST & daily,const  ratingsBST & monthly)
     : cuisineType(type), dailySales(daily), monthlyRating(monthly) { }
 
@@ -14,7 +14,12 @@ Cuisine::Cuisine(CuisineType type, const salesBST & daily,const  ratingsBST & mo
 Cuisine::Cuisine(const Cuisine& other)
     : cuisineType(other.cuisineType), dailySales(other.dailySales), monthlyRating(other.monthlyRating) {
 }
-
+//move constructor
+Cuisine::Cuisine(Cuisine &&other)
+    : cuisineType(other.cuisineType), dailySales(std::move(other.dailySales)), monthlyRating(std::move(other.monthlyRating))
+{
+    other.cuisineType = ALGERIAN;//setting the source object to a valid state
+}
 //getters
 CuisineType Cuisine::getCuisineType() const {
     return cuisineType;
