@@ -11,6 +11,21 @@ struct DailySale
     Date date;
     double dailySaleAmount;
 
+    // Default constructor
+    DailySale();
+
+    // Constructor with parameters
+    DailySale(const Date &date, double dailySaleAmount);
+
+    // Copy constructor
+    DailySale(const DailySale &other);
+
+    // Move constructor
+    DailySale(DailySale &&other);
+
+    // Destructor
+    ~DailySale();
+    
     // getters
     Date getDate() const { return date; }
     double getDailySaleAmount() const { return dailySaleAmount; }
