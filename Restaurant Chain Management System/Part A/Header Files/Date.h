@@ -16,6 +16,8 @@ private:
 public:
     Date();
     Date(int, int, int);
+    Date(const Date &other);
+    Date(Date &&other);
     int getDay() const;
     int getMonth() const;
     int getYear() const;
@@ -30,5 +32,6 @@ public:
     bool operator<=(const Date &other) const;
     bool operator>(const Date &other) const;
     bool operator<(const Date &other) const;
+    Date& operator=(const Date &other);
 };
 #endif

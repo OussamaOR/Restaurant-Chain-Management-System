@@ -16,7 +16,7 @@ Cuisine::Cuisine(const Cuisine& other)
 }
 //move constructor
 Cuisine::Cuisine(Cuisine &&other)
-    : cuisineType(other.cuisineType), dailySales(std::move(other.dailySales)), monthlyRating(std::move(other.monthlyRating))
+    : cuisineType(other.cuisineType), dailySales(other.dailySales), monthlyRating(other.monthlyRating)
 {
     other.cuisineType = ALGERIAN;//setting the source object to a valid state
 }

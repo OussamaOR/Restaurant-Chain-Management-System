@@ -27,7 +27,15 @@ Date::Date(int d, int m, int y) : day(d), month(m), year(y)
         std::cerr << "Error in parameterized constructor: " << e.what() << std::endl;
     }
 }
-
+//move constructor 
+Date::Date(Date &&other) : day(other.day), month(other.month), year(other.year)
+{
+    
+    other.day = 1;
+    other.month = 1;
+    other.year = 2000;
+}
+Date::Date(const Date &other) : day(other.day), month(other.month), year(other.year){}
 // Getter methods for day, month, and year
 int Date::getDay() const
 {
@@ -235,4 +243,15 @@ bool Date::operator<(const Date &other) const
 
     // Years and months are equal, compare days
     return day < other.day;
+}
+//assignment operator =
+Date& Date::operator=(const Date &other)
+{
+    if (this != &other)
+    {
+        day = other.day;
+        month = other.month;
+        year = other.year;
+    }
+    return *this;
 }

@@ -10,7 +10,8 @@ struct DailySale
 {
     Date date;
     double dailySaleAmount;
-
+    
+    public:
     // Default constructor
     DailySale();
 
@@ -25,7 +26,7 @@ struct DailySale
 
     // Destructor
     ~DailySale();
-    
+
     // getters
     Date getDate() const { return date; }
     double getDailySaleAmount() const { return dailySaleAmount; }
@@ -33,6 +34,14 @@ struct DailySale
     // setters
     void setDate(const Date &newDate) { date = newDate; }
     void setDailySaleAmount(double amount) { dailySaleAmount = amount; }
+    //assignment operator 
+    DailySale& operator=(const DailySale &other) {
+        if (this != &other) {
+            date = other.date;
+            dailySaleAmount = other.dailySaleAmount;
+        }
+        return *this;
+    }
 };
 
 // Class representing a Binary Search Tree for sales
@@ -79,10 +88,10 @@ private:
         BinaryNode *right;
 
         BinaryNode(const DailySale &theDailySale, BinaryNode *lt, BinaryNode *rt)
-            : dailySale{theDailySale}, left{lt}, right{rt} {}
+            : dailySale(theDailySale), left(lt), right(rt) {}
 
         BinaryNode(DailySale &&theDailySale, BinaryNode *lt, BinaryNode *rt)
-            : dailySale{std::move(theDailySale)}, left{lt}, right{rt} {}
+            : dailySale(std::move(theDailySale)), left(lt), right(rt) {}
     };
 
     BinaryNode *root;
