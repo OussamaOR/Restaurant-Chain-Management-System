@@ -6,7 +6,7 @@ class Costs {
     BinarySearchTree<dailyCost> dailyCostsBST;
 
     public:
-    void fill_costsBST(const  dailyCost&);
+    void fill_costsBST(const dailyCost&);
     float max_sale(BinarySearchTree<dailyCost>::Node*,float&);
     float mix_sale(BinarySearchTree<dailyCost>::Node*,float&);
     float total_onmonth(BinarySearchTree<dailyCost>::Node*,float&,int,int);
