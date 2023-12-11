@@ -6,7 +6,7 @@ MonthlyRating::MonthlyRating()
 {
     ratingdate.first = 1;
     ratingdate.second = 2000;
-    ratings = std::vector<int>(ratings.size(), 1);
+    ratings = std::vector<int>(31, 1);
 }
 MonthlyRating::MonthlyRating(int a, int b, std::vector<int> r)
 {
@@ -20,7 +20,7 @@ MonthlyRating::MonthlyRating(const MonthlyRating &other)
     *this = other;
 }
 // move constructor
-MonthlyRating::MonthlyRating(MonthlyRating &&) : ratingdate(std::move(other.ratingdate)), ratings(std::move(other.ratings)) {}
+MonthlyRating::MonthlyRating(MonthlyRating && other) : ratingdate(std::move(other.ratingdate)), ratings(std::move(other.ratings)) {}
 
 // Setter and Getter
 // the ratingdate setters and getters
@@ -61,9 +61,9 @@ void MonthlyRating::insertMonthlyRating(int n)
 }
 
 // calculate the average for a month
-float MonthlyRating::averageRating()
+float MonthlyRating::averageRating() const
 {
-    int average = 0;
+    float average = 0;
     for (int i = 0; i < ratings.size(); i++)
     {
         average += ratings[i];

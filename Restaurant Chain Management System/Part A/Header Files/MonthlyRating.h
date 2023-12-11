@@ -27,7 +27,7 @@ public:
     // insert function
     void insertMonthlyRating(int n);
     // function that return the average monthly rating
-    float averageRating();
+    float averageRating() const;
 
     // operator overloading
     bool operator<(const MonthlyRating &) const;
