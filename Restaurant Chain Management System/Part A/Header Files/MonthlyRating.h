@@ -9,7 +9,7 @@ public:
     // default constructor
     MonthlyRating();
     // constructor with parameters
-    MonthlyRating(int, int);
+    MonthlyRating(int, int, std::vector<int>);
     // copy constructor
     MonthlyRating(const MonthlyRating &);
     // move constructor
@@ -22,10 +22,9 @@ public:
     void setRatings(const std::vector<int> &ratings);
     std::vector<int> getRatings() const;
 
-
     // print function
     void printAverageMonthlyRating() const;
-    //insert function
+    // insert function
     void insertMonthlyRating(int n);
     // function that return the average monthly rating
     float averageRating();
@@ -38,7 +37,6 @@ public:
     bool operator<=(const MonthlyRating &) const;
     bool operator>=(const MonthlyRating &) const;
     MonthlyRating &operator=(const MonthlyRating &);
-
 
     // destructor
     ~MonthlyRating();
