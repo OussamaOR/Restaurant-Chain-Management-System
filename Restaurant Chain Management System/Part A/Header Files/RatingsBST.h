@@ -33,7 +33,7 @@ public:
     MonthlyRating *findMin(MonthlyRating *) const;
     float getAverageRatingByMonthHelper(MonthlyRating* ,int , int);
     float getAverageratingByYearHelper(MonthlyRating*,int);
-    float getAverageratingByPeriod(MonthlyRating*,std::pair<int,int>,std::pair<int,int>);
+    float getAverageratingByPeriodHelper(MonthlyRating*,std::pair<int,int>,std::pair<int,int>);
     void printHelper(MonthlyRating *) const;
 };
 
