@@ -1,33 +1,28 @@
-#ifndef BSTRATING_H
-#define BSTRATING_H
-#include "MonthRating.h"
-#include <utility>
-#include <vector>
-#include <iostream>
-using namespace std;
+#include "MonthlyRating.h"
+#include "../Source Files/BinarySearchTree.cpp"
+#ifndef RATINGSBST_H
+#define RATINGSBST_H
 
-class bstrating
+class ratingsBST
 {
-    public:
-        bstrating(MonthRating );
-        virtual ~bstrating();
-        //bstrating(const bstrating& other);
-        float ccalculate_yearrating(bstrating* , int );
-        void makeEmpty( bstrating*& );
-        void printDailyratingdetails(bstrating* );
-        void printMonthlyRating(bstrating* );
-        void remove_Mrating(MonthRating&  ,bstrating*& );
-        void insert_Mrating(MonthRating&  ,bstrating*& );
-        bstrating* getLeft() const {return left;};
-        bstrating* getRight() const {return right;};
-        MonthRating getData() const{return data ;};
-    protected:
-   MonthRating data;
-   bstrating* left;
-   bstrating* right;
-    private:
-    void calculate_yearrating_helper(bstrating*, int , float& );
+private:
+    MonthlyRating *root;
 
+public:
+    ratingsBST();
+    ~ratingsBST();
+    ratingsBST(MonthlyRating &);
+    void insertRating(MonthlyRating &);
+    void insertRating(std::pair<int,int> , std::vector<int>);
+    void remove(MonthlyRating &);
+    void remove(std::pair<int,int> , std::vector<int>);
+    void print(MonthlyRating*);
+    bool makeEmpty(MonthlyRating* );
+private:
+    MonthlyRating *insertHelper(MonthlyRating *, std::pair<int,int> , std::vector<int>);
+    MonthlyRating *removeHelper(MonthlyRating *,std::pair<int,int> , std::vector<int>);
+    MonthlyRating *findMin(MonthlyRating *) const;
+    void printHelper(MonthlyRating *) const;
 };
 
-#endif // BSTRATING_H
+#endif
