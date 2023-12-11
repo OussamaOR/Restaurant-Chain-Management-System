@@ -14,4 +14,5 @@ class SalesVec {
     float total_onmonth(int,int);
     float total_onyear(int);
     float total_onperiod(Date,Date);
+    void insert_dailysale(DailySale);
 };

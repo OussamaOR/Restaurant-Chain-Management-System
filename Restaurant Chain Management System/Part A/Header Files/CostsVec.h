@@ -11,7 +11,9 @@ class CostsVec {
     int getDailyCostIndex(int,int,int);
     float max_cost();
     float min_cost();
-    float total_onmonth(int,int);
-    float total_onyear(int);
-    float total_onperiod(Date,Date);
+    double total_onmonth(int,int);
+    double total_onyear(int);
+    double total_onperiod(Date,Date);
+    void insert_dailycost(dailyCost);
+    
 };

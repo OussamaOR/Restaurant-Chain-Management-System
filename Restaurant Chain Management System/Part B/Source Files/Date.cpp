@@ -1,9 +1,7 @@
 #include "../Header Files/Date.h"
 #include <iostream>
 #include <stdexcept>
-int main(){
-    std::cout << "hello there";
-}
+
 // Default constructor sets initial date to January 1, 2000
 Date::Date() : day(1), month(1), year(2000)
 {

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef BINARY_SEARCH_TREE_H_
+#define BINARY_SEARCH_TREE_H_
 template<typename Object>
 class BinarySearchTree {
     public:
@@ -23,3 +25,4 @@ class BinarySearchTree {
     private:
     Node* root;
 };
+#endif

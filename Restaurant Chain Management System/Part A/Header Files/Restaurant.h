@@ -5,6 +5,7 @@
 #include "Cuisine.h"
 #include "costsBST.h"
 
+using namespace std;
 // location
 enum Location
 {
