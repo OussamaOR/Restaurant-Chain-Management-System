@@ -1,37 +1,37 @@
-#ifndef BSTRATING_H
-#define BSTRATING_H
-#include "MonthRating.h"
+#ifndef RATINGSBST_H
+#define RATINGSBST_H
+#include "MonthlyRating.h"
 #include <utility>
 #include <vector>
 #include <iostream>
 using namespace std;
 
-class bstrating
+class ratingsBST
 {
     public:
-        bstrating(MonthRating );
-        virtual ~bstrating();
-        //bstrating(const bstrating& other);
-        float ccalculate_yearrating(bstrating* , int );
-        void makeEmpty( bstrating*& );
-        void printDailyratingdetails(bstrating* );
-        void printMonthlyRating(bstrating* );
-        void remove_Mrating(MonthRating&  ,bstrating*& );
-        void insert_Mrating(MonthRating&  ,bstrating*& );
-        bstrating* getLeft() const {return left;};
-        bstrating* getRight() const {return right;};
-        MonthRating getData() const{return data ;};
+        ratingsBST(MonthlyRating );
+        virtual ~ratingsBST();
+        //ratingsBST(const ratingsBST& other);
+        float ccalculate_yearrating(ratingsBST* , int );
+        void makeEmpty( ratingsBST*& );
+        void printDailyratingdetails(ratingsBST* );
+        void printMonthlyRating(ratingsBST* );
+        void remove_Mrating(MonthlyRating&  ,ratingsBST*& );
+        void insert_Mrating(MonthlyRating&  ,ratingsBST*& );
+        ratingsBST* getLeft() const {return left;};
+        ratingsBST* getRight() const {return right;};
+        MonthlyRating getData() const{return data ;};
         float getmounthlyrating();
-        float get_maxrating(bstrating* );
-        float get_minrating(bstrating* );
+        float get_maxrating(ratingsBST* );
+        float get_minrating(ratingsBST* );
     protected:
    float mrating;
-   MonthRating data;
-   bstrating* left;
-   bstrating* right;
+   MonthlyRating data;
+   ratingsBST* left;
+   ratingsBST* right;
     private:
-    void calculate_yearrating_helper(bstrating*, int , float& );
+    void calculate_yearrating_helper(ratingsBST*, int , float& );
 
 };
 
-#endif // BSTRATING_H
+#endif 

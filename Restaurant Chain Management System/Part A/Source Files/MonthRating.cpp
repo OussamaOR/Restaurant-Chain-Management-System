@@ -1,11 +1,11 @@
-#include "MonthRating.h"
+#include "MonthlyRating.h"
 #include <utility>
 #include <vector>
 #include <iostream>
 using namespace std;
 //add a get the mounth / year / rating in a spesific date
 // if setiing values will affect the size
-MonthRating::MonthRating(int a ,int b )
+MonthlyRating::MonthlyRating(int a ,int b )
 {
     ratingdate.first = (a > 0 && a <= 12) ? a : 1;
     ratingdate.second = (b> 1999)?b:1999;
@@ -26,19 +26,19 @@ MonthRating::MonthRating(int a ,int b )
     ratings = std::vector<int>(maxsize, 0);
 }
 //destructor:
-MonthRating::~MonthRating()
+MonthlyRating::~MonthlyRating()
 {
 }
 
 // the ratingdate functions :
-void  MonthRating::set_RatingDates(int a, int b){
+void  MonthlyRating::set_RatingDates(int a, int b){
     ratingdate.first = (a > 0 && a <= 12) ? a : 1;
     ratingdate.second = (b> 1999)?b:1999;
  }
- pair<int, int> MonthRating:: get_RatingDates(){
+ pair<int, int> MonthlyRating:: get_RatingDates(){
       return ratingdate;
  }
-void  MonthRating::print_RatingDates()const{
+void  MonthlyRating::print_RatingDates()const{
 std::string months[] = {
         "January", "February", "March", "April",
         "May", "June", "July", "August",
@@ -47,7 +47,7 @@ std::string months[] = {
  }
 
  //insert function
-void MonthRating::insert_dayrating(int n){
+void MonthlyRating::insert_dayrating(int n){
  if(dayindex <ratings.size()){
     ratings[dayindex]= n;
  }
@@ -55,7 +55,7 @@ void MonthRating::insert_dayrating(int n){
  }
 
 //print function : print all rating in order of the days depending on the month
-void MonthRating::printdilyrating() const {
+void MonthlyRating::printdilyrating() const {
         std::cout << "rating of the month : ";
         for (const auto& element : ratings) {
             std::cout << element << " ";
@@ -63,7 +63,7 @@ void MonthRating::printdilyrating() const {
         std::cout << std::endl;
     }
 // calculate the average for a month
-float MonthRating::averagerating(){
+float MonthlyRating::averagerating(){
     int averate = 0;
 for(int i =0 ; i<maxsize ; i++){
     averate += ratings[i];
@@ -73,30 +73,30 @@ return averate/maxsize;
 
 // operator overloading :
 // the code gives priority to the year then the month
-bool MonthRating :: operator<(const MonthRating& z)const {
+bool MonthlyRating :: operator<(const MonthlyRating& z)const {
 if(ratingdate.second < z.ratingdate.second){return true;}
 else{
     if(ratingdate.second == z.ratingdate.second && ratingdate.first< z.ratingdate.first){
             return true;}else{ return false;}}
 }
-bool MonthRating :: operator>(const MonthRating& z)const {
+bool MonthlyRating :: operator>(const MonthlyRating& z)const {
 return!(*this < z);}
 
-bool MonthRating :: operator==(const MonthRating&z)const {
+bool MonthlyRating :: operator==(const MonthlyRating&z)const {
  if(ratingdate.second == z.ratingdate.second && ratingdate.first == z.ratingdate.first){
 return true;}else{ return false;}}
 
-bool MonthRating :: operator!=(const MonthRating&z)const {
+bool MonthlyRating :: operator!=(const MonthlyRating&z)const {
 return !(*this == z);}
 
-bool MonthRating :: operator<=(const MonthRating&z)const {
+bool MonthlyRating :: operator<=(const MonthlyRating&z)const {
   if(ratingdate.second < z.ratingdate.second){return true;}
 else{
     if(ratingdate.second == z.ratingdate.second && ratingdate.first<= z.ratingdate.first){
             return true;}else{ return false;}}
 }
 
-bool MonthRating :: operator>=(const MonthRating&z)const {
+bool MonthlyRating :: operator>=(const MonthlyRating&z)const {
 return !(*this <= z);}
 
 
