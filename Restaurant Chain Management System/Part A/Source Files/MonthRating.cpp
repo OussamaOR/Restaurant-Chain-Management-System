@@ -145,3 +145,6 @@ MonthlyRating &MonthlyRating::operator=(const MonthlyRating &other)
     }
     return *this;
 }
+
+//destructor 
+MonthlyRating::~MonthlyRating(){}
