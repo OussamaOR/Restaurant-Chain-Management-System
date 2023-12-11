@@ -39,7 +39,7 @@ void ratingsBST::remove(std::pair<int, int> date, std::vector<int> ratings)
 // Function to print MonthlyRatings 
 void ratingsBST::print(MonthlyRating *root)
 {
-    printInOrderHelper(root);
+    printHelper(root);
 }
 
 // function to make the BST empty
