@@ -1,118 +1,142 @@
 #include "RatingsBST.h"
-#include "MonthlyRating.h"
-//already have the root (head)
-//get depending on a vall + r values things
-ratingsBST::ratingsBST(MonthlyRating x) : data(x), left(nullptr), right(nullptr) {
+//Constructors
+ratingsBST::ratingsBST(){
+    root=nullptr;
 }
-ratingsBST::~ratingsBST()
+ratingsBST::ratingsBST(MonthlyRating &rating):root(new MonthlyRating(rating)) {}
+// Destructor
+ratingsBST::~ratingsBST(){makeEmpty(root);}
+
+
+//insert functions with different parameters
+void ratingsBST::insertRating(MonthlyRating &rating)
 {
-    // makeEmpty(left);
-    //makeEmpty(right);
+    root = insertHelper(root, rating.get_RatingDates(), rating.getRatings());
 }
 
-/*ratingsBST::ratingsBST(const ratingsBST& other)
+void ratingsBST::insertRating(std::pair<int, int> date, std::vector<int> ratings)
 {
-    //copy ctor
-}
-
-*/
-
-void ratingsBST::insert_Mrating(MonthlyRating& x ,MonthlyRating*& root ){
-    if( root == nullptr ){
-	     root = new ratingsBST{x};
-}else {if( x < root->data ){ insert_Mrating( x, root->left );}
-        else {if( root->data < x )
-		      {insert_Mrating( x, root->right );}}}
+    MonthlyRating newRating;
+    newRating.set_RatingDates(date.first, date.second);
+    newRating.setRatings(ratings);
+    insertRating(newRating);
 }
 
 
-void ratingsBST::remove_Mrating(MonthlyRating& x ,ratingsBST*& root )
- {
- 	if( root == nullptr )
-	    return;
- 	if( x < root->data )
- 	    remove_Mrating( x, root->left );
- 	else if( root->data < x )
- 		 remove_Mrating( x, root->right );
- 	     else if( root->left != nullptr && root->right != nullptr )
- 		  {
- 		     // root->data = findMin( root->right )->data;
-	 	      remove_Mrating( root->data, root->right );
-		  }
-		  else
- 		  {
- 		      ratingsBST *oldNode = root;
- 		      root = ( root->left != nullptr ) ? root->left : root->right;
-		      delete oldNode;
-		   }
+// remove functions with different parameters
+void ratingsBST::remove(MonthlyRating &rating)
+{
+    root = removeHelper(root, rating.get_RatingDates(), rating.getRatings());
 }
-void ratingsBST::makeEmpty( ratingsBST*& root  )
- {
- 	if( root != nullptr )
- 	{
- 	    makeEmpty( root->left );
-	    makeEmpty( root->right );
- 	    delete root;
-	}
-	root = nullptr; }
+void ratingsBST::remove(std::pair<int, int> date, std::vector<int> ratings)
+{
+    MonthlyRating rating;
+    rating.set_RatingDates(date.first, date.second);
+    rating.setRatings(ratings);
+    remove(rating);
+}
 
- void ratingsBST::printDailyratingdetails(ratingsBST* root) {
-        if (root) {
-            printDailyratingdetails(root->left);
-        (root->data).printdilyrating();
-        std::cout<<std::endl;
-            printDailyratingdetails(root->right);
+// Function to print MonthlyRatings 
+void ratingsBST::print(MonthlyRating *root)
+{
+    printInOrderHelper(root);
+}
+
+// function to make the BST empty
+bool ratingsBST::makeEmpty(MonthlyRating *root)
+{
+    if (root == nullptr)
+        return true;
+    
+    if (!makeEmpty(root->getLeftChild()) || !makeEmpty(root->getRightChild()))
+    {
+        return false;
+    }
+    delete root;
+
+    return true;
+}
+
+//helper functions 
+MonthlyRating *ratingsBST::insertHelper(MonthlyRating *root, std::pair<int, int> date, std::vector<int> ratings)
+{
+    if (root == nullptr)
+    {
+        MonthlyRating *newNode = new MonthlyRating();
+        newNode->set_RatingDates(date.first, date.second);
+        newNode->setRatings(ratings);
+        return newNode;
+    }
+
+    if (date < root->get_RatingDates())
+    {
+        root->setLeftChild(insertHelper(root->getLeftChild(), date, ratings));
+    }
+    else if (date > root->get_RatingDates())
+    {
+        root->setRightChild(insertHelper(root->getRightChild(), date, ratings));
+    }
+
+    return root;
+}
+MonthlyRating *ratingsBST::removeHelper(MonthlyRating *root, std::pair<int, int> date, std::vector<int> ratings)
+{
+    if (root == nullptr)
+    {
+        return nullptr;
+    }
+    if (date < root->get_RatingDates())
+    {
+        root->setLeftChild(removeHelper(root->getLeftChild(), date, ratings));
+    }
+    else if (date > root->get_RatingDates())
+    {
+        root->setRightChild(removeHelper(root->getRightChild(), date, ratings));
+    }
+    else
+    {
+        // Node having one child 
+        if (root->getLeftChild() == nullptr)
+        {
+            MonthlyRating *temp = root->getRightChild();
+            delete root;
+            return temp;
         }
-    }
-void ratingsBST::printMonthlyRating(ratingsBST* root) {
-    if (root) {
-        printMonthlyRating(root->getLeft());
-        (root->getData()).print_RatingDates();
-        float ratingofM = root->getmounthlyrating();
-        std::cout << "the rating: " <<ratingofM << std::endl;
-        printMonthlyRating(root->getRight());
-    }
-}
-void ratingsBST::calculate_yearrating_helper(ratingsBST* root, int year, float& yrat) {
-    if (root) {
-        if ((root->data).get_RatingDates().second == year) {
-            yrat += root->getmounthlyrating();
+        else if (root->getRightChild() == nullptr)
+        {
+            MonthlyRating *temp = root->getLeftChild();
+            delete root;
+            return temp;
         }
-        calculate_yearrating_helper(root->left, year, yrat);
-        calculate_yearrating_helper(root->right, year, yrat);
-    }
-}
-float ratingsBST::ccalculate_yearrating(ratingsBST* root, int year) {
-    float yrat = 0;
-    calculate_yearrating_helper(root, year, yrat);
-    return yrat / 12;
-}
-float ratingsBST::getmounthlyrating() {
-   mrating = data.averagerating();
-return mrating;
-}
 
-float ratingsBST::get_maxrating(ratingsBST* root) {
-    float maxRating = 0;
-    if (root) {
-        maxRating = std::max(maxRating, root->getmounthlyrating());
-        float maxL = get_maxrating(root->left);
-        float maxR = get_maxrating(root->right);
-        float maxSubTree = std::max(maxL, maxR);
-        maxRating = std::max(maxRating, maxSubTree);
+        // Node with two children
+        MonthlyRating *temp = findMin(root->getRightChild());
+        *root = *temp;
+        root->setRightChild(removeHelper(root->getRightChild(), temp->get_RatingDates(), temp->getRatings()));
     }
-    return maxRating;
+    return root;
 }
-float ratingsBST::get_minrating(ratingsBST* root ){
-    if (root) {
-        float minRating = root->get_maxrating(root);
-        minRating = std::min(minRating, root->getmounthlyrating());
-        float minL = get_minrating(root->left);
-        float minR = get_minrating(root->right);
-        float minSubTree = std::min(minL, minR);
-        minRating = std::min(minRating, minSubTree);
-        return minRating;
-    }else{
-     return std::numeric_limits<float>::max();
+MonthlyRating *ratingsBST::findMin(MonthlyRating *root) const
+{
+    if (root == nullptr)
+    {
+        return nullptr;
     }
+
+    if (root->getLeftChild() == nullptr)
+    {
+        return root;
+    }
+
+    return findMin(root->getLeftChild());
+}
+void ratingsBST::printHelper(MonthlyRating *root) const
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    printHelper(root->getLeftChild());
+    root->printAverageMonthlyRating();
+    printHelper(root->getRightChild());
 }

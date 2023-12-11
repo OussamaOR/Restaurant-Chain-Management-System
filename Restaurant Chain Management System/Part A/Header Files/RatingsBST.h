@@ -16,13 +16,13 @@ public:
     void insertRating(std::pair<int,int> , std::vector<int>);
     void remove(MonthlyRating &);
     void remove(std::pair<int,int> , std::vector<int>);
-    void printInOrder(MonthlyRating*);
-
+    void print(MonthlyRating*);
+    bool makeEmpty(MonthlyRating* );
 private:
     MonthlyRating *insertHelper(MonthlyRating *, std::pair<int,int> , std::vector<int>);
     MonthlyRating *removeHelper(MonthlyRating *,std::pair<int,int> , std::vector<int>);
     MonthlyRating *findMin(MonthlyRating *) const;
-    void printInOrderHelper(MonthlyRating *) const;
+    void printHelper(MonthlyRating *) const;
 };
 
 #endif
