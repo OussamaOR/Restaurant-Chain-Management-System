@@ -6,38 +6,45 @@
 class MonthlyRating
 {
 public:
+    // default constructor
+    MonthlyRating();
+    // constructor with parameters
     MonthlyRating(int, int);
-    virtual ~MonthlyRating();
+    // copy constructor
+    MonthlyRating(const MonthlyRating &);
+    // move constructor
+    MonthlyRating(MonthlyRating &&);
+
+    // setter and getter for rating dates
     void set_RatingDates(int, int);
     std::pair<int, int> get_RatingDates();
-    void print_RatingDates() const;
-    void insert_dayrating(int n);
-    void printdilyrating() const;
-    float averagerating();
+    // setters and getters for ratings
+    void setRatings(const std::vector<int> &ratings);
+    std::vector<int> getRatings() const;
+
+
+    // print function
+    void printAverageMonthlyRating() const;
+    //insert function
+    void insertMonthlyRating(int n);
+    // function that return the average monthly rating
+    float averageRating();
+
+    // operator overloading
     bool operator<(const MonthlyRating &) const;
     bool operator>(const MonthlyRating &) const;
     bool operator==(const MonthlyRating &) const;
     bool operator!=(const MonthlyRating &) const;
     bool operator<=(const MonthlyRating &) const;
     bool operator>=(const MonthlyRating &) const;
+    MonthlyRating &operator=(const MonthlyRating &);
 
-    // setters and getters
-    void setRatingDate(int year, int month);
-    std::pair<int, int> getRatingDate() const;
 
-    void setRatings(const std::vector<int> &ratings);
-    std::vector<int> getRatings() const;
-
-    void setDayIndex(std::size_t dayIndex);
-    std::size_t getDayIndex() const;
-
-    void setMaxSize(std::size_t maxSize);
-    std::size_t getMaxSize() const;
+    // destructor
+    ~MonthlyRating();
 
 private:
     std::pair<int, int> ratingdate;
     std::vector<int> ratings;
-    std::size_t dayindex;
-    std::size_t maxsize;
 };
 #endif
