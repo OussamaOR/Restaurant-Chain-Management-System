@@ -100,3 +100,50 @@ bool MonthlyRating :: operator>=(const MonthlyRating&z)const {
 return !(*this <= z);}
 
 
+//setters and getters 
+void MonthlyRating::setRatingDate(int m, int y)
+{
+    ratingdate.first = (m > 0 && m <= 12) ? m : 1;
+    ratingdate.second = (y> 1999)?y:1999;
+}
+
+std::pair<int, int> MonthlyRating::getRatingDate() const
+{
+    return ratingdate;
+}
+
+// Setter and Getter for ratings
+void MonthlyRating::setRatings(const std::vector<int>& newRatings)
+{
+    ratings = newRatings;
+}
+
+std::vector<int> MonthlyRating::getRatings() const
+{
+    return ratings;
+}
+
+// Setter and Getter for dayIndex
+void MonthlyRating::setDayIndex(std::size_t newDayIndex)
+{
+    if(dayindex>=0)
+    dayindex = newDayIndex;
+}
+
+std::size_t MonthlyRating::getDayIndex() const
+{
+    return dayindex;
+}
+
+// Setter and Getter for maxSize
+void MonthlyRating::setMaxSize(std::size_t newMaxSize)
+{
+    if(maxsize>=0)
+    maxsize = newMaxSize;
+}
+
+std::size_t MonthlyRating::getMaxSize() const
+{
+    return maxsize;
+}
+
