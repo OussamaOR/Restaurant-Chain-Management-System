@@ -57,7 +57,7 @@ void MonthlyRating::printAverageMonthlyRating() const
 // insert function
 void MonthlyRating::insertMonthlyRating(int n)
 {
-    ratings.push_back(n);
+    ratings.push_back((n>0 && n<6)?n:1);
 }
 
 // calculate the average for a month
