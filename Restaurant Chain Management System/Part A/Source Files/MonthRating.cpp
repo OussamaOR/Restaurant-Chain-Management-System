@@ -72,7 +72,7 @@ float MonthlyRating::averageRating() const
 }
 
 // operator overloading
-bool MonthlyRating ::operator<(const MonthlyRating &z) const
+bool MonthlyRating::operator<(const MonthlyRating &z) const
 {
     if (ratingdate.second < z.ratingdate.second)
     {
@@ -114,26 +114,12 @@ bool MonthlyRating ::operator!=(const MonthlyRating &z) const
 
 bool MonthlyRating ::operator<=(const MonthlyRating &z) const
 {
-    if (ratingdate.second < z.ratingdate.second)
-    {
-        return true;
-    }
-    else
-    {
-        if (ratingdate.second == z.ratingdate.second && ratingdate.first <= z.ratingdate.first)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    return !(*this > z);
 }
 
-bool MonthlyRating ::operator>=(const MonthlyRating &z) const
+bool MonthlyRating::operator>=(const MonthlyRating &z) const
 {
-    return !(*this <= z);
+    return !(*this < z);
 }
 MonthlyRating &MonthlyRating::operator=(const MonthlyRating &other)
 {
