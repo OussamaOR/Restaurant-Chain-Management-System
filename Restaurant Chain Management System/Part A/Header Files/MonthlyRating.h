@@ -30,19 +30,27 @@ public:
     float averageRating() const;
 
     // operator overloading
-    bool operator<(const MonthlyRating &) const;
-    bool operator>(const MonthlyRating &) const;
-    bool operator==(const MonthlyRating &) const;
-    bool operator!=(const MonthlyRating &) const;
-    bool operator<=(const MonthlyRating &) const;
-    bool operator>=(const MonthlyRating &) const;
+    bool operator<(const std::pair<int, int> &) const;
+    bool operator>(const std::pair<int, int> &) const;
+    bool operator==(const std::pair<int, int> &) const;
+    bool operator!=(const std::pair<int, int> &) const;
+    bool operator<=(const std::pair<int, int> &) const;
+    bool operator>=(const std::pair<int, int> &) const;
     MonthlyRating &operator=(const MonthlyRating &);
 
     // destructor
     ~MonthlyRating();
 
+    // setters and getters for BST
+    void setLeftChild(MonthlyRating *left);
+    void setRightChild(MonthlyRating *right);
+    MonthlyRating *getLeftChild() const;
+    MonthlyRating *getRightChild() const;
+
 private:
     std::pair<int, int> ratingdate;
     std::vector<int> ratings;
+    MonthlyRating *leftChild;
+    MonthlyRating *rightChild;
 };
 #endif

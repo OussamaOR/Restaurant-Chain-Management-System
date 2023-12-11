@@ -7,12 +7,17 @@ MonthlyRating::MonthlyRating()
     ratingdate.first = 1;
     ratingdate.second = 2000;
     ratings = std::vector<int>(31, 1);
+    leftChild = nullptr;
+    rightChild = nullptr;
+    
 }
 MonthlyRating::MonthlyRating(int a, int b, std::vector<int> r)
 {
     ratingdate.first = (a > 0 && a <= 12) ? a : 1;
     ratingdate.second = (b > 1999) ? b : 2000;
     ratings = r;
+    leftChild = nullptr;
+    rightChild = nullptr;
 }
 // copy constructor
 MonthlyRating::MonthlyRating(const MonthlyRating &other)
@@ -20,7 +25,7 @@ MonthlyRating::MonthlyRating(const MonthlyRating &other)
     *this = other;
 }
 // move constructor
-MonthlyRating::MonthlyRating(MonthlyRating && other) : ratingdate(std::move(other.ratingdate)), ratings(std::move(other.ratings)) {}
+MonthlyRating::MonthlyRating(MonthlyRating &&other) : ratingdate(std::move(other.ratingdate)), ratings(std::move(other.ratings)) {}
 
 // Setter and Getter
 // the ratingdate setters and getters
@@ -57,7 +62,7 @@ void MonthlyRating::printAverageMonthlyRating() const
 // insert function
 void MonthlyRating::insertMonthlyRating(int n)
 {
-    ratings.push_back((n>0 && n<6)?n:1);
+    ratings.push_back((n > 0 && n < 6) ? n : 1);
 }
 
 // calculate the average for a month
@@ -72,15 +77,15 @@ float MonthlyRating::averageRating() const
 }
 
 // operator overloading
-bool MonthlyRating::operator<(const MonthlyRating &z) const
+bool MonthlyRating::operator<(const std::pair<int, int> &z) const
 {
-    if (ratingdate.second < z.ratingdate.second)
+    if (ratingdate.second < z.second)
     {
         return true;
     }
     else
     {
-        if (ratingdate.second == z.ratingdate.second && ratingdate.first < z.ratingdate.first)
+        if (ratingdate.second == z.second && ratingdate.first < z.first)
         {
             return true;
         }
@@ -90,14 +95,28 @@ bool MonthlyRating::operator<(const MonthlyRating &z) const
         }
     }
 }
-bool MonthlyRating ::operator>(const MonthlyRating &z) const
+bool MonthlyRating ::operator>(const std::pair<int, int> &z) const
 {
-    return !(*this < z);
+    if (ratingdate.second > z.second)
+    {
+        return true;
+    }
+    else
+    {
+        if (ratingdate.second == z.second && ratingdate.first > z.first)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 
-bool MonthlyRating ::operator==(const MonthlyRating &z) const
+bool MonthlyRating ::operator==(const std::pair<int, int> &z) const
 {
-    if (ratingdate.second == z.ratingdate.second && ratingdate.first == z.ratingdate.first)
+    if (ratingdate.second == z.second && ratingdate.first == z.first)
     {
         return true;
     }
@@ -107,17 +126,17 @@ bool MonthlyRating ::operator==(const MonthlyRating &z) const
     }
 }
 
-bool MonthlyRating ::operator!=(const MonthlyRating &z) const
+bool MonthlyRating ::operator!=(const std::pair<int, int> &z) const
 {
     return !(*this == z);
 }
 
-bool MonthlyRating ::operator<=(const MonthlyRating &z) const
+bool MonthlyRating ::operator<=(const std::pair<int, int> &z) const
 {
     return !(*this > z);
 }
 
-bool MonthlyRating::operator>=(const MonthlyRating &z) const
+bool MonthlyRating::operator>=(const std::pair<int, int> &z) const
 {
     return !(*this < z);
 }
@@ -132,5 +151,24 @@ MonthlyRating &MonthlyRating::operator=(const MonthlyRating &other)
     return *this;
 }
 
-//destructor 
-MonthlyRating::~MonthlyRating(){}
+// destructor
+MonthlyRating::~MonthlyRating() {}
+
+//setters and getters needed for BST 
+MonthlyRating *MonthlyRating::getLeftChild() const {
+    return leftChild;
+}
+
+MonthlyRating *MonthlyRating::getRightChild() const {
+    return rightChild;
+}
+
+void MonthlyRating::setLeftChild(MonthlyRating *left) {
+    leftChild = left;
+}
+
+void MonthlyRating::setRightChild(MonthlyRating *right) {
+    rightChild = right;
+}
+
+
