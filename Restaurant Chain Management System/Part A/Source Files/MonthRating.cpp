@@ -29,7 +29,7 @@ void MonthlyRating::set_RatingDates(int a, int b)
     ratingdate.first = (a > 0 && a <= 12) ? a : 1;
     ratingdate.second = (b > 1999) ? b : 2000;
 }
-pair<int, int> MonthlyRating::get_RatingDates()
+std::pair<int, int> MonthlyRating::get_RatingDates()
 {
     return ratingdate;
 }
@@ -51,7 +51,7 @@ void MonthlyRating::printAverageMonthlyRating() const
         "May", "June", "July", "August",
         "September", "October", "November", "December"};
     std::cout << months[ratingdate.first] << " " << ratingdate.second << " :\n ";
-    std::cout << "Average mothly rating : " << *this.averageRating() << std::endl;
+    std::cout << "Average mothly rating : " << this->averageRating() << std::endl;
 }
 
 // insert function
