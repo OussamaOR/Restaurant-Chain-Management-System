@@ -68,11 +68,11 @@ MonthlyRating *ratingsBST::insertHelper(MonthlyRating *root, std::pair<int, int>
         return newNode;
     }
 
-    if (date < root->get_RatingDates())
+    if (*root>date)
     {
         root->setLeftChild(insertHelper(root->getLeftChild(), date, ratings));
     }
-    else if (date > root->get_RatingDates())
+    else if (*root<date)
     {
         root->setRightChild(insertHelper(root->getRightChild(), date, ratings));
     }
@@ -85,11 +85,11 @@ MonthlyRating *ratingsBST::removeHelper(MonthlyRating *root, std::pair<int, int>
     {
         return nullptr;
     }
-    if (date < root->get_RatingDates())
+    if (*root>date)
     {
         root->setLeftChild(removeHelper(root->getLeftChild(), date, ratings));
     }
-    else if (date > root->get_RatingDates())
+    else if (*root<date)
     {
         root->setRightChild(removeHelper(root->getRightChild(), date, ratings));
     }
