@@ -55,7 +55,7 @@ void MonthlyRating::printAverageMonthlyRating() const
         "January", "February", "March", "April",
         "May", "June", "July", "August",
         "September", "October", "November", "December"};
-    std::cout << months[ratingdate.first] << " " << ratingdate.second << " :\n ";
+    std::cout << months[ratingdate.first-1] << " " << ratingdate.second << " :\n ";
     std::cout << "Average mothly rating : " << this->averageRating() << std::endl;
 }
 
