@@ -4,20 +4,19 @@
 #include <iostream>
 #include <stack>
 
-//Constructors
+// Constructors
 ratingAVL::ratingAVL()
 {
-    root=nullptr;
+    root = nullptr;
 }
-ratingAVL::ratingAVL(MonthlyRating &rating):root(new MonthlyRating(rating)) {}
+ratingAVL::ratingAVL(MonthlyRating &rating) : root(new MonthlyRating(rating)) {}
 // Destructor
 ratingAVL::~ratingAVL()
 {
     makeEmpty(root);
 }
 
-
-//insert functions with different parameters
+// insert functions with different parameters
 void ratingAVL::insertRatingAVL(MonthlyRating &rating)
 {
     root = insertHelperAVL(root, rating.get_RatingDates(), rating.getRatings());
@@ -30,7 +29,6 @@ void ratingAVL::insertRatingAVL(std::pair<int, int> date, std::vector<int> ratin
     newRating.setRatings(ratings);
     insertRatingAVL(newRating);
 }
-
 
 // remove functions with different parameters
 void ratingAVL::removeAVL(MonthlyRating &rating)
@@ -65,11 +63,11 @@ bool ratingAVL::makeEmpty(MonthlyRating *root)
     root = nullptr;
     return true;
 }
-double ratingAVL::getAverageRatingByMonth(MonthlyRating* root,int month, int year )
+double ratingAVL::getAverageRatingByMonth(MonthlyRating *root, int month, int year)
 {
-   double ratingInMonth = 0;
-    std::pair<int,int> temp = std::make_pair(month,year );
-    ratingInMonth = getAverageRatingByMonthHelper(root,temp );
+    double ratingInMonth = 0;
+    std::pair<int, int> temp = std::make_pair(month, year);
+    ratingInMonth = getAverageRatingByMonthHelper(root, temp);
     if (ratingInMonth == -1)
     {
         std::cerr << "this date does not exist " << std::endl;
@@ -86,22 +84,20 @@ double ratingAVL::getAverageRatingByMonth(MonthlyRating* root,int month, int yea
         }
     }
 }
-double ratingAVL::getAverageRatingByMonth(MonthlyRating* root,std::pair<int,int> other)
+double ratingAVL::getAverageRatingByMonth(MonthlyRating *root, std::pair<int, int> other)
 {
 
     double ratingInMonth = 0;
-    ratingInMonth = getAverageRatingByMonthHelper(root,other );
+    ratingInMonth = getAverageRatingByMonthHelper(root, other);
     return ratingInMonth;
 }
 
-double ratingAVL::getAverageratingByYear(MonthlyRating* root,int year)
+double ratingAVL::getAverageratingByYear(MonthlyRating *root, int year)
 {
     return getAverageratingByYearHelper(root, year);
-
-
 }
 
-double ratingAVL::getAverageratingByPeriod(MonthlyRating* root,std::pair<int,int> date1,std::pair<int,int> date2 )
+double ratingAVL::getAverageratingByPeriod(MonthlyRating *root, std::pair<int, int> date1, std::pair<int, int> date2)
 {
     double periodRating = 0;
 
@@ -133,7 +129,28 @@ double ratingAVL::getAverageratingByPeriod(MonthlyRating* root,std::pair<int,int
         }
     }
 }
-//helper functions
+double ratingAVL::getAverageratingByYear(MonthlyRating *root, int year)
+{
+    int countMonth = 0;
+    double tempYear = 0;
+    double averageYear = getAverageratingByYearHelper(root, year, countMonth, tempYear);
+    if (averageYear == -1)
+    {
+        std::cerr << "empty tree  " << std::endl;
+    }
+    else
+    {
+        if (averageYear == -2)
+        {
+            std::cerr << "invalid year provided  " << std::endl;
+        }
+        else
+        {
+            return averageYear;
+        }
+    }
+}
+// helper functions
 
 MonthlyRating *ratingAVL::findMin(MonthlyRating *root) const
 {
@@ -159,28 +176,28 @@ void ratingAVL::printHelper(MonthlyRating *root) const
     root->printAverageMonthlyRating();
     printHelper(root->getRightChild());
 }
-double ratingAVL::getAverageRatingByMonthHelper(MonthlyRating* root,std::pair<int,int> other )
+double ratingAVL::getAverageRatingByMonthHelper(MonthlyRating *root, std::pair<int, int> other)
 {
-   double aveRating = 0;
+    double aveRating = 0;
 
     if (!(checkDate(other)))
     {
         return -2;
     }
-    if(!root)
+    if (!root)
     {
         return -1;
     }
-    if(root)
+    if (root)
     {
-        if((root->get_RatingDates()).first == other.first && (root->get_RatingDates()).second == other.second)
+        if ((root->get_RatingDates()).first == other.first && (root->get_RatingDates()).second == other.second)
         {
             aveRating = root->averageRating();
             return aveRating;
         }
         else
         {
-            if((root->get_RatingDates()).first < other.first || ((root->get_RatingDates()).first== other.first && (root->get_RatingDates()).second < other.second))
+            if ((root->get_RatingDates()).first < other.first || ((root->get_RatingDates()).first == other.first && (root->get_RatingDates()).second < other.second))
             {
                 aveRating += getAverageRatingByMonthHelper(root->getRightChild(), other);
             }
@@ -192,16 +209,16 @@ double ratingAVL::getAverageRatingByMonthHelper(MonthlyRating* root,std::pair<in
     }
     return aveRating;
 }
-bool ratingAVL::checkDate(std::pair<int,int> date )
+bool ratingAVL::checkDate(std::pair<int, int> date)
 {
 
-    if(date.second <= 1999 )
+    if (date.second <= 1999)
     {
         return false;
     }
     else
     {
-        if( date.first <1 && date.first >= 13)
+        if (date.first < 1 && date.first >= 13)
         {
             return false;
         }
@@ -211,9 +228,10 @@ bool ratingAVL::checkDate(std::pair<int,int> date )
         }
     }
 }
-double  ratingAVL::getAverageratingByYearHelper(MonthlyRating* root,int year )
+double ratingAVL::getAverageratingByYearHelper(MonthlyRating *root, int year)
 {
-   if (!root)    return 0;
+    if (!root)
+        return 0;
     double tempYear = 0;
     int countMonth = 0;
 
@@ -224,26 +242,26 @@ double  ratingAVL::getAverageratingByYearHelper(MonthlyRating* root,int year )
     }
 
     getAverageratingByYearHelper(root->getRightChild(), year);
-     getAverageratingByYearHelper(root->getLeftChild(), year);
-    return  static_cast<double>(tempYear) / static_cast<double>(countMonth);
+    getAverageratingByYearHelper(root->getLeftChild(), year);
+    return static_cast<double>(tempYear) / static_cast<double>(countMonth);
 }
 
-double ratingAVL::getAverageratingByPeriodHelper(MonthlyRating* root,std::pair<int,int> firstDate,std::pair<int,int> secondDate)
+double ratingAVL::getAverageratingByPeriodHelper(MonthlyRating *root, std::pair<int, int> firstDate, std::pair<int, int> secondDate)
 {
-     int countPeriod =0;
+    int countPeriod = 0;
     double tempPeriod = 0;
     if (!(checkDate(firstDate) && checkDate(secondDate)))
     {
         return -2;
     }
-    if( root == nullptr)
+    if (root == nullptr)
     {
         return -1;
     }
     bool foundMatchingNode = false;
 
-    std::stack<MonthlyRating*> stack;
-    MonthlyRating* current = root;
+    std::stack<MonthlyRating *> stack;
+    MonthlyRating *current = root;
 
     while (current != nullptr || !stack.empty())
     {
@@ -273,9 +291,32 @@ double ratingAVL::getAverageratingByPeriodHelper(MonthlyRating* root,std::pair<i
     else
         return (countPeriod == 0) ? 0.0 : static_cast<double>(tempPeriod) / static_cast<double>(countPeriod);
 }
+double ratingAVL::getAverageratingByYearHelper(MonthlyRating *root, int year, int &countMonth, double &tempYear)
+{
+    if (year < 2000)
+    {
+        return -2;
+    }
+    if (root)
+    {
+        if (root->get_RatingDates().second == year)
+        {
+            tempYear += root->averageRating();
+            countMonth++;
+        }
 
+        getAverageratingByYearHelper(root->getLeftChild(), year, countMonth, tempYear);
+        getAverageratingByYearHelper(root->getRightChild(), year, countMonth, tempYear);
 
-//the hight function
+        return (countMonth == 0) ? 0.0 : static_cast<double>(tempYear) / static_cast<double>(countMonth);
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+// the hight function
 int ratingAVL::getHeight(MonthlyRating *root)
 {
     if (root == nullptr)
@@ -357,7 +398,7 @@ MonthlyRating *ratingAVL::balanceAVL(MonthlyRating *root)
 // Helper function to insert a node into AVL tree
 MonthlyRating *ratingAVL::insertHelperAVL(MonthlyRating *root, std::pair<int, int> date, std::vector<int> ratings)
 {
-   if (root == nullptr)
+    if (root == nullptr)
     {
         MonthlyRating *newNode = new MonthlyRating();
         newNode->set_RatingDates(date.first, date.second);
@@ -365,11 +406,11 @@ MonthlyRating *ratingAVL::insertHelperAVL(MonthlyRating *root, std::pair<int, in
         return newNode;
     }
 
-    if (*root>date)
+    if (*root > date)
     {
         root->setLeftChild(insertHelperAVL(root->getLeftChild(), date, ratings));
     }
-    else if (*root<date)
+    else if (*root < date)
     {
         root->setRightChild(insertHelperAVL(root->getRightChild(), date, ratings));
     }
@@ -385,11 +426,11 @@ MonthlyRating *ratingAVL::removeHelperAVL(MonthlyRating *root, std::pair<int, in
     {
         return nullptr;
     }
-    if (*root>date)
+    if (*root > date)
     {
         root->setLeftChild(removeHelperAVL(root->getLeftChild(), date, ratings));
     }
-    else if (*root<date)
+    else if (*root < date)
     {
         root->setRightChild(removeHelperAVL(root->getRightChild(), date, ratings));
     }
@@ -418,19 +459,21 @@ MonthlyRating *ratingAVL::removeHelperAVL(MonthlyRating *root, std::pair<int, in
     return balanceAVL(root);
 }
 
-void ratingAVL::printLevelOrder(MonthlyRating* root) {
+void ratingAVL::printLevelOrder(MonthlyRating *root)
+{
     if (!root)
         return;
 
     // Create a queue for level-order traversal
-    std::queue<MonthlyRating*> queue1;
+    std::queue<MonthlyRating *> queue1;
 
     // Enqueue the root
     queue1.push(root);
 
-    while (!queue1.empty()) {
+    while (!queue1.empty())
+    {
         // Dequeue a node from the front of the queue
-        MonthlyRating* current = queue1.front();
+        MonthlyRating *current = queue1.front();
         queue1.pop();
 
         // Print the dequeued node's value
@@ -445,24 +488,3 @@ void ratingAVL::printLevelOrder(MonthlyRating* root) {
             queue1.push(current->getRightChild());
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

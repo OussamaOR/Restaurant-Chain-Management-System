@@ -117,15 +117,26 @@ double ratingsBST::getAverageratingByPeriod(MonthlyRating *root, std::pair<int, 
         }
     }
 }
-double ratingsBST::getAverageratingByYear(MonthlyRating* root,int year)
-{   int countMonth = 0;
-     double tempYear = 0;
-     double averageYear = getAverageratingByYearHelper(root, year  , countMonth,tempYear );
-     if(averageYear == -1){   std::cerr<<"empty tree  "<<std::endl;}
-     else{
-        if(averageYear == -2){  std::cerr<<"invalid year provided  "<<std::endl;   }
-        else{  return averageYear; }
-     }
+double ratingsBST::getAverageratingByYear(MonthlyRating *root, int year)
+{
+    int countMonth = 0;
+    double tempYear = 0;
+    double averageYear = getAverageratingByYearHelper(root, year, countMonth, tempYear);
+    if (averageYear == -1)
+    {
+        std::cerr << "empty tree  " << std::endl;
+    }
+    else
+    {
+        if (averageYear == -2)
+        {
+            std::cerr << "invalid year provided  " << std::endl;
+        }
+        else
+        {
+            return averageYear;
+        }
+    }
 }
 // helper functions
 MonthlyRating *ratingsBST::insertHelper(MonthlyRating *root, std::pair<int, int> date, std::vector<int> ratings)
@@ -307,19 +318,27 @@ double ratingsBST::getAverageratingByPeriodHelper(MonthlyRating *root, std::pair
     else
         return (countPeriod == 0) ? 0.0 : static_cast<double>(tempPeriod) / static_cast<double>(countPeriod);
 }
-double  ratingsBST::getAverageratingByYearHelper(MonthlyRating* root,int year  ,int&  countMonth , double& tempYear  )
+double ratingsBST::getAverageratingByYearHelper(MonthlyRating *root, int year, int &countMonth, double &tempYear)
 {
-if( year < 2000){ return -2 ; }
-if (root ){
-    if (root->get_RatingDates().second == year)
+    if (year < 2000)
     {
-        tempYear += root->averageRating();
-        countMonth++;
+        return -2;
     }
+    if (root)
+    {
+        if (root->get_RatingDates().second == year)
+        {
+            tempYear += root->averageRating();
+            countMonth++;
+        }
 
-    getAverageratingByYearHelper(root->getLeftChild(), year ,countMonth ,tempYear  );
-    getAverageratingByYearHelper(root->getRightChild(), year , countMonth,tempYear);
+        getAverageratingByYearHelper(root->getLeftChild(), year, countMonth, tempYear);
+        getAverageratingByYearHelper(root->getRightChild(), year, countMonth, tempYear);
 
-    return (countMonth == 0) ? 0.0 :static_cast<double>(tempYear) / static_cast<double>(countMonth);}
-    else{  return -1 ;}
+        return (countMonth == 0) ? 0.0 : static_cast<double>(tempYear) / static_cast<double>(countMonth);
+    }
+    else
+    {
+        return -1;
+    }
 }
