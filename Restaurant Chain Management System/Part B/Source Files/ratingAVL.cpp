@@ -101,7 +101,7 @@ double ratingAVL::getAverageratingByYear(MonthlyRating* root,int year)
 
 }
 
-double ratingAVL::getAverageratingByPeriod(MonthlyRating* root,std::pair<int,int> temp,std::pair<int,int> other )
+double ratingAVL::getAverageratingByPeriod(MonthlyRating* root,std::pair<int,int> date1,std::pair<int,int> date2 )
 {
     double periodRating = 0;
 
