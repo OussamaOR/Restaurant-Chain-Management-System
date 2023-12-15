@@ -1,4 +1,4 @@
-#include "..\Restaurant-Chain-Management-System\Restaurant Chain Management System\Part A\Header Files\MonthlyRating.h"
+#include "..\Restaurant-Chain-Management-System\Restaurant Chain Management System\Part B\Header Files\MonthlyRating.h"
 #ifndef RATINGAVL_H
 #define RATINGAVL_H
 
@@ -32,9 +32,10 @@ private:
     MonthlyRating *insertHelperAVL(MonthlyRating *, std::pair<int,int>, std::vector<int>);
     MonthlyRating *removeHelperAVL(MonthlyRating *,std::pair<int,int>, std::vector<int>);
     MonthlyRating *findMin(MonthlyRating *) const;
-    double getAverageRatingByMonthHelper(MonthlyRating*,std::pair<int,int>);
-    double getAverageratingByYearHelper(MonthlyRating*,int);
+    double getAverageRatingByMonthHelper(MonthlyRating* ,std::pair<int,int>);
+    double getAverageratingByYearHelper(MonthlyRating*,int  );
     double getAverageratingByPeriodHelper(MonthlyRating*,std::pair<int,int>,std::pair<int,int>);
+    bool checkDate(std::pair<int,int>);
     void printHelper(MonthlyRating *) const;
     MonthlyRating *balanceAVL(MonthlyRating *node);
     MonthlyRating *rotateRight(MonthlyRating *y);
