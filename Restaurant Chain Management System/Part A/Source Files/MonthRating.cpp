@@ -9,7 +9,6 @@ MonthlyRating::MonthlyRating()
     ratings = std::vector<int>(31, 1);
     leftChild = nullptr;
     rightChild = nullptr;
-    
 }
 MonthlyRating::MonthlyRating(int a, int b, std::vector<int> r)
 {
@@ -55,7 +54,7 @@ void MonthlyRating::printAverageMonthlyRating() const
         "January", "February", "March", "April",
         "May", "June", "July", "August",
         "September", "October", "November", "December"};
-    std::cout << months[ratingdate.first-1] << " " << ratingdate.second << " :\n ";
+    std::cout << months[ratingdate.first - 1] << " " << ratingdate.second << " :\n ";
     std::cout << "Average mothly rating : " << this->averageRating() << std::endl;
 }
 
@@ -154,21 +153,23 @@ MonthlyRating &MonthlyRating::operator=(const MonthlyRating &other)
 // destructor
 MonthlyRating::~MonthlyRating() {}
 
-//setters and getters needed for BST 
-MonthlyRating *MonthlyRating::getLeftChild() const {
+// setters and getters needed for BST
+MonthlyRating *MonthlyRating::getLeftChild() const
+{
     return leftChild;
 }
 
-MonthlyRating *MonthlyRating::getRightChild() const {
+MonthlyRating *MonthlyRating::getRightChild() const
+{
     return rightChild;
 }
 
-void MonthlyRating::setLeftChild(MonthlyRating *left) {
+void MonthlyRating::setLeftChild(MonthlyRating *left)
+{
     leftChild = left;
 }
 
-void MonthlyRating::setRightChild(MonthlyRating *right) {
+void MonthlyRating::setRightChild(MonthlyRating *right)
+{
     rightChild = right;
 }
-
-

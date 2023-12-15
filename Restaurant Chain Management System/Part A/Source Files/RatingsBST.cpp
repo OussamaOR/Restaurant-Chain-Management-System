@@ -1,16 +1,16 @@
 #include "RatingsBST.h"
 #include <iostream>
 #include <stack>
-//Constructors
-ratingsBST::ratingsBST(){
-    root=nullptr;
+// Constructors
+ratingsBST::ratingsBST()
+{
+    root = nullptr;
 }
-ratingsBST::ratingsBST(MonthlyRating &rating):root(new MonthlyRating(rating)) {}
+ratingsBST::ratingsBST(MonthlyRating &rating) : root(new MonthlyRating(rating)) {}
 // Destructor
-ratingsBST::~ratingsBST(){makeEmpty(root);}
+ratingsBST::~ratingsBST() { makeEmpty(root); }
 
-
-//insert functions with different parameters
+// insert functions with different parameters
 void ratingsBST::insertRating(MonthlyRating &rating)
 {
     root = insertHelper(root, rating.get_RatingDates(), rating.getRatings());
@@ -23,7 +23,6 @@ void ratingsBST::insertRating(std::pair<int, int> date, std::vector<int> ratings
     newRating.setRatings(ratings);
     insertRating(newRating);
 }
-
 
 // remove functions with different parameters
 void ratingsBST::remove(MonthlyRating &rating)
@@ -38,7 +37,7 @@ void ratingsBST::remove(std::pair<int, int> date, std::vector<int> ratings)
     remove(rating);
 }
 
-// Function to print MonthlyRatings 
+// Function to print MonthlyRatings
 void ratingsBST::print(MonthlyRating *root)
 {
     printHelper(root);
@@ -49,7 +48,7 @@ bool ratingsBST::makeEmpty(MonthlyRating *root)
 {
     if (root == nullptr)
         return true;
-    
+
     if (!makeEmpty(root->getLeftChild()) || !makeEmpty(root->getRightChild()))
     {
         return false;
@@ -58,11 +57,11 @@ bool ratingsBST::makeEmpty(MonthlyRating *root)
     root = nullptr;
     return true;
 }
-double ratingsBST::getAverageRatingByMonth(MonthlyRating* root,int month, int year )
+double ratingsBST::getAverageRatingByMonth(MonthlyRating *root, int month, int year)
 {
     double ratingInMonth = 0;
-    std::pair<int,int> temp = std::make_pair(month,year );
-    ratingInMonth = getAverageRatingByMonthHelper(root,temp );
+    std::pair<int, int> temp = std::make_pair(month, year);
+    ratingInMonth = getAverageRatingByMonthHelper(root, temp);
     if (ratingInMonth == -1)
     {
         std::cerr << "this date does not exist " << std::endl;
@@ -79,14 +78,14 @@ double ratingsBST::getAverageRatingByMonth(MonthlyRating* root,int month, int ye
         }
     }
 }
-double ratingsBST::getAverageRatingByMonth(MonthlyRating* root,std::pair<int,int> other)
+double ratingsBST::getAverageRatingByMonth(MonthlyRating *root, std::pair<int, int> other)
 {
 
     double ratingInMonth = 0;
-    ratingInMonth = getAverageRatingByMonthHelper(root,other );
+    ratingInMonth = getAverageRatingByMonthHelper(root, other);
     return ratingInMonth;
 }
-double ratingsBST::getAverageratingByPeriod(MonthlyRating* root,std::pair<int,int> date1,std::pair<int,int> date2 )
+double ratingsBST::getAverageratingByPeriod(MonthlyRating *root, std::pair<int, int> date1, std::pair<int, int> date2)
 {
     double periodRating = 0;
 
@@ -118,7 +117,7 @@ double ratingsBST::getAverageratingByPeriod(MonthlyRating* root,std::pair<int,in
         }
     }
 }
-//helper functions 
+// helper functions
 MonthlyRating *ratingsBST::insertHelper(MonthlyRating *root, std::pair<int, int> date, std::vector<int> ratings)
 {
     if (root == nullptr)
@@ -129,11 +128,11 @@ MonthlyRating *ratingsBST::insertHelper(MonthlyRating *root, std::pair<int, int>
         return newNode;
     }
 
-    if (*root>date)
+    if (*root > date)
     {
         root->setLeftChild(insertHelper(root->getLeftChild(), date, ratings));
     }
-    else if (*root<date)
+    else if (*root < date)
     {
         root->setRightChild(insertHelper(root->getRightChild(), date, ratings));
     }
@@ -146,17 +145,17 @@ MonthlyRating *ratingsBST::removeHelper(MonthlyRating *root, std::pair<int, int>
     {
         return nullptr;
     }
-    if (*root>date)
+    if (*root > date)
     {
         root->setLeftChild(removeHelper(root->getLeftChild(), date, ratings));
     }
-    else if (*root<date)
+    else if (*root < date)
     {
         root->setRightChild(removeHelper(root->getRightChild(), date, ratings));
     }
     else
     {
-        // Node having one child 
+        // Node having one child
         if (root->getLeftChild() == nullptr)
         {
             MonthlyRating *temp = root->getRightChild();
@@ -201,7 +200,7 @@ void ratingsBST::printHelper(MonthlyRating *root) const
     root->printAverageMonthlyRating();
     printHelper(root->getRightChild());
 }
-double ratingsBST::getAverageRatingByMonthHelper(MonthlyRating* root,std::pair<int,int> other )
+double ratingsBST::getAverageRatingByMonthHelper(MonthlyRating *root, std::pair<int, int> other)
 {
     double aveRating = 0;
 
@@ -209,20 +208,20 @@ double ratingsBST::getAverageRatingByMonthHelper(MonthlyRating* root,std::pair<i
     {
         return -2;
     }
-    if(!root)
+    if (!root)
     {
         return -1;
     }
-    if(root)
+    if (root)
     {
-        if((root->get_RatingDates()).first == other.first && (root->get_RatingDates()).second == other.second)
+        if ((root->get_RatingDates()).first == other.first && (root->get_RatingDates()).second == other.second)
         {
             aveRating = root->averageRating();
             return aveRating;
         }
         else
         {
-            if((root->get_RatingDates()).first < other.first || ((root->get_RatingDates()).first== other.first && (root->get_RatingDates()).second < other.second))
+            if ((root->get_RatingDates()).first < other.first || ((root->get_RatingDates()).first == other.first && (root->get_RatingDates()).second < other.second))
             {
                 aveRating += getAverageRatingByMonthHelper(root->getRightChild(), other);
             }
@@ -234,16 +233,16 @@ double ratingsBST::getAverageRatingByMonthHelper(MonthlyRating* root,std::pair<i
     }
     return aveRating;
 }
-bool ratingsBST::checkDate(std::pair<int,int> date )
+bool ratingsBST::checkDate(std::pair<int, int> date)
 {
 
-    if(date.second <= 1999 )
+    if (date.second <= 1999)
     {
         return false;
     }
     else
     {
-        if( date.first <1 && date.first >= 13)
+        if (date.first < 1 && date.first >= 13)
         {
             return false;
         }
@@ -253,22 +252,22 @@ bool ratingsBST::checkDate(std::pair<int,int> date )
         }
     }
 }
-double ratingsBST::getAverageratingByPeriodHelper(MonthlyRating* root,std::pair<int,int> firstDate,std::pair<int,int> secondDate)
+double ratingsBST::getAverageratingByPeriodHelper(MonthlyRating *root, std::pair<int, int> firstDate, std::pair<int, int> secondDate)
 {
-    int countPeriod =0;
+    int countPeriod = 0;
     double tempPeriod = 0;
     if (!(checkDate(firstDate) && checkDate(secondDate)))
     {
         return -2;
     }
-    if( root == nullptr)
+    if (root == nullptr)
     {
         return -1;
     }
     bool foundMatchingNode = false;
 
-    std::stack<MonthlyRating*> stack;
-    MonthlyRating* current = root;
+    std::stack<MonthlyRating *> stack;
+    MonthlyRating *current = root;
 
     while (current != nullptr || !stack.empty())
     {
