@@ -1,4 +1,6 @@
 #include "RatingsBST.h"
+#include <iostream>
+#include <stack>
 //Constructors
 ratingsBST::ratingsBST(){
     root=nullptr;
@@ -53,10 +55,69 @@ bool ratingsBST::makeEmpty(MonthlyRating *root)
         return false;
     }
     delete root;
-
+    root = nullptr;
     return true;
 }
+double ratingsBST::getAverageRatingByMonth(MonthlyRating* root,int month, int year )
+{
+    double ratingInMonth = 0;
+    std::pair<int,int> temp = std::make_pair(month,year );
+    ratingInMonth = getAverageRatingByMonthHelper(root,temp );
+    if (ratingInMonth == -1)
+    {
+        std::cerr << "this date does not exist " << std::endl;
+    }
+    else
+    {
+        if (ratingInMonth == -2)
+        {
+            std::cerr << "invalid date provided " << std::endl;
+        }
+        else
+        {
+            return ratingInMonth;
+        }
+    }
+}
+double ratingsBST::getAverageRatingByMonth(MonthlyRating* root,std::pair<int,int> other)
+{
 
+    double ratingInMonth = 0;
+    ratingInMonth = getAverageRatingByMonthHelper(root,other );
+    return ratingInMonth;
+}
+double ratingsBST::getAverageratingByPeriod(MonthlyRating* root,std::pair<int,int> date1,std::pair<int,int> date2 )
+{
+    double periodRating = 0;
+
+    if (date1 > date2)
+    {
+        std::swap(date1, date2);
+    }
+    periodRating = getAverageratingByPeriodHelper(root, date1, date2);
+    if (periodRating == -1)
+    {
+        std::cerr << "this date does not exist " << std::endl;
+    }
+    else
+    {
+        if (periodRating == -2)
+        {
+            std::cerr << "invalid date provided " << std::endl;
+        }
+        else
+        {
+            if (periodRating == -3)
+            {
+                std::cerr << "one of the dates is not in the tree " << std::endl;
+            }
+            else
+            {
+                return periodRating;
+            }
+        }
+    }
+}
 //helper functions 
 MonthlyRating *ratingsBST::insertHelper(MonthlyRating *root, std::pair<int, int> date, std::vector<int> ratings)
 {
@@ -139,4 +200,101 @@ void ratingsBST::printHelper(MonthlyRating *root) const
     printHelper(root->getLeftChild());
     root->printAverageMonthlyRating();
     printHelper(root->getRightChild());
+}
+double ratingsBST::getAverageRatingByMonthHelper(MonthlyRating* root,std::pair<int,int> other )
+{
+    double aveRating = 0;
+
+    if (!(checkDate(other)))
+    {
+        return -2;
+    }
+    if(!root)
+    {
+        return -1;
+    }
+    if(root)
+    {
+        if((root->get_RatingDates()).first == other.first && (root->get_RatingDates()).second == other.second)
+        {
+            aveRating = root->averageRating();
+            return aveRating;
+        }
+        else
+        {
+            if((root->get_RatingDates()).first < other.first || ((root->get_RatingDates()).first== other.first && (root->get_RatingDates()).second < other.second))
+            {
+                aveRating += getAverageRatingByMonthHelper(root->getRightChild(), other);
+            }
+            else
+            {
+                aveRating += getAverageRatingByMonthHelper(root->getLeftChild(), other);
+            }
+        }
+    }
+    return aveRating;
+}
+bool ratingsBST::checkDate(std::pair<int,int> date )
+{
+
+    if(date.second <= 1999 )
+    {
+        return false;
+    }
+    else
+    {
+        if( date.first <1 && date.first >= 13)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+}
+double ratingsBST::getAverageratingByPeriodHelper(MonthlyRating* root,std::pair<int,int> firstDate,std::pair<int,int> secondDate)
+{
+    int countPeriod =0;
+    double tempPeriod = 0;
+    if (!(checkDate(firstDate) && checkDate(secondDate)))
+    {
+        return -2;
+    }
+    if( root == nullptr)
+    {
+        return -1;
+    }
+    bool foundMatchingNode = false;
+
+    std::stack<MonthlyRating*> stack;
+    MonthlyRating* current = root;
+
+    while (current != nullptr || !stack.empty())
+    {
+        while (current != nullptr)
+        {
+            stack.push(current);
+            current = current->getLeftChild();
+        }
+
+        current = stack.top();
+        stack.pop();
+
+        if (current->get_RatingDates() >= firstDate && current->get_RatingDates() <= secondDate)
+        {
+            tempPeriod += current->averageRating();
+            countPeriod++;
+            foundMatchingNode = true;
+        }
+
+        current = current->getRightChild();
+    }
+
+    if (!foundMatchingNode)
+    {
+        return -3;
+    }
+    else
+        return (countPeriod == 0) ? 0.0 : static_cast<double>(tempPeriod) / static_cast<double>(countPeriod);
 }
