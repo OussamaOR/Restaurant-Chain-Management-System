@@ -32,7 +32,7 @@ private:
     MonthlyRating *removeHelper(MonthlyRating *, std::pair<int, int>, std::vector<int>);
     MonthlyRating *findMin(MonthlyRating *) const;
     double getAverageRatingByMonthHelper(MonthlyRating *, std::pair<int, int>);
-    double getAverageratingByYearHelper(MonthlyRating *, int);
+    double getAverageratingByYearHelper(MonthlyRating*,int, int&, double & );
     double getAverageratingByPeriodHelper(MonthlyRating *, std::pair<int, int>, std::pair<int, int>);
     bool checkDate(std::pair<int, int>);
     void printHelper(MonthlyRating *) const;

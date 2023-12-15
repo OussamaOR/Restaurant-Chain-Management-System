@@ -117,6 +117,11 @@ double ratingsBST::getAverageratingByPeriod(MonthlyRating *root, std::pair<int, 
         }
     }
 }
+double ratingsBST::getAverageratingByYear(MonthlyRating* root,int year)
+{    int countMonth = 0;
+     double tempYear = 0;
+    return getAverageratingByYearHelper(root, year  , countMonth,tempYear );
+}
 // helper functions
 MonthlyRating *ratingsBST::insertHelper(MonthlyRating *root, std::pair<int, int> date, std::vector<int> ratings)
 {
@@ -296,4 +301,19 @@ double ratingsBST::getAverageratingByPeriodHelper(MonthlyRating *root, std::pair
     }
     else
         return (countPeriod == 0) ? 0.0 : static_cast<double>(tempPeriod) / static_cast<double>(countPeriod);
+}
+double  ratingsBST::getAverageratingByYearHelper(MonthlyRating* root,int year  ,int&  countMonth , double& tempYear  )
+{
+
+if (root ){
+    if (root->get_RatingDates().second == year)
+    {
+        tempYear += root->averageRating();
+        countMonth++;
+    }
+
+    getAverageratingByYearHelper(root->getLeftChild(), year ,countMonth ,tempYear  );
+    getAverageratingByYearHelper(root->getRightChild(), year , countMonth,tempYear);}
+
+    return (countMonth == 0) ? 0.0 :static_cast<double>(tempYear) / static_cast<double>(countMonth);
 }
