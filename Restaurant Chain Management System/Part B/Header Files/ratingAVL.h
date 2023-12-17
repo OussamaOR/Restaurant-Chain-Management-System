@@ -13,14 +13,10 @@ public:
     void removeAVL(MonthlyRating &);
     void removeAVL(std::pair<int, int>, std::vector<int>);
     void printAVL(MonthlyRating *);
-    bool makeEmpty(MonthlyRating *);
-    MonthlyRating *getRoot() const
-    {
-        return root;
-    }
     void printLevelOrder(MonthlyRating *);
-    // functions used when print the needed results
-    double getAverageRatingByMonth(MonthlyRating *, int, int); // int month and int year;
+    bool makeEmpty(MonthlyRating *);
+    MonthlyRating *getRoot() const     {   return root;   }
+    double getAverageRatingByMonth(MonthlyRating *, int, int); 
     double getAverageRatingByMonth(MonthlyRating *, std::pair<int, int>);
     double getAverageratingByYear(MonthlyRating *, int);
     double getAverageratingByPeriod(MonthlyRating *, std::pair<int, int>, std::pair<int, int>);
@@ -41,6 +37,8 @@ private:
     MonthlyRating *rotateLeft(MonthlyRating *x);
     int getHeight(MonthlyRating *node);
     int getBalanceFactor(MonthlyRating *node);
+    bool DateInBst(MonthlyRating* , std::pair<int ,int> );
+    bool YearInBst(MonthlyRating* , int );
 };
 
 #endif // RATINGAVL_H

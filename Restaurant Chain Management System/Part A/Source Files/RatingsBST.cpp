@@ -1,6 +1,7 @@
 #include "RatingsBST.h"
 #include <iostream>
 #include <stack>
+
 // Constructors
 ratingsBST::ratingsBST()
 {
@@ -57,7 +58,7 @@ bool ratingsBST::makeEmpty(MonthlyRating *root)
     root = nullptr;
     return true;
 }
-//functions that will return the average rating of a given date , year ,  period 
+// functions that will return the average rating of a given date , year ,  period
 
 double ratingsBST::getAverageRatingByMonth(MonthlyRating *root, int month, int year)
 {
@@ -180,6 +181,7 @@ MonthlyRating *ratingsBST::insertHelper(MonthlyRating *root, std::pair<int, int>
     else
     {
         std::cerr << "Error: The value " << date.first << " " << date.second << " already exists in the tree. Please provide a unique value." << std::endl;
+        return ;
     }
 
     return root;
@@ -308,7 +310,8 @@ double ratingsBST::getAverageratingByYearHelper(MonthlyRating *root, int year, i
         getAverageratingByYearHelper(root->getRightChild(), year, countMonth, tempYear);
         if (countMonth > 12)
         {
-            std::cerr << "Error: Exception - countMonth should not exceed 12." << std::endl;//the max value that countMonth could take will be 12
+            std::cerr << "Error: Exception - countMonth should not exceed 12." << std::endl; // the max value that countMonth could take will be 12
+            return;
         }
         return (countMonth == 0) ? 0.0 : static_cast<double>(tempYear) / static_cast<double>(countMonth);
     }
@@ -317,7 +320,7 @@ double ratingsBST::getAverageratingByYearHelper(MonthlyRating *root, int year, i
         return -1;
     }
 }
-//return the average rating in a given period 
+// return the average rating in a given period
 double ratingsBST::getAverageratingByPeriodHelper(MonthlyRating *root, std::pair<int, int> firstDate, std::pair<int, int> secondDate)
 {
     int countPeriod = 0;
@@ -358,7 +361,7 @@ double ratingsBST::getAverageratingByPeriodHelper(MonthlyRating *root, std::pair
     }
     return (countPeriod == 0) ? 0.0 : static_cast<double>(tempPeriod) / static_cast<double>(countPeriod);
 }
-//check if the given date is valid 
+// check if the given date is valid
 bool ratingsBST::checkDate(std::pair<int, int> date)
 {
 
@@ -378,7 +381,7 @@ bool ratingsBST::checkDate(std::pair<int, int> date)
         }
     }
 }
-//search to see if a given date is in the tree 
+// search to see if a given date is in the tree
 bool ratingsBST::DateInBst(MonthlyRating *root, std::pair<int, int> date)
 {
     if (root == NULL)
@@ -398,7 +401,7 @@ bool ratingsBST::DateInBst(MonthlyRating *root, std::pair<int, int> date)
 
     return DateInBst(root->getRightChild(), date);
 }
-//search to see if that given year is in the tree 
+// search to see if that given year is in the tree
 bool ratingsBST::YearInBst(MonthlyRating *root, int year)
 {
     if (root == NULL)

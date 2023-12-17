@@ -36,7 +36,7 @@ private:
     double getAverageratingByPeriodHelper(MonthlyRating *, std::pair<int, int>, std::pair<int, int>);
     bool checkDate(std::pair<int, int>);
     void printHelper(MonthlyRating *) const;
-     bool DateInBst(MonthlyRating* , std::pair<int ,int> );
+    bool DateInBst(MonthlyRating* , std::pair<int ,int> );
     bool YearInBst(MonthlyRating* , int );
 
 };
