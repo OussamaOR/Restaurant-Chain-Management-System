@@ -19,7 +19,7 @@ public:
     MonthlyRating *getRoot() const { return root; }
 
     // functions used when print the needed results
-    float getAverageRatingByMonth(MonthlyRating *, int, int); // int month and int year;
+    float getAverageRatingByMonth(MonthlyRating *, int, int); 
     float getAverageRatingByMonth(MonthlyRating *, std::pair<int, int>);
     float getAverageratingByYear(MonthlyRating *, int);
     float getAverageratingByPeriod(MonthlyRating *, std::pair<int, int>, std::pair<int, int>);
@@ -36,6 +36,9 @@ private:
     double getAverageratingByPeriodHelper(MonthlyRating *, std::pair<int, int>, std::pair<int, int>);
     bool checkDate(std::pair<int, int>);
     void printHelper(MonthlyRating *) const;
+     bool DateInBst(MonthlyRating* , std::pair<int ,int> );
+    bool YearInBst(MonthlyRating* , int );
+
 };
 
 #endif
