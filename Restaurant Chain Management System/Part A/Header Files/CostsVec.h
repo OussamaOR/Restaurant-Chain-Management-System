@@ -8,6 +8,7 @@ class CostsVec {
     public:
     CostsVec();
     ~CostsVec();
+    CostsVec(std::vector<dailyCost>&&);
     int getDailyCostIndex(int,int,int);
     float max_cost();
     float min_cost();

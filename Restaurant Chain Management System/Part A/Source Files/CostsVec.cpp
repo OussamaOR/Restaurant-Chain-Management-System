@@ -62,6 +62,8 @@ double CostsVec::total_onperiod(Date start_date, Date end_date) {
 void CostsVec::insert_dailycost(dailyCost d_cost){
     Costsvec.push_back(d_cost);
 }
+CostsVec::CostsVec(std::vector<dailyCost> &&vec): Costsvec(std::move(vec)){}
+
 void program(){
     ifstream costs("../../Database/dailycosts.csv");
     if(!costs.is_open()){
