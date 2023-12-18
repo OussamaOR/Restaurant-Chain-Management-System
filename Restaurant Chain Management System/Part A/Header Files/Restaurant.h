@@ -81,6 +81,9 @@ public:
 
     // Destructor
     ~Restaurant();
+
+    //functions needed to display the results
+    std::pair<Cuisine,float> getCuisineWinner(int , int);
 };
 
 #endif

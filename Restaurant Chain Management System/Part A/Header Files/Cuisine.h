@@ -2,7 +2,7 @@
 #ifndef CUISINE_H
 #define CUISINE_H
 #include "RatingsBST.h"
-#include "SalesBST.h"
+#include "SalesVec.h"
 
 // THE TYPE OF THE CUISINE
 enum  CuisineType
@@ -20,13 +20,13 @@ class Cuisine
 {
 private:
     CuisineType cuisineType;
-    salesBST dailySales;
+    SalesVec dailySales;
     ratingsBST monthlyRating;
 public:
     //default constructor
     Cuisine();
     //constructor with parameters
-    Cuisine(CuisineType,const salesBST &,const ratingsBST & );
+    Cuisine(CuisineType,const SalesVec &,const ratingsBST & );
     //copy constructor
     Cuisine(const Cuisine &);
     //move constructor
@@ -34,12 +34,12 @@ public:
 
     //getters
     CuisineType getCuisineType() const;
-    const salesBST& getDailySales() const;
+    const SalesVec& getDailySales() const;
     const ratingsBST& getMonthlyRatings() const;
 
     //setters
     void setCuisineType(CuisineType );
-    void setDailySales(const salesBST&);
+    void setDailySales(const SalesVec&);
     void setMonthlyRatings(const ratingsBST&);
 
     //operator opverloading
@@ -47,6 +47,9 @@ public:
 
     //destructor 
     ~Cuisine();
+
+    //functions to display the needed results
+    float getAveragePrizeOnMonth(int ,int );
 };
 #endif
 

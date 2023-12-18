@@ -7,7 +7,7 @@ using namespace std;
 Cuisine::Cuisine() : cuisineType(CuisineType::ALGERIAN), dailySales(), monthlyRating() {}
 
 //constructor with parameters 
-Cuisine::Cuisine(CuisineType type, const salesBST & daily,const  ratingsBST & monthly)
+Cuisine::Cuisine(CuisineType type, const SalesVec & daily,const  ratingsBST & monthly)
     : cuisineType(type), dailySales(daily), monthlyRating(monthly) { }
 
 //copy constructor
@@ -23,7 +23,7 @@ CuisineType Cuisine::getCuisineType() const {
     return cuisineType;
 }
 
-const salesBST& Cuisine::getDailySales() const {
+const SalesVec& Cuisine::getDailySales() const {
     return dailySales;
 }
 
@@ -36,7 +36,7 @@ void Cuisine::setCuisineType(CuisineType type) {
     cuisineType = type;
 }
 
-void Cuisine::setDailySales(const salesBST& daily) {
+void Cuisine::setDailySales(const SalesVec& daily) {
     dailySales = daily;
 }
 
@@ -53,5 +53,11 @@ Cuisine& Cuisine::operator=(const Cuisine& other) {
         monthlyRating = other.monthlyRating;
     }
     return *this;
+}
+float Cuisine::getAveragePrizeOnMonth(int month,int year)
+{
+    std::pair<int,int> date = make_pair(month,year);
+    return this->dailySales.total_onmonth(month,year) + 
+    ((this->monthlyRating).getAverageRatingByMonth(this->monthlyRating.getRoot(),date))/50;
 }
 
