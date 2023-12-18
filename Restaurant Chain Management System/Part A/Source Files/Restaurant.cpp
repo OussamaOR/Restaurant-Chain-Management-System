@@ -192,6 +192,7 @@ void Restaurant::setState(EntryState newState) {
 EntryState Restaurant::getState() const {
         return state;
 }
+
 //functions needed to display the results
 std::pair<Cuisine,float> Restaurant::getCuisineWinner(int month, int year){
 
@@ -207,4 +208,13 @@ std::pair<Cuisine,float> Restaurant::getCuisineWinner(int month, int year){
         }
         std::pair<Cuisine,float> winnerCuisine = make_pair(winner,max);
         return winnerCuisine;
+}
+float Restaurant::totalSalesOnMonth(int month,int year)
+{
+      int totalSale=0;
+      for(int i=0;i<5;i++)
+      {
+          totalSale+=cuisines[i].getTotalSaleOnMonth(month,year);
+      }
+      return totalSale;
 }

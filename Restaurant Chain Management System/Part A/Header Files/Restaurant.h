@@ -84,6 +84,7 @@ public:
 
     //functions needed to display the results
     std::pair<Cuisine,float> getCuisineWinner(int , int);
+    float totalSalesOnMonth(int ,int);
 };
 
 #endif

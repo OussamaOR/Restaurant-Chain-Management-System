@@ -60,4 +60,7 @@ float Cuisine::getAveragePrizeOnMonth(int month,int year)
     return this->dailySales.total_onmonth(month,year) + 
     ((this->monthlyRating).getAverageRatingByMonth(this->monthlyRating.getRoot(),date))/50;
 }
+float Cuisine::getTotalSaleOnMonth(int month , int year){
+    return this->dailySales.total_onmonth(month,year);
+}
 
