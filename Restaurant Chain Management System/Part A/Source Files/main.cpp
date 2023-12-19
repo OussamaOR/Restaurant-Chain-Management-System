@@ -288,15 +288,15 @@ int main()
     Cuisine cuisines1[5]={cuisine1,cuisine2,cuisine3,cuisine4,cuisine5};
     Cuisine cuisines2[5]={cuisine6,cuisine7,cuisine8,cuisine9,cuisine10};
     Restaurant restaurant1(3106100002,31,OWNED,"Gourmet Delight","Oran","Arzew",
-    "Algeria",costsvec1,cuisines1);
+    "Algeria",costsvec1,cuisine1,cuisine2,cuisine3,cuisine4,cuisine5);
     Restaurant restaurant2(1621131201,40,FRANCHISED,"Rustic Roots","Alger",
-    "Bab Ezzouar","Algeria",costsvec2,cuisines2);
+    "Bab Ezzouar","Algeria",costsvec2,cuisine6,cuisine7,cuisine8,cuisine9,cuisine10);
 
     cout<<"the total sales for restaurant 1:"<<restaurant1.totalSalesOnMonth(1,2023)<<endl;
     cout<<"the total sales for restaurant 2:"<<restaurant2.totalSalesOnMonth(1,2023)<<endl;
 
-    cout<<"the total sales for restaurant 1:"<<restaurant1.totalCostOnmonth(1,2023)<<endl;
-    cout<<"the total sales for restaurant 2:"<<restaurant2.totalCostOnmonth(1,2023)<<endl;
+    cout<<"the total costs for restaurant 1:"<<restaurant1.totalCostOnmonth(1,2023)<<endl;
+    cout<<"the total costs for restaurant 2:"<<restaurant2.totalCostOnmonth(1,2023)<<endl;
     RestaurantHashTable table1;
     table1.insert(restaurant1);
     table1.insert(restaurant2);
