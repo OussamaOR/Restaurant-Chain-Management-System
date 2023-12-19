@@ -1,5 +1,5 @@
 #pragma once
-#include "date.h"
+#include "Date.h"
 enum costType
 {
     rent,

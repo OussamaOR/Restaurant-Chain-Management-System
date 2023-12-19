@@ -1,4 +1,4 @@
-#include "RatingsBST.h"
+#include "../Header Files/RatingsBST.h"
 #include <iostream>
 #include <stack>
 
@@ -181,7 +181,7 @@ MonthlyRating *ratingsBST::insertHelper(MonthlyRating *root, std::pair<int, int>
     else
     {
         std::cerr << "Error: The value " << date.first << " " << date.second << " already exists in the tree. Please provide a unique value." << std::endl;
-        return ;
+        return 0;
     }
 
     return root;
@@ -311,7 +311,7 @@ double ratingsBST::getAverageratingByYearHelper(MonthlyRating *root, int year, i
         if (countMonth > 12)
         {
             std::cerr << "Error: Exception - countMonth should not exceed 12." << std::endl; // the max value that countMonth could take will be 12
-            return;
+            return 0;
         }
         return (countMonth == 0) ? 0.0 : static_cast<double>(tempYear) / static_cast<double>(countMonth);
     }

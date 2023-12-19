@@ -1,4 +1,6 @@
-#include "Cuisine.cpp"
+#include "../Header Files/SalesVec.h"
+#include "../Header Files/MonthlyRating.h"
+#include "../Header Files/RatingsBST.h"
 int main()
 {
     std::vector<int> ratingsJan = {2, 4, 3, 1, 5, 2, 3, 4, 1, 3, 2, 4, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4};

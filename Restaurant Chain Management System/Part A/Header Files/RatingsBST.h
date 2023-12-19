@@ -1,3 +1,4 @@
+#pragma once
 #include "MonthlyRating.h"
 // #include "../Source Files/BinarySearchTree.cpp"
 #ifndef RATINGSBST_H
@@ -19,10 +20,10 @@ public:
     MonthlyRating *getRoot() const { return root; }
 
     // functions used when print the needed results
-    float getAverageRatingByMonth(MonthlyRating *, int, int); 
-    float getAverageRatingByMonth(MonthlyRating *, std::pair<int, int>);
-    float getAverageratingByYear(MonthlyRating *, int);
-    float getAverageratingByPeriod(MonthlyRating *, std::pair<int, int>, std::pair<int, int>);
+    double getAverageRatingByMonth(MonthlyRating *, int, int); 
+    double getAverageRatingByMonth(MonthlyRating *, std::pair<int, int>);
+    double getAverageratingByYear(MonthlyRating *, int);
+    double getAverageratingByPeriod(MonthlyRating *, std::pair<int, int>, std::pair<int, int>);
 
 private:
     MonthlyRating *root;

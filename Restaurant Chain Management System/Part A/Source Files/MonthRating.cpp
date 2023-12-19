@@ -1,4 +1,5 @@
-#include "MonthlyRating.h"
+#include "../Header Files/MonthlyRating.h"
+
 #include <iostream>
 
 // default constructor

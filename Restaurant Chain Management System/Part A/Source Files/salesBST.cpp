@@ -1,10 +1,10 @@
-#include "../Header Files/salesBST.h"
+#include "../Header Files/SalesBST.h"
 #include "../Header Files/Date.h"
 #include <iostream>
 
 //struct DailySale
 DailySale::DailySale() : dailySaleAmount(0.0) {}
-
+DailySale::~DailySale() {}
 // Constructor with parameters 
 DailySale::DailySale(const Date &date, double dailySaleAmount)
     : date(date), dailySaleAmount(dailySaleAmount) {}

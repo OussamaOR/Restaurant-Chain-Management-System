@@ -1,8 +1,6 @@
 
 #include <fstream>
 #include "../Header Files/CostsVec.h"
-#include "Date.cpp"
-#include "DailyCost.cpp"
 #include <iomanip>
 
 using namespace std;
@@ -86,7 +84,4 @@ void program(){
     }
 
     
-}
-int main(){
-    program();
 }

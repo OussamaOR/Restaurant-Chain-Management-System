@@ -5,7 +5,7 @@ using namespace std;
 
 //default constructor
 Cuisine::Cuisine() : cuisineType(CuisineType::ALGERIAN), dailySales(), monthlyRating() {}
-
+Cuisine::~Cuisine(){}
 //constructor with parameters 
 Cuisine::Cuisine(CuisineType type, const SalesVec & daily,const  ratingsBST & monthly)
     : cuisineType(type), dailySales(daily), monthlyRating(monthly) { }

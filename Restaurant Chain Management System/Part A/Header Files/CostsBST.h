@@ -1,3 +1,4 @@
+#pragma once
 #include "../Source Files/BinarySearchTree.cpp"
 #include "dailyCost.h"
 

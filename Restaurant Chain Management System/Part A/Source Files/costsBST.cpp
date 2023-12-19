@@ -1,6 +1,6 @@
 
-#include "../Header Files/dailyCost.h"
-#include "../Header Files/costsBST.h"
+#include "../Header Files/DailyCost.h"
+#include "../Header Files/CostsBST.h"
 #include "../Header Files/Date.h"
 #include <iostream>
 #include <vector>
@@ -77,7 +77,3 @@ float Costs::total_onperiod(BinarySearchTree<dailyCost>::Node* root, float& tota
 
 
 
-int main(){
-   
-
-}

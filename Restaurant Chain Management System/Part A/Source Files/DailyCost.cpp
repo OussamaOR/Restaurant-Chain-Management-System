@@ -1,4 +1,4 @@
-#include "../Header Files/dailyCost.h"
+#include "../Header Files/DailyCost.h"
 void dailyCost::setDailyCost(float d_costs[8]){
     costs[rent] = d_costs[0];
     costs[employeePayments] = d_costs[1];

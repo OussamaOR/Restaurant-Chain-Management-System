@@ -1,5 +1,7 @@
 #include "../Header Files/SalesVec.h"
 SalesVec::SalesVec(std::vector<DailySale>&& salesVector) : Salesvec(std::move(salesVector)) {}
+SalesVec::SalesVec(){}
+SalesVec::~SalesVec(){}
 int SalesVec::getDailySaleIndex(int day = 1, int month = 1, int year = 0)
 {
     return (year - Salesvec[0].getDate().getYear()) * 365 + (month - Salesvec[0].getDate().getMonth()) * 30 + day - Salesvec[0].getDate().getDay();

@@ -57,6 +57,7 @@ Restaurant::Restaurant(const Restaurant &other)
         cuisines[i] = other.cuisines[i];
     }
 }
+Restaurant::~Restaurant(){}
 // Move constructor
 Restaurant::Restaurant(Restaurant &&other)
     : restaurantId(other.restaurantId),
