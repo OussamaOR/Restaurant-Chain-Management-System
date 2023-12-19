@@ -1,3 +1,4 @@
+restaurantId,restaurantName,numOfEmployees,restaurantType,location[district],location[wilaya],location[country],
 3106100002,Gourmet Delight,31,OWNED,Oran,Arzew,Algeria
 1538181101,Urban Eats,28,FRANCHISED,Tizi-Ouzou,Tigzirt,Algeria
 2729222810,Flavor Fusion,30,OWNED,Mostaganem,Souaflia,Algeria
