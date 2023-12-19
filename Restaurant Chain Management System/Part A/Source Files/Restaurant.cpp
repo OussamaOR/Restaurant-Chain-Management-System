@@ -231,7 +231,7 @@ EntryState Restaurant::getState() const
 
 // functions needed to display the results
 
-//function to get the cuisine winner among the five cuisines in a restaurant
+// function to get the cuisine winner among the five cuisines in a restaurant
 
 std::pair<Cuisine, float> Restaurant::getCuisineWinner(int month, int year)
 {
@@ -250,31 +250,31 @@ std::pair<Cuisine, float> Restaurant::getCuisineWinner(int month, int year)
     return winnerCuisine;
 }
 
-//functions to return the average prize for each of the five cuisines
+// functions to return the average prize for each of the five cuisines
 
 float Restaurant::getAlgeriancuisineAveragePrize(int month, int year)
 {
-    cuisines[0].getAveragePrizeOnMonth(month,year);
+    cuisines[0].getAveragePrizeOnMonth(month, year);
 }
 
 float Restaurant::getSyriancuisineAveragePrize(int month, int year)
 {
-    cuisines[0].getAveragePrizeOnMonth(month,year);
+    cuisines[0].getAveragePrizeOnMonth(month, year);
 }
 float Restaurant::getChinesecuisineAveragePrize(int month, int year)
 {
-    cuisines[0].getAveragePrizeOnMonth(month,year);
+    cuisines[0].getAveragePrizeOnMonth(month, year);
 }
 float Restaurant::getIndiancuisineAveragePrize(int month, int year)
 {
-    cuisines[0].getAveragePrizeOnMonth(month,year);
+    cuisines[0].getAveragePrizeOnMonth(month, year);
 }
 float Restaurant::getEuropeancuisineAveragePrize(int month, int year)
 {
-    cuisines[0].getAveragePrizeOnMonth(month,year);
+    cuisines[0].getAveragePrizeOnMonth(month, year);
 }
 
-//function to return the total sale on a given month in a given year
+// function to return the total sale on a given month in a given year
 float Restaurant::totalSalesOnMonth(int month, int year)
 {
     int totalSale = 0;
@@ -285,10 +285,10 @@ float Restaurant::totalSalesOnMonth(int month, int year)
     return totalSale;
 }
 
-//function to return the total cost on a given month in a given year
+// function to return the total cost on a given month in a given year
 double Restaurant::totalCostOnmonth(int month, int year)
 {
-     return dailyCosts.total_onmonth(month,year);
+    return dailyCosts.total_onmonth(month, year);
 }
 
 /*function to return the ratio of the monthly sales to the amount of money
@@ -301,23 +301,26 @@ double Restaurant::getAveragePublicityRatio(int month, int year)
     return static_cast<double>(sales) / cost;
 }
 
-//operator oveloading
-Restaurant& Restaurant::operator=(const Restaurant& other) {
-        if (this != &other) {
-            restaurantId = other.restaurantId;
-            restaurantName = other.restaurantName;
-            numOfEmployees = other.numOfEmployees;
-            restaurantType = other.restaurantType;
-            for (int i = 0; i < 3; ++i) {
-                location[i] = other.location[i];
-            }
-            dailyCosts = other.dailyCosts;
-            for (int i = 0; i < 5; ++i) {
-                cuisines[i] = other.cuisines[i];
-            }
-
-            state = other.state;
+// operator oveloading
+Restaurant &Restaurant::operator=(const Restaurant &other)
+{
+    if (this != &other)
+    {
+        restaurantId = other.restaurantId;
+        restaurantName = other.restaurantName;
+        numOfEmployees = other.numOfEmployees;
+        restaurantType = other.restaurantType;
+        for (int i = 0; i < 3; ++i)
+        {
+            location[i] = other.location[i];
         }
-        return *this;
-    }
+        dailyCosts = other.dailyCosts;
+        for (int i = 0; i < 5; ++i)
+        {
+            cuisines[i] = other.cuisines[i];
+        }
 
+        state = other.state;
+    }
+    return *this;
+}

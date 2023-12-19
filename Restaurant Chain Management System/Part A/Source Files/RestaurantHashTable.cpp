@@ -181,7 +181,7 @@ float RestaurantHashTable::RestaurantHashTable::totalSalesInDistrict(const std::
     return totalSales;
 }
 // getting the total sales for the whole country
-float RestaurantHashTable::totalSalesInCountry(const std::string& country ,int month, int year)
+float RestaurantHashTable::totalSalesInCountry(const std::string &country, int month, int year)
 {
     float totalSales = 0.0;
 
