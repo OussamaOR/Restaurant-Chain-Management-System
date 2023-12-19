@@ -304,21 +304,14 @@ double Restaurant::getAveragePublicityRatio(int month, int year)
 //operator oveloading
 Restaurant& Restaurant::operator=(const Restaurant& other) {
         if (this != &other) {
-            // Copy each member from 'other' to 'this'
             restaurantId = other.restaurantId;
             restaurantName = other.restaurantName;
             numOfEmployees = other.numOfEmployees;
             restaurantType = other.restaurantType;
-
-            // Copy location array
             for (int i = 0; i < 3; ++i) {
                 location[i] = other.location[i];
             }
-
-            // Copy dailyCosts
             dailyCosts = other.dailyCosts;
-
-            // Copy cuisines array
             for (int i = 0; i < 5; ++i) {
                 cuisines[i] = other.cuisines[i];
             }
