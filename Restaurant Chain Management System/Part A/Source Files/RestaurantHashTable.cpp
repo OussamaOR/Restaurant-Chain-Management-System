@@ -1,6 +1,7 @@
 #include "../Header Files/RestaurantHashTable.h"
 #include <cmath>
-
+#include <fstream>
+#include <sstream>
 // finding prime numbers functions
 bool isPrime(int num)
 {
@@ -194,4 +195,78 @@ float RestaurantHashTable::totalSalesInCountry(const std::string &country, int m
     }
 
     return totalSales;
+}
+//function to display all the restaurants in the hashtable
+void RestaurantHashTable::displayAllRestaurants() {
+    for (int i=0;i<table.size();i++) {
+        if (table[i].getState() == ACTIVE) {
+            std::cout << "Restaurant ID: " << table[i].getRestaurantId() << std::endl;
+            std::cout << "Name: " << table[i].getRestaurantName() << std::endl;
+            std::cout << "Number of Employees: " << table[i].getNumOfEmployees() << std::endl;
+            std::cout << "District: " << table[i].getDistrict() << std::endl;
+            std::cout << "Wilaya: " << table[i].getWilaya() << std::endl;
+            std::cout << "Country: " << table[i].getCountry() << std::endl;
+            std::cout << "------------------------" << std::endl;
+        }
+    }
+}
+//function to read data from the restaurant csv file
+void readRestaurantCSV(const std::string& filename, RestaurantHashTable& restaurantTable) {
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open file: " + filename);
+    }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        try {
+            std::istringstream iss(line);
+            std::string token;
+            std::vector<std::string> tokens;
+
+            while (std::getline(iss, token, ',')) {
+                tokens.push_back(token);
+            }
+
+            if (tokens.size() == 7) {
+                int restaurantId = std::stoi(tokens[0]);
+                std::string restaurantName = tokens[1];
+                int numOfEmployees = std::stoi(tokens[2]);
+                RestaurantType restaurantType;
+                if (tokens[3] == "OWNED") {
+                    restaurantType = OWNED;
+                } else if (tokens[3] == "FRANCHISED") {
+                    restaurantType = FRANCHISED;
+                } else {
+                    throw std::invalid_argument("Invalid restaurant type");
+                }
+
+                std::string district = tokens[4];
+                std::string wilaya = tokens[5];
+                std::string country = tokens[6];
+
+                
+                Restaurant restaurant(restaurantId, numOfEmployees, restaurantType, restaurantName,
+                                      district, wilaya, country, CostsVec(), Cuisine(),Cuisine(),Cuisine(),Cuisine(),Cuisine());
+
+                
+                restaurantTable.insert(restaurant);
+            } else {
+                throw std::invalid_argument("Invalid number of columns in CSV");
+            }
+        } catch (const std::exception& e) {
+            
+            std::cerr << "Error while processing a line: " << e.what() << std::endl;
+        }
+    }
+
+    file.close();
+}
+
+int main()
+{
+    RestaurantHashTable Restaurants;
+    readRestaurantCSV("restaurant.csv",Restaurants);
+
+    Restaurants.displayAllRestaurants();
 }

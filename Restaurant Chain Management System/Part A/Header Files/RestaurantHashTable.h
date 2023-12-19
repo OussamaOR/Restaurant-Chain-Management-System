@@ -32,6 +32,9 @@ public:
     // getting the total sales for the whole country
     float totalSalesInCountry(const std::string &, int, int);
 
+    //function to display all information about each restaurant
+    void displayAllRestaurants();
+
 private:
     size_t findIndex(int restaurantId) const;
 };
