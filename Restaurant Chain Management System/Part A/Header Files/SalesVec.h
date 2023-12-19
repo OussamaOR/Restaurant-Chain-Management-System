@@ -7,6 +7,7 @@ class SalesVec {
     std::vector<DailySale> Salesvec;        // First Date must be on the first element
     public:
     SalesVec();
+    SalesVec(std::vector<DailySale>&&);
     ~SalesVec();
     int getDailySaleIndex(int,int,int);
     float max_sale();

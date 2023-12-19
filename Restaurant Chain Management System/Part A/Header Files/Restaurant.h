@@ -25,10 +25,10 @@ enum EntryState { ACTIVE, DELETED, EMPTY };
 class Restaurant 
 {
 private:
-    int restaurantId;
-    string restaurantName;
+    long restaurantId;
     int numOfEmployees;
     RestaurantType restaurantType;
+    string restaurantName;
     string location[3];
     CostsVec dailyCosts;
     Cuisine cuisines[5];
