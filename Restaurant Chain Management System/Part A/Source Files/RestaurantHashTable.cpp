@@ -1,24 +1,32 @@
 #include "../Header Files/RestaurantHashTable.h"
 #include <cmath>
 
-//finding prime numbers functions
-bool isPrime(int num) {
-    if (num <= 1) return false;
-    for (int i = 2; i <= sqrt(num); ++i) {
-        if (num % i == 0) return false;
+// finding prime numbers functions
+bool isPrime(int num)
+{
+    if (num <= 1)
+        return false;
+    for (int i = 2; i <= sqrt(num); ++i)
+    {
+        if (num % i == 0)
+            return false;
     }
     return true;
 }
 
-int findNextPrime(int num) {
-    while (!isPrime(num)) {
+int findNextPrime(int num)
+{
+    while (!isPrime(num))
+    {
         num++;
     }
     return num;
 }
 
-int findPreviousPrime(int num) {
-    while (!isPrime(num)) {
+int findPreviousPrime(int num)
+{
+    while (!isPrime(num))
+    {
         num--;
     }
     return num;
@@ -28,7 +36,8 @@ size_t RestaurantHashTable::hashFunction(int key) const
     return key % maxSize;
 }
 
-size_t RestaurantHashTable::hashFunction2(int key) const{
+size_t RestaurantHashTable::hashFunction2(int key) const
+{
     return findPreviousPrime(maxSize) - (key % findPreviousPrime(maxSize));
 }
 
@@ -53,14 +62,14 @@ void RestaurantHashTable::rehash()
     table.resize(maxSize);
 
     for (std::vector<Restaurant>::const_iterator it = oldTable.begin(); it != oldTable.end(); ++it)
-{
-    const Restaurant &restaurant = *it;
-
-    if (restaurant.getState() == ACTIVE)
     {
-        insert(restaurant);
+        const Restaurant &restaurant = *it;
+
+        if (restaurant.getState() == ACTIVE)
+        {
+            insert(restaurant);
+        }
     }
-}
 }
 
 RestaurantHashTable::RestaurantHashTable() : currentSize(0), maxSize(2000), loadFactor(0.75)
@@ -140,4 +149,49 @@ size_t RestaurantHashTable::findIndex(int restaurantId) const
     return maxSize;
 }
 
+// getting the total sale on a given month for a given wilaya
+float RestaurantHashTable::totalSalesInWilaya(const std::string &wilaya, int month, int year)
+{
+    float totalSales = 0.0;
 
+    for (int i = 0; i < table.size(); i++)
+    {
+        if (table[i].getState() == ACTIVE && table[i].getWilaya() == wilaya)
+        {
+            totalSales += table[i].totalSalesOnMonth(month, year);
+        }
+    }
+
+    return totalSales;
+}
+
+// getting the total sale on a given month for a given district
+float RestaurantHashTable::RestaurantHashTable::totalSalesInDistrict(const std::string &district, int month, int year)
+{
+    float totalSales = 0.0;
+
+    for (int i = 0; i < table.size(); i++)
+    {
+        if (table[i].getState() == ACTIVE && table[i].getDistrict() == district)
+        {
+            totalSales += table[i].totalSalesOnMonth(month, year);
+        }
+    }
+
+    return totalSales;
+}
+// getting the total sales for the whole country
+float RestaurantHashTable::totalSalesInCountry(const std::string& country ,int month, int year)
+{
+    float totalSales = 0.0;
+
+    for (int i = 0; i < table.size(); i++)
+    {
+        if (table[i].getState() == ACTIVE && table[i].getCountry() == country)
+        {
+            totalSales += table[i].totalSalesOnMonth(month, year);
+        }
+    }
+
+    return totalSales;
+}

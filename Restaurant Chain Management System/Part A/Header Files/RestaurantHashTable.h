@@ -25,6 +25,13 @@ public:
     void remove(int restaurantId);
     bool search(int restaurantId, Restaurant &result) const;
 
+    //getting the total sale on a given month for a given wilaya
+    float totalSalesInWilaya(const std::string& , int , int );
+    //getting the total sale on a given month for a given district
+    float totalSalesInDistrict(const std::string& , int , int );
+    //getting the total sales for the whole country
+    float totalSalesInCountry(const std::string&,int , int );
+
 private:
     size_t findIndex(int restaurantId) const;
 };

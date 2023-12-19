@@ -3,7 +3,7 @@
 #define RESTAURANT_H
 #include "BinarySearchTree.h"
 #include "Cuisine.h"
-#include "costsBST.h"
+#include "CostsVec.h"
 
 using namespace std;
 // location
@@ -30,7 +30,7 @@ private:
     int numOfEmployees;
     RestaurantType restaurantType;
     string location[3];
-    Costs dailyCosts;
+    CostsVec dailyCosts;
     Cuisine cuisines[5];
 
     //the state is needed for the hashtable
@@ -40,9 +40,9 @@ public:
     // default constructor
     Restaurant();
     // constructor with parameters
-    Restaurant(int, int, RestaurantType, const string &, string[], const Costs &, const Cuisine[]);
+    Restaurant(int, int, RestaurantType, const string &, string[], const CostsVec &, const Cuisine[]);
     // constructor to initialize the location array and cuisines array elements one by one
-    Restaurant(int, int, RestaurantType, const string &, string, string, string, const Costs &,
+    Restaurant(int, int, RestaurantType, const string &, string, string, string, const CostsVec &,
                Cuisine, Cuisine, Cuisine, Cuisine, Cuisine);
     // copy constructor
     Restaurant(const Restaurant &);
@@ -58,7 +58,7 @@ public:
     string getWilaya() const;
     string getCountry() const;
     const string *getFullLocation() const;
-    const Costs & getDailyCosts() const;
+    const CostsVec & getDailyCosts() const;
     Cuisine getCuisine(CuisineType) const;
     const Cuisine *getAllCuisines() const;
 
@@ -72,7 +72,7 @@ public:
     void setCountry(string ) ;
     void setFullLocation(string ,string ,string);
     void setFullLocation(const Location []);
-    void setDailyCosts(const Costs &costs);
+    void setDailyCosts(const CostsVec &CostsVec);
     void setCuisine(Cuisine );
     void setAllCuisines(const Cuisine cuisineArray[5]);
     //functions to be used in the hashtable 
@@ -83,8 +83,29 @@ public:
     ~Restaurant();
 
     //functions needed to display the results
+
+    //function to get the cuisine winner among the five cuisines in a restaurant
     std::pair<Cuisine,float> getCuisineWinner(int , int);
+
+    //functions to return the average prize for each of the five cuisines
+    float getAlgeriancuisineAveragePrize(int,int);
+    float getSyriancuisineAveragePrize(int,int);
+    float getChinesecuisineAveragePrize(int,int);
+    float getIndiancuisineAveragePrize(int,int);
+    float getEuropeancuisineAveragePrize(int,int);
+
+    //function to return the total sale on a given month in a given year
     float totalSalesOnMonth(int ,int);
+
+    //function to return the total cost on a given month in a given year
+    double totalCostOnmonth(int,int);
+
+    /*function to return the ratio of the monthly sales to the amount of money
+     spent during any given month on publicity*/
+    double getAveragePublicityRatio(int,int);
+
+    //operator overloading
+    Restaurant& operator=(const Restaurant& other);
 };
 
 #endif
