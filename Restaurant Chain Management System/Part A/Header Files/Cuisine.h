@@ -51,6 +51,9 @@ public:
     //functions to display the needed results
     float getAveragePrizeOnMonth(int ,int );
     float getTotalSaleOnMonth(int , int);
+
+    //print function 
+    void printCuisine() ;
 };
 #endif
 
