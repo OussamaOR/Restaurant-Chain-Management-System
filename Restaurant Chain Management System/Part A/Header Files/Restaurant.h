@@ -25,7 +25,7 @@ enum EntryState { ACTIVE, DELETED, EMPTY };
 class Restaurant 
 {
 private:
-    long restaurantId;
+    long long int restaurantId;
     int numOfEmployees;
     RestaurantType restaurantType;
     string restaurantName;
@@ -40,9 +40,9 @@ public:
     // default constructor
     Restaurant();
     // constructor with parameters
-    Restaurant(int, int, RestaurantType, const string &, string[], const CostsVec &, const Cuisine[]);
+    Restaurant(long long int, int, RestaurantType, const string &, string[], const CostsVec &, const Cuisine[]);
     // constructor to initialize the location array and cuisines array elements one by one
-    Restaurant(int, int, RestaurantType, const string &, string, string, string, const CostsVec &,
+    Restaurant(long long int, int, RestaurantType, const string &, string, string, string, const CostsVec &,
                Cuisine, Cuisine, Cuisine, Cuisine, Cuisine);
     // copy constructor
     Restaurant(const Restaurant &);
@@ -50,7 +50,7 @@ public:
     Restaurant(Restaurant &&);
 
     // Getters
-    int getRestaurantId() const;
+    long long int getRestaurantId() const;
     string getRestaurantName() const;
     int getNumOfEmployees() const;
     RestaurantType getRestaurantType() const;
@@ -63,7 +63,7 @@ public:
     const Cuisine *getAllCuisines() const;
 
     //setters
-    void setRestaurantId(int id);
+    void setRestaurantId(long long int id);
     void setRestaurantName(const string &name);
     void setNumOfEmployees(int employees);
     void setRestaurantType(RestaurantType type);
