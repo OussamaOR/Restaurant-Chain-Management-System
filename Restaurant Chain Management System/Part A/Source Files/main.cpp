@@ -1,7 +1,6 @@
 #include "../Header Files/RestaurantHashTable.h"
-/*
-int main()
-{
+
+int main(){
     // costs vector
     float costs1[8] = {1600, 10517, 300, 200, 4610.71, 17206, 5606.28, 19276.6};
     Date date1(1, 5, 2015);
@@ -288,16 +287,16 @@ int main()
 
     Cuisine cuisines1[5]={cuisine1,cuisine2,cuisine3,cuisine4,cuisine5};
     Cuisine cuisines2[5]={cuisine6,cuisine7,cuisine8,cuisine9,cuisine10};
-    Restaurant restaurant1(3106100002,31,OWNED,"Gourmet Delight","Oran","Arzew",
+    Restaurant restaurant1(310610000,31,OWNED,"Gourmet Delight","Oran","Arzew",
     "Algeria",costsvec1,cuisine1,cuisine2,cuisine3,cuisine4,cuisine5);
-    Restaurant restaurant2(1621131201,40,FRANCHISED,"Rustic Roots","Alger",
+    Restaurant restaurant2(162113120,40,FRANCHISED,"Rustic Roots","Alger",
     "Bab Ezzouar","Algeria",costsvec2,cuisine6,cuisine7,cuisine8,cuisine9,cuisine10);
 
-    cout<<"the total sales for restaurant 1:"<<restaurant1.totalSalesOnMonth(1,2023)<<endl;
-    cout<<"the total sales for restaurant 2:"<<restaurant2.totalSalesOnMonth(1,2023)<<endl;
+    cout<<"the total sales for restaurant 1:"<<restaurant1.totalSalesOnMonth(2,2023)<<endl;
+    cout<<"the total sales for restaurant 2:"<<restaurant2.totalSalesOnMonth(2,2023)<<endl;
 
-    cout<<"the total costs for restaurant 1:"<<restaurant1.totalCostOnmonth(1,2023)<<endl;
-    cout<<"the total costs for restaurant 2:"<<restaurant2.totalCostOnmonth(1,2023)<<endl;
+    cout<<"the total costs for restaurant 1:"<<restaurant1.totalCostOnmonth(5,2015)<<endl;
+    cout<<"the total costs for restaurant 2:"<<restaurant2.totalCostOnmonth(5,2015)<<endl;
     RestaurantHashTable table1;
     table1.insert(restaurant1);
     table1.insert(restaurant2);
@@ -305,4 +304,3 @@ int main()
     cout<<"the total sales in the coutry: "<<table1.totalSalesInCountry("Algeria",1,2023)<<endl;
  
 }
-*/

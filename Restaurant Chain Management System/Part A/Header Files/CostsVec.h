@@ -5,7 +5,7 @@
 #include "Date.h"
 class CostsVec {
     private:
-    std::vector<dailyCost> Costsvec;        // First Date must be on the first element
+    std::vector<dailyCost> Costsvec;         // First Date must be on the first element
     public:
     CostsVec();
     ~CostsVec();
@@ -17,5 +17,6 @@ class CostsVec {
     double total_onyear(int);
     double total_onperiod(Date,Date);
     void insert_dailycost(dailyCost);
-    
+    double getPublicityCost_onperiod(Date,Date);
+    double getPublicityCost_onmonth(int,int);
 };

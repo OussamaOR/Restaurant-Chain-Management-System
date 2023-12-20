@@ -29,6 +29,7 @@ class dailyCost
     void setCosts(float [8]);
     float getTotal();
     Date getDate();
+    float getPublicityCost();
     // getters
     // setters
     // function to retun total daily cost (summing all the elements of the array)

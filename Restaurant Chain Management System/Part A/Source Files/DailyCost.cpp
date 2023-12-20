@@ -61,3 +61,4 @@ float dailyCost::getTotal(){
 Date dailyCost::getDate(){
     return date;
 }
+float dailyCost::getPublicityCost(){return costs[publicitySpending];}

@@ -26,7 +26,7 @@ float SalesVec::min_sale()
     }
     return current;
 }
-float SalesVec::total_onmonth(int year, int month)
+float SalesVec::total_onmonth(int month, int year)
 {
     float total = 0.f;
     if (getDailySaleIndex(1, month, year) >= Salesvec.size())

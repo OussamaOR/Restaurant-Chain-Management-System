@@ -27,7 +27,7 @@ float CostsVec::min_cost() {
     return current;
 }
 
-double CostsVec::total_onmonth(int year, int month) {
+double CostsVec::total_onmonth(int month, int year) {
     double total = 0.f;
     if(getDailyCostIndex(1,month,year) >= Costsvec.size()) return 0;
     // Use the getDailyCostIndex function to get the starting and ending indices for the month
@@ -62,6 +62,22 @@ void CostsVec::insert_dailycost(dailyCost d_cost){
 }
 CostsVec::CostsVec(std::vector<dailyCost> &&vec): Costsvec(std::move(vec)){}
 
+double CostsVec::getPublicityCost_onperiod(Date start_date,Date end_date){
+   double total = 0.f;
+    if(getDailyCostIndex(start_date.getDay(),start_date.getMonth(),start_date.getYear()) >= Costsvec.size()  ) return 0;
+    for (int i = getDailyCostIndex(start_date.getDay(), start_date.getMonth(), start_date.getYear()); i <= std::min(static_cast<int>(Costsvec.size()),getDailyCostIndex(end_date.getDay(), end_date.getMonth(), end_date.getYear())); i++) {
+        total += Costsvec[i].getPublicityCost();
+    }
+    return total;
+}
+double CostsVec::getPublicityCost_onmonth(int month,int year){
+    double total = 0.f;
+    if(getDailyCostIndex(1,month,year) >= Costsvec.size()) return 0;
+    for (int i = getDailyCostIndex(1, month, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(30, month, year)); i++) {
+        total += Costsvec[i].getPublicityCost();
+    }
+    return total;
+}
 void program(){
     ifstream costs("../../Database/dailycosts.csv");
     if(!costs.is_open()){
