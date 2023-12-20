@@ -1,4 +1,5 @@
-#include "RestaurantHashTable.h"
+#include "../Header Files/RestaurantHashTable.h"
+/*
 int main()
 {
     // costs vector
@@ -304,3 +305,4 @@ int main()
     cout<<"the total sales in the coutry: "<<table1.totalSalesInCountry("Algeria",1,2023)<<endl;
  
 }
+*/

@@ -218,18 +218,21 @@ void readRestaurantCSV(const std::string& filename, RestaurantHashTable& restaur
     }
 
     std::string line;
+     std::string first_line;
+     std::getline(file,first_line);
     while (std::getline(file, line)) {
         try {
+         
             std::istringstream iss(line);
             std::string token;
             std::vector<std::string> tokens;
-
+           
             while (std::getline(iss, token, ',')) {
                 tokens.push_back(token);
             }
 
             if (tokens.size() == 7) {
-                int restaurantId = std::stoi(tokens[0]);
+                long long int restaurantId = std::stoi(tokens[0]);
                 std::string restaurantName = tokens[1];
                 int numOfEmployees = std::stoi(tokens[2]);
                 RestaurantType restaurantType;
@@ -266,7 +269,7 @@ void readRestaurantCSV(const std::string& filename, RestaurantHashTable& restaur
 int main()
 {
     RestaurantHashTable Restaurants;
-    readRestaurantCSV("restaurant.csv",Restaurants);
+    readRestaurantCSV("../../Database/restaurant.csv",Restaurants);
 
     Restaurants.displayAllRestaurants();
 }

@@ -18,7 +18,7 @@ restaurantId,restaurantName,numOfEmployees,restaurantType,location[district],loc
 101721100,Blissful Bites,32,OWNED,Bouira,Chorfa,Algeria
 370230230,Zesty Zing,38,FRANCHISED,Tindouf,Tindouf,Algeria
 130118270,Crave Craze,26,OWNED,Tlemcen,Tlemcen,Algeria
-226720100,Savory Spot,27,FRANCHISED,Sidi Bel Abbès,Algeria
+223720100,Savory Spot,27,FRANCHISED,Sidi Bel Abbès,Sidi Bel Abbès,Algeria
 132716151,Wholesome Harvest,21,OWNED,Tlemcen,Maghnia,Algeria
 302625011,Velvet Vines,20,FRANCHISED,Médéa,El Omaria,Algeria
 443120121,Sizzle & Griddle,39,OWNED,Aïn Defla,Rouina,Algeria
