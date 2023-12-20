@@ -1,44 +1,44 @@
 restaurantId,restaurantName,numOfEmployees,restaurantType,location[district],location[wilaya],location[country],
-3106100002,Gourmet Delight,31,OWNED,Oran,Arzew,Algeria
-1538181101,Urban Eats,28,FRANCHISED,Tizi-Ouzou,Tigzirt,Algeria
-2729222810,Flavor Fusion,30,OWNED,Mostaganem,Souaflia,Algeria
-2633242901,Culinary Oasis,33,FRANCHISED,Médéa,Médéa,Algeria
-5801300710,Savor Street,23,OWNED,Meniaa,El Menia,Algeria
-2135281601,Epicurean Haven,25,FRANCHISED,Skikda,Skikda,Algeria
-1016212901,Tasty Trails,22,OWNED,Bouira,Bouira,Algeria
-3901310401,Zestful Bites,36,FRANCHISED,El Oued,El Oued,Algeria
-2718112211,Palate Paradise,39,OWNED,Mostaganem,Mostaganem,Algeria
-4831290401,Mingle Munch,20,FRANCHISED,Relizane,Relizane,Algeria
-1564301600,Delish Diner,24,OWNED,Tizi-Ouzou,Tadmaït,Algeria
-3304251811,Bistro Bloom,37,FRANCHISED,Illizi,In Amenas,Algeria
-2011251511,Sizzling Spoons,29,OWNED,Saïda,Saïda,Algeria
-1646210201,Tantalize Taste,40,FRANCHISED,Alger,Zeralda,Algeria
-1930221610,Gastronomic Grove,35,OWNED,Sétif,Djemila,Algeria
-4810220301,Fusion Fare,34,FRANCHISED,Relizane,Djidioua,Algeria
-1017211001,Blissful Bites,32,OWNED,Bouira,Chorfa,Algeria
-3702302301,Zesty Zing,38,FRANCHISED,Tindouf,Tindouf,Algeria
-1301182701,Crave Craze,26,OWNED,Tlemcen,Tlemcen,Algeria
-2267201001,Savory Spot,27,FRANCHISED,Sidi Bel Abbès,Algeria
-1327161510,Wholesome Harvest,21,OWNED,Tlemcen,Maghnia,Algeria
-3026250111,Velvet Vines,20,FRANCHISED,Médéa,El Omaria,Algeria
-4431201210,Sizzle & Griddle,39,OWNED,Aïn Defla,Rouina,Algeria
-1621131201,Rustic Roots,40,FRANCHISED,Alger,Bab Ezzouar,Algeria
-2717140800,Munch & Crunch,30,OWNED,Mostaganem,Mazagran,Algeria
-4909101611,Urban Spice,35,FRANCHISED,Timimoun,Timimoun,Algeria
-3109222910,Tango Tacos,33,OWNED,Oran,Aïn El Turk,Algeria
-2419210711,Divine Dishes,38,FRANCHISED,Guelma,Guelma,Algeria
-1617151501,Blue Mesa Grill,26,OWNED,Alger,Hussein Dey,Algeria
-4013172601,Spice Symphony,28,FRANCHISED,Khenchela,Khenchela,Algeria
-1623300910,Tasty Trails,20,OWNED,Alger,Dely Ibrahim,Algeria
-1001131211,Bamboo Bites,23,FRANCHISED,Bouira,Aïn Bessem,Algeria
-1801130201,Fireside Flavors,31,OWNED,Jijel,Jijel,Algeria
-1630190711,Epicurean Echo,24,FRANCHISED,Alger,Bordj El Kiffan,Algeria
-2506201201,Ember Eats,22,OWNED,Constantine,Constantine,Algeria
-2301261611,Savvy Spoons,27,FRANCHISED,Annaba,Annaba,Algeria
-1955170501,Coastal Cove,25,OWNED,Sétif,Sétif,Algeria
-3406112301,Zingify,40,FRANCHISED,Bordj Bou Arreridj,Bordj Bou Arreridj,Algeria
-1939210101,Citrus Sizzle,37,OWNED,Sétif,Hamma,Algeria
-2530280501,Mystic Morsels,20,FRANCHISED,Constantine,Ibn Badis,Algeria
+310610000,Gourmet Delight,31,OWNED,Oran,Arzew,Algeria
+153818110,Urban Eats,28,FRANCHISED,Tizi-Ouzou,Tigzirt,Algeria
+272922281,Flavor Fusion,30,OWNED,Mostaganem,Souaflia,Algeria
+263324290,Culinary Oasis,33,FRANCHISED,Médéa,Médéa,Algeria
+580130071,Savor Street,23,OWNED,Meniaa,El Menia,Algeria
+213528160,Epicurean Haven,25,FRANCHISED,Skikda,Skikda,Algeria
+101621290,Tasty Trails,22,OWNED,Bouira,Bouira,Algeria
+390131040,Zestful Bites,36,FRANCHISED,El Oued,El Oued,Algeria
+271811221,Palate Paradise,39,OWNED,Mostaganem,Mostaganem,Algeria
+483129040,Mingle Munch,20,FRANCHISED,Relizane,Relizane,Algeria
+156430160,Delish Diner,24,OWNED,Tizi-Ouzou,Tadmaït,Algeria
+330425181,Bistro Bloom,37,FRANCHISED,Illizi,In Amenas,Algeria
+201125151,Sizzling Spoons,29,OWNED,Saïda,Saïda,Algeria
+164621020,Tantalize Taste,40,FRANCHISED,Alger,Zeralda,Algeria
+193022161,Gastronomic Grove,35,OWNED,Sétif,Djemila,Algeria
+481022030,Fusion Fare,34,FRANCHISED,Relizane,Djidioua,Algeria
+101721100,Blissful Bites,32,OWNED,Bouira,Chorfa,Algeria
+370230230,Zesty Zing,38,FRANCHISED,Tindouf,Tindouf,Algeria
+130118270,Crave Craze,26,OWNED,Tlemcen,Tlemcen,Algeria
+226720100,Savory Spot,27,FRANCHISED,Sidi Bel Abbès,Algeria
+132716151,Wholesome Harvest,21,OWNED,Tlemcen,Maghnia,Algeria
+302625011,Velvet Vines,20,FRANCHISED,Médéa,El Omaria,Algeria
+443120121,Sizzle & Griddle,39,OWNED,Aïn Defla,Rouina,Algeria
+162113120,Rustic Roots,40,FRANCHISED,Alger,Bab Ezzouar,Algeria
+271714080,Munch & Crunch,30,OWNED,Mostaganem,Mazagran,Algeria
+490910161,Urban Spice,35,FRANCHISED,Timimoun,Timimoun,Algeria
+310922291,Tango Tacos,33,OWNED,Oran,Aïn El Turk,Algeria
+241921071,Divine Dishes,38,FRANCHISED,Guelma,Guelma,Algeria
+161715150,Blue Mesa Grill,26,OWNED,Alger,Hussein Dey,Algeria
+401317260,Spice Symphony,28,FRANCHISED,Khenchela,Khenchela,Algeria
+162330091,Tasty Trails,20,OWNED,Alger,Dely Ibrahim,Algeria
+100113121,Bamboo Bites,23,FRANCHISED,Bouira,Aïn Bessem,Algeria
+180113020,Fireside Flavors,31,OWNED,Jijel,Jijel,Algeria
+163019071,Epicurean Echo,24,FRANCHISED,Alger,Bordj El Kiffan,Algeria
+250620120,Ember Eats,22,OWNED,Constantine,Constantine,Algeria
+230126161,Savvy Spoons,27,FRANCHISED,Annaba,Annaba,Algeria
+195517050,Coastal Cove,25,OWNED,Sétif,Sétif,Algeria
+340611230,Zingify,40,FRANCHISED,Bordj Bou Arreridj,Bordj Bou Arreridj,Algeria
+193921010,Citrus Sizzle,37,OWNED,Sétif,Hamma,Algeria
+253028050,Mystic Morsels,20,FRANCHISED,Constantine,Ibn Badis,Algeria
 
 
 

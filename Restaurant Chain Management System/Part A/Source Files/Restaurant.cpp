@@ -8,7 +8,7 @@ Restaurant::Restaurant()
     : restaurantId(0), numOfEmployees(0), restaurantType(RestaurantType::OWNED), state(EntryState::EMPTY) {}
 
 // Constructor with parameters
-Restaurant::Restaurant(long long int id, int numEmployees, RestaurantType type, const string &name,
+Restaurant::Restaurant( int id, int numEmployees, RestaurantType type, const string &name,
                        string loc[], const CostsVec &costs, const Cuisine cuisines[])
     : restaurantId(id), restaurantName(name), numOfEmployees(numEmployees),
       restaurantType(type), dailyCosts(costs), state(EntryState::EMPTY)
@@ -24,7 +24,7 @@ Restaurant::Restaurant(long long int id, int numEmployees, RestaurantType type, 
 }
 
 // Constructor to initialize location and cuisines one by one
-Restaurant::Restaurant(long long int id, int numEmployees, RestaurantType type, const string &name,
+Restaurant::Restaurant( int id, int numEmployees, RestaurantType type, const string &name,
                        string district, string wilaya, string country,
                        const CostsVec &costs, Cuisine cuisine1, Cuisine cuisine2,
                        Cuisine cuisine3, Cuisine cuisine4, Cuisine cuisine5)
@@ -80,7 +80,7 @@ Restaurant::Restaurant(Restaurant &&other)
 }
 
 // Getters
-long long int Restaurant::getRestaurantId() const
+ int Restaurant::getRestaurantId() const
 {
     return restaurantId;
 }
@@ -143,7 +143,7 @@ const Cuisine *Restaurant::getAllCuisines() const
 }
 
 // Setters
-void Restaurant::setRestaurantId(long long int id)
+void Restaurant::setRestaurantId(int id)
 {
     restaurantId = id;
 }
