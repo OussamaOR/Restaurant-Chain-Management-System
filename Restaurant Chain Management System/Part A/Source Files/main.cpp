@@ -1,3 +1,4 @@
+/*
 #include "../Header Files/RestaurantHashTable.h"
 
 int main(){
@@ -304,3 +305,4 @@ int main(){
     cout<<"the total sales in the coutry: "<<table1.totalSalesInCountry("Algeria",1,2023)<<endl;
  
 }
+*/

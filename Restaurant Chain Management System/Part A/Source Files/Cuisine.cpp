@@ -70,7 +70,7 @@ float Cuisine::getTotalSaleOnMonth(int month , int year){
 //function to parse the date
 Date parseDate(const std::string& dateString) {
     int day, month, year;
-    sscanf(dateString.c_str(), "%d-%d-%d", &day, &month, &year);
+    sscanf(dateString.c_str(), "(%d-%d-%d", &day, &month, &year);
     return Date(day, month, year);
 }
 
@@ -100,7 +100,8 @@ std::vector<Cuisine> readCuisineFromCSV(const std::string& filePath) {
         std::cerr << "Error opening file: " << filePath << std::endl;
         return cuisineVector;
     }
-
+    std::string first_line;
+    std::getline(inputFile,first_line);
     std::string line;
     while (std::getline(inputFile, line)) {
         std::istringstream iss(line);
@@ -199,7 +200,7 @@ void Cuisine::printCuisine()  {
 }
 int main()
 {
-    std::vector<Cuisine> cuisines = readCuisineFromCSV("cuisine.csv");
+    std::vector<Cuisine> cuisines = readCuisineFromCSV("../../Database/cuisine.csv");
     for(int i=0;i<cuisines.size();i++)
     {
         cuisines[i].printCuisine();
