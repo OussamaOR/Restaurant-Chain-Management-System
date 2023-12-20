@@ -18,4 +18,5 @@ class SalesVec {
     float total_onperiod(Date,Date);
     void insert_dailysale(DailySale);
     SalesVec& operator=(const SalesVec& other);
+    void printSalesVec();
 };
