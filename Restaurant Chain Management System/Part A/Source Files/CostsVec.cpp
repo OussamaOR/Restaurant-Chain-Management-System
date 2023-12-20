@@ -78,6 +78,16 @@ double CostsVec::getPublicityCost_onmonth(int month,int year){
     }
     return total;
 }
+void CostsVec::print_infos(){
+    for(auto cost : Costsvec){
+        cost.print_infos();
+    }
+}
+
+
+
+
+
 void program(){
     ifstream costs("../../Database/dailycosts.csv");
     if(!costs.is_open()){
@@ -97,7 +107,5 @@ void program(){
         costs >> costs_data[7];
         dailyCost daily_c(Date(date_data[0],date_data[1],date_data[2]),costs_data);
         costs_vec.insert_dailycost(daily_c);
-    }
-
-    
+    }    
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "Date.h"
+#include <iostream>
 enum costType
 {
     rent,
@@ -30,6 +31,7 @@ class dailyCost
     float getTotal();
     Date getDate();
     float getPublicityCost();
+    void print_infos();
     // getters
     // setters
     // function to retun total daily cost (summing all the elements of the array)

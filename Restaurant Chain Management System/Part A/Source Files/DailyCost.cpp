@@ -1,4 +1,5 @@
 #include "../Header Files/DailyCost.h"
+
 void dailyCost::setDailyCost(float d_costs[8]){
     costs[rent] = d_costs[0];
     costs[employeePayments] = d_costs[1];
@@ -62,3 +63,12 @@ Date dailyCost::getDate(){
     return date;
 }
 float dailyCost::getPublicityCost(){return costs[publicitySpending];}
+
+
+void dailyCost::print_infos(){
+    std::cout << "Date : ";
+    date.displayDate();
+    std::cout << "Costs : " << std::endl << "Rent: " << costs[0] << std::endl << "employeePayments: " << costs[1] << std::endl << "Electricity: " << costs[2] << std::endl << "Gas: " << costs[3] << std::endl << "Vegetables: " << costs[4] << std::endl << "Meats: " << costs[5] << std::endl << "Other Ingredients: " << costs[6] << std::endl << "Publicity Spending: " << costs[7] << std::endl;
+    std:: cout << "Total : " << total << std::endl;
+    
+}
