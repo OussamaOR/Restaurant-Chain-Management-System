@@ -197,5 +197,12 @@ void Cuisine::printCuisine()  {
         cout << "\nMonthly Ratings:\n";
         monthlyRating.print(monthlyRating.getRoot());
 }
-
+int main()
+{
+    std::vector<Cuisine> cuisines = readCuisineFromCSV("cuisine.csv");
+    for(int i=0;i<cuisines.size();i++)
+    {
+        cuisines[i].printCuisine();
+    }
+}
 
