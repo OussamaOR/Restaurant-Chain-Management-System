@@ -68,3 +68,9 @@ SalesVec &SalesVec::operator=(const SalesVec &other)
     }
     return *this;
 }
+void SalesVec::printSalesVec() {
+    for (const auto& sale : Salesvec) {
+        std::cout << "Date: " << sale.getDate().getDay() << "/" << sale.getDate().getMonth() << "/" << sale.getDate().getYear()
+                  << ", Sale Amount: " << sale.getDailySaleAmount() << std::endl;
+    }
+}
