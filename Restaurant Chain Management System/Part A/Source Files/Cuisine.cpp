@@ -194,6 +194,7 @@ void Cuisine::printCuisine()  {
             default:
                 std::cout << "Unknown";
         }
+        std::cout << "\nDaily Sales:\n";
         cout << "\nMonthly Ratings:\n";
         monthlyRating.print(monthlyRating.getRoot());
 }
