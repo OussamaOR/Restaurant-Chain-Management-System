@@ -34,7 +34,7 @@ int findPreviousPrime(int num)
 }
 size_t RestaurantHashTable::hashFunction(int key) const
 {
-    return key % maxSize;
+    return key % table.size();
 }
 
 size_t RestaurantHashTable::hashFunction2(int key) const
@@ -232,7 +232,7 @@ void readRestaurantCSV(const std::string& filename, RestaurantHashTable& restaur
             }
 
             if (tokens.size() == 7) {
-                long long int restaurantId = std::stoi(tokens[0]);
+                int restaurantId = std::stoi(tokens[0]);
                 std::string restaurantName = tokens[1];
                 int numOfEmployees = std::stoi(tokens[2]);
                 RestaurantType restaurantType;
