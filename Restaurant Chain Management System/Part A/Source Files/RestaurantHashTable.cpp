@@ -774,7 +774,7 @@ pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInCountry(c
 }
 
 // report functions for a specific country
-void RestaurantHashTable::displayAllRestaurantsInWilaya(const std::string & country)
+void RestaurantHashTable::displayAllRestaurantsInCoutry(const std::string & country)
 {
     cout<<"all restaurants of the wilaya: "<<country<<endl;
     for (int i = 0; i < table.size(); i++)
@@ -785,7 +785,7 @@ void RestaurantHashTable::displayAllRestaurantsInWilaya(const std::string & coun
         }
     }
 }
-void RestaurantHashTable::printRestaurantSalesInWilaya(const std::string & country, int month, int year)
+void RestaurantHashTable::printRestaurantSalesInCoutry(const std::string & country, int month, int year)
 {
     cout<<"report on restaurants sales for the country: "<<country<<endl;
     for(int i=0;i<table.size();i++)
@@ -813,7 +813,7 @@ void RestaurantHashTable::printRestaurantSalesInWilaya(const std::string & count
         
     }
 }
-void RestaurantHashTable::printMonthlySalesToPublicityInWilaya(const std::string & country, int month, int year)
+void RestaurantHashTable::printMonthlySalesToPublicityInCoutry(const std::string & country, int month, int year)
 {
     cout<<"ratio of the monthly sales to the pubicity cost for the country: "<<country<<endl;
     for(int i=0;i<table.size();i++)
@@ -830,7 +830,7 @@ void RestaurantHashTable::printMonthlySalesToPublicityInWilaya(const std::string
        
     
 }
-void RestaurantHashTable::printFiveCuisinesWinnersInWilaya(const std::string & country, int month, int year)
+void RestaurantHashTable::printFiveCuisinesWinnersInCoutry(const std::string & country, int month, int year)
 {
     cout<<"the winners for the country :"<<country<<endl;
     cout << "the winners for " << month << "/" << year << ": \n";
