@@ -1,5 +1,7 @@
 #include "../Header Files/RestaurantHashTable.h"
 #include "../Header Files/readfiles.h"
+#include <chrono>
+using namespace std::chrono;
 int main()
 {
     RestaurantHashTable Restaurants;
@@ -35,29 +37,53 @@ int main()
                 cout << "Enter The ID Of The Restaurant " << endl;
                 int id;
                 cin >> id;
-                Restaurants.displayRestaurant(id);
+                auto start = high_resolution_clock::now();
+             Restaurants.displayRestaurant(id);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+               
             }
             else if(j == '2'){
                 cout << "Enter The District Name  " << endl;
                 string distr;
                 getline(cin >> ws,distr);
-               
-                Restaurants.displayAllRestaurantsInDistrict(distr);
+               auto start = high_resolution_clock::now();
+            Restaurants.displayAllRestaurantsInDistrict(distr);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+                
             }
             else if(j == '3'){
                 cout << "Enter The Wilaya Name " << endl;
                 string wilaya;
                 getline(cin >> ws,wilaya);
-                Restaurants.displayAllRestaurantsInWilaya(wilaya);
+                auto start = high_resolution_clock::now();
+           Restaurants.displayAllRestaurantsInWilaya(wilaya);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+                
             }
             else if(j == '4'){
                 cout << "Enter The Country Name " << endl;
                 string ctry;
                 getline(cin >> ws,ctry);
-                Restaurants.displayAllRestaurantsInCountry(ctry);
+                auto start = high_resolution_clock::now();
+            Restaurants.displayAllRestaurantsInCountry(ctry);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+                
             }
             else if(j == '5'){
-                Restaurants.displayAllRestaurants();
+                auto start = high_resolution_clock::now();
+            Restaurants.displayAllRestaurants();
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+                
             } 
       }
       else if(i == '2'){
@@ -76,7 +102,12 @@ int main()
             int month,year;
             cin >> month >> year;
 
-            Restaurants.printRestaurantSales(id,month,year);
+            auto start = high_resolution_clock::now();
+           Restaurants.printRestaurantSales(id,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+            
         }
         else if(j =='2'){
             cout << "Enter The District Name " << endl;
@@ -86,7 +117,13 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
-            Restaurants.printRestaurantSalesInDistrict(distr,month,year);
+
+            auto start = high_resolution_clock::now();
+           Restaurants.printRestaurantSalesInDistrict(distr,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+            
         }
         else if(j =='3'){
             cout << "Enter The Wilaya Name " << endl;
@@ -95,7 +132,13 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
-            Restaurants.printRestaurantSalesInWilaya(wilaya,month,year);
+
+            auto start = high_resolution_clock::now();
+             Restaurants.printRestaurantSalesInWilaya(wilaya,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+           
         }
         else if(j =='4'){
             cout << "Enter The Country Name " << endl;
@@ -104,7 +147,14 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
+
+
+            auto start = high_resolution_clock::now();
             Restaurants.printRestaurantSalesInCountry(ctr,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+            
         }
 
       }
@@ -124,7 +174,13 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
+
+            auto start = high_resolution_clock::now();
             Restaurants.printFiveCuisinesWinnersInDistrict(distr,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+            
         }
         else if(j =='2'){
             cout << "Enter The Wilaya Name " << endl;
@@ -133,7 +189,13 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
+
+            auto start = high_resolution_clock::now();
             Restaurants.printFiveCuisinesWinnersInWilaya(wilaya,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+           
         }
         else if(j =='3'){
             cout << "Enter The Country Name " << endl;
@@ -142,7 +204,13 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
+
+            auto start = high_resolution_clock::now();
             Restaurants.printFiveCuisinesWinnersInCountry(ctr,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+            
         }
       }
       else if(i == '4'){
@@ -161,8 +229,12 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
-
-            Restaurants.printMonthlySalesToPublicity(id,month,year);
+            auto start = high_resolution_clock::now();
+             Restaurants.printMonthlySalesToPublicity(id,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+           
         }
         else if(j =='2'){
             cout << "Enter The District Name " << endl;
@@ -172,7 +244,13 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
+
+            auto start = high_resolution_clock::now();
             Restaurants.printMonthlySalesToPublicityInDistrict(distr,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+            
         }
         else if(j =='3'){
             cout << "Enter The Wilaya Name " << endl;
@@ -181,7 +259,13 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
+
+            auto start = high_resolution_clock::now();
             Restaurants.printMonthlySalesToPublicityInWilaya(wilaya,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+            
         }
         else if(j =='4'){
             cout << "Enter The Country Name " << endl;
@@ -190,7 +274,13 @@ int main()
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
-            Restaurants.printMonthlySalesToPublicityInCountry(ctr,month,year);
+
+            auto start = high_resolution_clock::now();
+             Restaurants.printMonthlySalesToPublicityInCountry(ctr,month,year);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<milliseconds>(end - start).count();
+            cout << "The Time Taken by the function is : " << duration << " milliseconds" << endl;
+           
         }
       }
      
