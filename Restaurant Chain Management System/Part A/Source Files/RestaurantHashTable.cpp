@@ -361,19 +361,19 @@ void RestaurantHashTable::printRestaurantSales(int key, int month, int year)
         cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
         cout << "Algerian cuisines :\n";
         r.getCuisine(ALGERIAN).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year);
+        cout <<"total sale: "<< (r.getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year)<<endl;
         cout << "Syrian cuisines :\n";
         r.getCuisine(SYRIAN).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year);
+        cout <<"total sale: "<< (r.getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year)<<endl;
         cout << "Chinese cuisines :\n";
         r.getCuisine(CHINESE).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(CHINESE)).getTotalSaleOnMonth(month, year);
+        cout <<"total sale: "<< (r.getCuisine(CHINESE)).getTotalSaleOnMonth(month, year)<<endl;
         cout << "Indian cuisines :\n";
         r.getCuisine(INDIAN).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(INDIAN)).getTotalSaleOnMonth(month, year);
+        cout <<"total sale: "<< (r.getCuisine(INDIAN)).getTotalSaleOnMonth(month, year)<<endl;
         cout << "European cuisines :\n";
         r.getCuisine(EUROPEAN).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year);
+        cout <<"total sale: "<< (r.getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year)<<endl;
         cout << endl;
     }
 }
