@@ -360,56 +360,56 @@ void RestaurantHashTable::printRestaurantSales(int key, int month, int year)
     {
         cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
         cout << "Algerian cuisines :\n";
-        r.getCuisine(ALGERIAN).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year)<<endl;
+        r.getCuisine(ALGERIAN).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (r.getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year) << endl;
         cout << "Syrian cuisines :\n";
-        r.getCuisine(SYRIAN).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year)<<endl;
+        r.getCuisine(SYRIAN).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (r.getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year) << endl;
         cout << "Chinese cuisines :\n";
-        r.getCuisine(CHINESE).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(CHINESE)).getTotalSaleOnMonth(month, year)<<endl;
+        r.getCuisine(CHINESE).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (r.getCuisine(CHINESE)).getTotalSaleOnMonth(month, year) << endl;
         cout << "Indian cuisines :\n";
-        r.getCuisine(INDIAN).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(INDIAN)).getTotalSaleOnMonth(month, year)<<endl;
+        r.getCuisine(INDIAN).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (r.getCuisine(INDIAN)).getTotalSaleOnMonth(month, year) << endl;
         cout << "European cuisines :\n";
-        r.getCuisine(EUROPEAN).printCuisineSalesOnMonth(month,year);
-        cout <<"total sale: "<< (r.getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year)<<endl;
+        r.getCuisine(EUROPEAN).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (r.getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year) << endl;
         cout << endl;
     }
 }
-void RestaurantHashTable::printFiveCuisinesWinners(int month,int year)
+void RestaurantHashTable::printFiveCuisinesWinners(int month, int year)
 {
-      cout<<"the winners for "<<month<<"/"<<year<<": \n";
-      cout<<"Algerian cuisine: \n";
-      cout<<"restaurant id : "<<this->getAlgerianCuisineWinner("Algeria",month,year).first.getRestaurantId()<<endl;
-      cout<<"restaurant name : "<<this->getAlgerianCuisineWinner("Algeria",month,year).first.getRestaurantName()<<endl;
-      cout<<"Syrian cuisine: \n";
-      cout<<"restaurant id : "<<this->getSyrianCuisineWinner("Algeria",month,year).first.getRestaurantId()<<endl;
-      cout<<"restaurant name : "<<this->getSyrianCuisineWinner("Algeria",month,year).first.getRestaurantName()<<endl;
-      cout<<"Chines cuisine: \n";
-      cout<<"restaurant id : "<<this->getChineseCuisineWinner("Algeria",month,year).first.getRestaurantId()<<endl;
-      cout<<"restaurant name : "<<this->getChineseCuisineWinner("Algeria",month,year).first.getRestaurantName()<<endl;
-      cout<<"Indian cuisine: \n";
-      cout<<"restaurant id : "<<this->getIndianCuisineWinner("Algeria",month,year).first.getRestaurantId()<<endl;
-      cout<<"restaurant name : "<<this->getIndianCuisineWinner("Algeria",month,year).first.getRestaurantName()<<endl;
-      cout<<"European cuisine: \n";
-      cout<<"restaurant id : "<<this->getEuropeanCuisineWinner("Algeria",month,year).first.getRestaurantId()<<endl;
-      cout<<"restaurant name : "<<this->getEuropeanCuisineWinner("Algeria",month,year).first.getRestaurantName()<<endl;
+    cout << "the winners for " << month << "/" << year << ": \n";
+    cout << "Algerian cuisine: \n";
+    cout << "restaurant id : " << this->getAlgerianCuisineWinner("Algeria", month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getAlgerianCuisineWinner("Algeria", month, year).first.getRestaurantName() << endl;
+    cout << "Syrian cuisine: \n";
+    cout << "restaurant id : " << this->getSyrianCuisineWinner("Algeria", month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getSyrianCuisineWinner("Algeria", month, year).first.getRestaurantName() << endl;
+    cout << "Chines cuisine: \n";
+    cout << "restaurant id : " << this->getChineseCuisineWinner("Algeria", month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getChineseCuisineWinner("Algeria", month, year).first.getRestaurantName() << endl;
+    cout << "Indian cuisine: \n";
+    cout << "restaurant id : " << this->getIndianCuisineWinner("Algeria", month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getIndianCuisineWinner("Algeria", month, year).first.getRestaurantName() << endl;
+    cout << "European cuisine: \n";
+    cout << "restaurant id : " << this->getEuropeanCuisineWinner("Algeria", month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getEuropeanCuisineWinner("Algeria", month, year).first.getRestaurantName() << endl;
 }
-void RestaurantHashTable::printMonthlySalesToPublicity(int key,int month,int year)
+void RestaurantHashTable::printMonthlySalesToPublicity(int key, int month, int year)
 {
     Restaurant r;
     if (this->search(key, r))
     {
         r.print();
-        cout<<"total publicity cost on: "<<month<<"/"<<year<<": "<<r.totalPublicityOnMonth(month,year)<<endl;
-        cout<<"total sale on: "<<month<<"/"<<year<<": "<<r.totalSalesOnMonth(month,year)<<endl;
-        cout<<" ratio of the monthly sales to the pubicity cost :"<< r.getAveragePublicityRatio(month,year)<<endl;
-        cout<<endl;
+        cout << "total publicity cost on: " << month << "/" << year << ": " << r.totalPublicityOnMonth(month, year) << endl;
+        cout << "total sale on: " << month << "/" << year << ": " << r.totalSalesOnMonth(month, year) << endl;
+        cout << " ratio of the monthly sales to the pubicity cost :" << r.getAveragePublicityRatio(month, year) << endl;
+        cout << endl;
     }
 }
 
-//getting the winners of a cuisine for a district
+// getting the winners of a cuisine for a district
 pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
@@ -521,15 +521,92 @@ pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInDistrict(
     return make_pair(winner, maxAveragePrize);
 }
 
+// report functions for a specific district
+void RestaurantHashTable::displayAllRestaurants(const std::string & district)
+{
+    cout<<"all restaurants of the district: "<<district<<endl;
+    for (int i = 0; i < table.size(); i++)
+    {
+        if (table[i].getState() == ACTIVE && table[i].getDistrict()==district)
+        {
+            table[i].print();
+        }
+    }
+}
+void RestaurantHashTable::printRestaurantSales(const std::string & district, int month, int year)
+{
+    cout<<"report on restaurants sales for the district: "<<district<<endl;
+    for(int i=0;i<table.size();i++)
+    {
+        if(table[i].getState()==ACTIVE && table[i].getDistrict()==district)
+        {
+        cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
+        cout << "Algerian cuisines :\n";
+        table[i].getCuisine(ALGERIAN).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (table[i].getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year) << endl;
+        cout << "Syrian cuisines :\n";
+        table[i].getCuisine(SYRIAN).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (table[i].getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year) << endl;
+        cout << "Chinese cuisines :\n";
+        table[i].getCuisine(CHINESE).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (table[i].getCuisine(CHINESE)).getTotalSaleOnMonth(month, year) << endl;
+        cout << "Indian cuisines :\n";
+        table[i].getCuisine(INDIAN).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (table[i].getCuisine(INDIAN)).getTotalSaleOnMonth(month, year) << endl;
+        cout << "European cuisines :\n";
+        table[i].getCuisine(EUROPEAN).printCuisineSalesOnMonth(month, year);
+        cout << "total sale: " << (table[i].getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year) << endl;
+        cout << endl;
+        }
+        
+    }
+}
+void RestaurantHashTable::printMonthlySalesToPublicity(const std::string & district, int month, int year)
+{
+    cout<<"ratio of the monthly sales to the pubicity cost for the district: "<<district<<endl;
+    for(int i=0;i<table.size();i++)
+    {
+        if(table[i].getState()==ACTIVE && table[i].getDistrict()==district)
+        {
+        table[i].print();
+        cout << "total publicity cost on: " << month << "/" << year << ": " << table[i].totalPublicityOnMonth(month, year) << endl;
+        cout << "total sale on: " << month << "/" << year << ": " << table[i].totalSalesOnMonth(month, year) << endl;
+        cout << " ratio of the monthly sales to the pubicity cost :" << table[i].getAveragePublicityRatio(month, year) << endl;
+        cout << endl;
+        }
+    }
+       
+    
+}
+void RestaurantHashTable::printFiveCuisinesWinners(const std::string & district, int month, int year)
+{
+    cout<<"the winners for the district :"<<district<<endl;
+    cout << "the winners for " << month << "/" << year << ": \n";
+    cout << "Algerian cuisine: \n";
+    cout << "restaurant id : " << this->getAlgerianCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getAlgerianCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
+    cout << "Syrian cuisine: \n";
+    cout << "restaurant id : " << this->getSyrianCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getSyrianCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
+    cout << "Chines cuisine: \n";
+    cout << "restaurant id : " << this->getChineseCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getChineseCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
+    cout << "Indian cuisine: \n";
+    cout << "restaurant id : " << this->getIndianCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getIndianCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
+    cout << "European cuisine: \n";
+    cout << "restaurant id : " << this->getEuropeanCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
+    cout << "restaurant name : " << this->getEuropeanCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
+}
 
 int main()
 {
     RestaurantHashTable Restaurants;
     readRestaurantCSV("../../Database/restaurant.csv", Restaurants);
 
-    //Restaurants.displayRestaurant(310610000);
-    //Restaurants.displayAllRestaurants();
-    //Restaurants.printFiveCuisinesWinners(2,2023);
-    //Restaurants.printRestaurantSales(2,2023)
-    Restaurants.printMonthlySalesToPublicity(310610000,2,2023);
+    // Restaurants.displayRestaurant(310610000);
+    // Restaurants.displayAllRestaurants();
+    // Restaurants.printFiveCuisinesWinners(2,2023);
+    // Restaurants.printRestaurantSales(2,2023)
+    Restaurants.printMonthlySalesToPublicity(310610000, 2, 2023);
 }
