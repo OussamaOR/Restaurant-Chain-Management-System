@@ -76,10 +76,10 @@ public:
     void printFiveCuisinesWinnersInWilaya(const std::string &,int,int);
 
     //report functions for a country
-    void displayAllRestaurantsInCoutry(const std::string &);
-    void printRestaurantSalesInCoutry(const std::string &,int,int);
-    void printMonthlySalesToPublicityInCoutry(const std::string &,int,int);
-    void printFiveCuisinesWinnersInCoutry(const std::string &,int,int);
+    void displayAllRestaurantsInCountry(const std::string &);
+    void printRestaurantSalesInCountry(const std::string &,int,int);
+    void printMonthlySalesToPublicityInCountry(const std::string &,int,int);
+    void printFiveCuisinesWinnersInCountry(const std::string &,int,int);
 private:
     size_t findIndex(int restaurantId) const;
 };
