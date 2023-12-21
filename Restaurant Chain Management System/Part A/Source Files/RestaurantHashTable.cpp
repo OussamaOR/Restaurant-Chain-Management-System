@@ -589,6 +589,9 @@ void RestaurantHashTable::displayAllRestaurantsInWilaya(const std::string & wila
     cout<<"all restaurants of the wilaya: "<<wilaya<<endl;
     for (int i = 0; i < table.size(); i++)
     {
+        if(i == 91){
+            cout << table[i].getWilaya() << table[i].getState() << endl;
+        }
         if (table[i].getState() == ACTIVE && table[i].getWilaya()==wilaya)
         {
             table[i].print();

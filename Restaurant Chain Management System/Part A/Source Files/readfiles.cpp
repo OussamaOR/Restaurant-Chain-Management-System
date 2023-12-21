@@ -238,8 +238,8 @@ void readRestaurantCSV(const std::string &filename, RestaurantHashTable &restaur
                     throw std::invalid_argument("Invalid restaurant type");
                 }
 
-                std::string district = tokens[4];
-                std::string wilaya = tokens[5];
+                std::string district = tokens[5];
+                std::string wilaya = tokens[4];
                 std::string country = tokens[6];
 
                 CostsVec costsvec;

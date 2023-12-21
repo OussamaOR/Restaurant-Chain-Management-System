@@ -7,6 +7,6 @@ int main()
 
     
     // country 
-    Restaurants.printFiveCuisinesWinnersInCountry("Algeria",2,2023);
+    Restaurants.displayAllRestaurantsInWilaya("Alger");
 
 }
