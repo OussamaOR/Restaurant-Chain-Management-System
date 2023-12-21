@@ -4,6 +4,7 @@
 #include <ctime>
 #include "curve drawer.h"
 #include "constants.h"
+#include <fstream>
 // the origin of the plan is (WINDOW_WIDTH * 0.125, WINDOW_HEIGHT * 0.8)
 // end of y-axis is (WINDOW_WIDTH * 0.125 , WINDOW_HEIGHT * 0.2)
 // end of x-axis is (WINDOW_WIDTH * 0.75 , WINDOW_HEIGHT * 0.8)
