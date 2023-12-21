@@ -227,13 +227,7 @@ float RestaurantHashTable::totalSalesInCountry(const std::string &country, int m
 void RestaurantHashTable::displayAllRestaurants() {
     for (int i=0;i<table.size();i++) {
         if (table[i].getState() == ACTIVE) {
-            std::cout << "Restaurant ID: " << table[i].getRestaurantId() << std::endl;
-            std::cout << "Name: " << table[i].getRestaurantName() << std::endl;
-            std::cout << "Number of Employees: " << table[i].getNumOfEmployees() << std::endl;
-            std::cout << "District: " << table[i].getDistrict() << std::endl;
-            std::cout << "Wilaya: " << table[i].getWilaya() << std::endl;
-            std::cout << "Country: " << table[i].getCountry() << std::endl;
-            std::cout << "------------------------" << std::endl;
+            table[i].print();
         }
     }
 }
@@ -342,7 +336,7 @@ void readRestaurantCSV(const std::string& filename, RestaurantHashTable& restaur
 
     file.close();
 }
-/*
+
 int main()
 {
     RestaurantHashTable Restaurants;
@@ -350,4 +344,3 @@ int main()
 
     Restaurants.displayAllRestaurants();
 }
-*/
