@@ -59,7 +59,7 @@ public:
     void displayAllRestaurants();
 
     //report functions for a restaurant
-    void displayRestaurant(int );
+    void displayRestaurant(int);
     void printRestaurantSales(int ,int ,int );
     void printMonthlySalesToPublicity(int,int,int);
 
