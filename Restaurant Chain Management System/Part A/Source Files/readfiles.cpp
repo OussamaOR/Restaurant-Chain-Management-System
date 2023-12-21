@@ -37,20 +37,21 @@ void readCSVAndInsertIntoCostsVec(const std::string &filename, CostsVec &costsVe
         std::cerr << "Error opening file: " << filename << std::endl;
         return;
     }
-    std::string first_line;
-    std::getline(file,first_line);
-    for (int i = 0; i < restaurantIndex * 28; ++i)
+    
+    for (int i = 0; i < restaurantIndex * 29; ++i)
     {
+      
         std::string line;
         std::getline(file, line);
     }
     
 
-    for (int i = 0; i < 28; ++i)
+    for (int i = 0; i < 29; ++i)
     {
+    
         std::string line;
         std::getline(file, line);
-
+        if(i == 0) continue;
         std::istringstream ss(line);
         std::string token;
         std::vector<std::string> tokens;
@@ -60,7 +61,7 @@ void readCSVAndInsertIntoCostsVec(const std::string &filename, CostsVec &costsVe
             tokens.push_back(token);
         }
 
-        if (tokens.size() == 11)
+        if (tokens.size() == 11 )
         { // Expecting 11 values in each line
             // Parse date values
             int day = std::stoi(tokens[0]);
@@ -202,7 +203,7 @@ void readRestaurantCSV(const std::string &filename, RestaurantHashTable &restaur
     std::string line;
     std::string first_line;
     std::getline(file, first_line);
-    int cuisineIndex = 0;
+    int cuisineIndex = 1;
     int restaurantIndex = 0;
     while (std::getline(file, line))
     {
