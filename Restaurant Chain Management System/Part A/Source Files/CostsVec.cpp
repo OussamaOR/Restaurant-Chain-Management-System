@@ -149,7 +149,8 @@ void readCSVAndInsertIntoCostsVec(const std::string& filename, CostsVec& costsVe
             // Insert into CostsVec
             costsVec.insert_dailycost(dailyCostNode);
         } else {
-            std::cerr << "Invalid number of values in line: " << line << std::endl;
+            std::cerr
+             << "Invalid number of values in line: " << line << std::endl;
         }
     }
 
