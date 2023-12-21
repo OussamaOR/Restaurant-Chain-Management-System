@@ -211,6 +211,7 @@ void Cuisine::printCuisine()  {
                 std::cout << "Unknown";
         }
         std::cout << "\nDaily Sales:\n";
+        dailySales.printSalesVec();
         cout << "\nMonthly Ratings:\n";
         monthlyRating.print(monthlyRating.getRoot());
 }
