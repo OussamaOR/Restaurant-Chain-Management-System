@@ -9,7 +9,7 @@ ratingsBST::ratingsBST()
 }
 ratingsBST::ratingsBST(MonthlyRating &rating) : root(new MonthlyRating(rating)) {}
 // Destructor
-ratingsBST::~ratingsBST() { makeEmpty(root); }
+ratingsBST::~ratingsBST() {  }
 
 // insert functions with different parameters
 void ratingsBST::insertRating(MonthlyRating &rating)
