@@ -230,6 +230,31 @@ void RestaurantHashTable::displayAllRestaurants() {
         }
     }
 }
+void RestaurantHashTable::displayRestaurant(int key){
+      Restaurant r;
+      if(this->search(key,r))
+      r.print();
+}
+
+//funcions for reports and listings
+void RestaurantHashTable::printRestaurantSales(int key,int month,int year){
+      Restaurant r;     
+      if(this->search(key,r))
+      {
+       cout<<"-- report of sales for each cuisine for "<<month<<"/"<<year<<endl;
+       cout<<"Algerian cuisines :\n";
+       cout<<(r.getCuisine(ALGERIAN)).getTotalSaleOnMonth(month,year);
+       cout<<"Syrian cuisines :\n";
+       cout<<(r.getCuisine(SYRIAN)).getTotalSaleOnMonth(month,year);
+       cout<<"Chinese cuisines :\n";
+       cout<<(r.getCuisine(CHINESE)).getTotalSaleOnMonth(month,year);
+       cout<<"Indian cuisines :\n";
+       cout<<(r.getCuisine(INDIAN)).getTotalSaleOnMonth(month,year);
+       cout<<"European cuisines :\n";
+       cout<<(r.getCuisine(EUROPEAN)).getTotalSaleOnMonth(month,year);
+       cout<<endl;
+      }
+}
 int main()
 {
     RestaurantHashTable Restaurants;
