@@ -657,6 +657,7 @@ void RestaurantHashTable::printRestaurantSalesInWilaya(const std::string &wilaya
         if (table[i].getState() == ACTIVE && table[i].getWilaya() == wilaya)
         {
             count++;
+            table[i].print();
             cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
             cout << "Algerian cuisines :\n";
             table[i].getCuisine(ALGERIAN).printCuisineSalesOnMonth(month, year);
