@@ -57,18 +57,31 @@ Cuisine& Cuisine::operator=(const Cuisine& other) {
     }
     return *this;
 }
+
+//function to get the average prize
 float Cuisine::getAveragePrizeOnMonth(int month,int year)
 {
     std::pair<int,int> date = make_pair(month,year);
     return this->dailySales.total_onmonth(month,year) + 
     ((this->monthlyRating).getAverageRatingByMonth(this->monthlyRating.getRoot(),date))/50;
 }
+
+//functions to get the total sale
 float Cuisine::getTotalSaleOnMonth(int month , int year){
     return this->dailySales.total_onmonth(month,year);
 }
 float Cuisine::getTotalSaleOnPeriod(Date d1, Date d2){
     return dailySales.total_onperiod(d1,d2);
 }
+float Cuisine::getTotalSaleOnYear(int year){
+    return dailySales.total_onyear(year);
+}
+
+//functions to get the average Rating
+float Cuisine::getAverageRatingOnMonth(int month, int year){
+     return monthlyRating.getAverageRatingByMonth(monthlyRating.getRoot(),month,year);
+}
+
 //function to parse the date
 Date parseDate(const std::string& dateString) {
     int day, month, year;
