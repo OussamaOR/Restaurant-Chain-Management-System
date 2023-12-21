@@ -65,16 +65,16 @@ public:
     void printFiveCuisinesWinners(int,int);
 
     //report functions for a specific district
-    void displayAllRestaurants(const std::string &);
-    void printRestaurantSales(const std::string &,int,int);
-    void printMonthlySalesToPublicity(const std::string &,int,int);
-    void printFiveCuisinesWinners(const std::string &,int,int);
+    void displayAllRestaurantsInDistrict(const std::string &);
+    void printRestaurantSalesInDistrict(const std::string &,int,int);
+    void printMonthlySalesToPublicityInDistrict(const std::string &,int,int);
+    void printFiveCuisinesWinnersInDistrict(const std::string &,int,int);
 
     //report functions for a specific wilaya
-    void displayAllRestaurants(const std::string &);
-    void printRestaurantSales(const std::string &,int,int);
-    void printMonthlySalesToPublicity(const std::string &,int,int);
-    void printFiveCuisinesWinners(const std::string &,int,int);
+    void displayAllRestaurantsInWilaya(const std::string &);
+    void printRestaurantSalesInWilaya(const std::string &,int,int);
+    void printMonthlySalesToPublicityInWilaya(const std::string &,int,int);
+    void printFiveCuisinesWinnersInWilaya(const std::string &,int,int);
 
     //report functions for a country
     void displayAllRestaurants(const std::string &);
