@@ -164,7 +164,7 @@ Cuisine readCuisineFromCSV(const std::string &filePath, int cuisineIndex)
         return Cuisine(); // Return an empty Cuisine object indicating failure
     }
 
-    // Parsing the RatingsBST
+    // Parsing the ratingAVL
     std::vector<std::pair<std::pair<int, int>, std::vector<int>>> ratingsData;
     std::smatch match;
     std::regex pattern("\\((\\d{2}-\\d{4}): \\[([\\d ]+)\\]\\)");
@@ -181,14 +181,14 @@ Cuisine readCuisineFromCSV(const std::string &filePath, int cuisineIndex)
         ratingsData.push_back({{month, 2023}, ratings});
         monthlyRatingStr = match.suffix();
     }
-    ratingsBST ratingsBST;
+    ratingAVL ratingAVL;
     for (const auto &data : ratingsData)
     {
         MonthlyRating monthlyRating(data.first.first, data.first.second, data.second);
-        ratingsBST.insertRating(monthlyRating);
+        ratingAVL.insertRatingAVL(monthlyRating);
     }
 
-    return Cuisine(cuisineType, parseSalesVec(dailySalesStr), ratingsBST);
+    return Cuisine(cuisineType, parseSalesVec(dailySalesStr), ratingAVL);
 }
 
 // function to read data from the restaurant csv file
