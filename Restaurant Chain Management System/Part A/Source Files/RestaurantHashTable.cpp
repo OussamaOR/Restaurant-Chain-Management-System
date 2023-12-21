@@ -410,7 +410,7 @@ void RestaurantHashTable::printMonthlySalesToPublicity(int key,int month,int yea
 }
 
 //getting the winners of a cuisine for a district
-pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinner(const std::string &district, int month, int year)
+pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
@@ -432,7 +432,7 @@ pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinner(const std:
     }
     return make_pair(winner, maxAveragePrize);
 }
-pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinner(const std::string &district, int month, int year)
+pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
@@ -454,7 +454,7 @@ pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinner(const std::s
     }
     return make_pair(winner, maxAveragePrize);
 }
-pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinner(const std::string &district, int month, int year)
+pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
@@ -476,7 +476,7 @@ pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinner(const std::
     }
     return make_pair(winner, maxAveragePrize);
 }
-pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinner(const std::string &district, int month, int year)
+pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
@@ -498,7 +498,7 @@ pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinner(const std::s
     }
     return make_pair(winner, maxAveragePrize);
 }
-pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinner(const std::string &district, int month, int year)
+pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;

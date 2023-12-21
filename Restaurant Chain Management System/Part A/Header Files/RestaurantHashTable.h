@@ -62,6 +62,12 @@ public:
     void printMonthlySalesToPublicity(int,int,int);
     void printFiveCuisinesWinners(int,int);
 
+    //report functions for a specific district
+    void displayAllRestaurants(const std::string &);
+    void printRestaurantSales(const std::string &,int,int);
+    void printMonthlySalesToPublicity(const std::string &,int,int);
+    void printFiveCuisinesWinners(const std::string &,int,int);
+
     //report functions for a specific wilaya
     void displayAllRestaurants(const std::string &);
     void printRestaurantSales(const std::string &,int,int);
