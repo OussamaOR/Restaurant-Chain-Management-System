@@ -1,5 +1,5 @@
-#include "readfiles.h"
 
+#include "../Header Files/readfiles.h"
 // function to parse the date
 Date parseDate(const std::string &dateString)
 {
@@ -37,7 +37,8 @@ void readCSVAndInsertIntoCostsVec(const std::string &filename, CostsVec &costsVe
         std::cerr << "Error opening file: " << filename << std::endl;
         return;
     }
-
+    std::string first_line;
+    std::getline(file,first_line);
     for (int i = 0; i < restaurantIndex * 28; ++i)
     {
         std::string line;
