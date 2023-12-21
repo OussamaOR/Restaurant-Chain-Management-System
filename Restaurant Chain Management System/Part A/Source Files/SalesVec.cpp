@@ -93,24 +93,7 @@ void SalesVec::printSalesVec() {
         Salesvec[i].printSale();
     }
 }
-Date SalesVec::getDateFromIndex(int index) {
-    Date baseDate = Salesvec[0].getDate();
-    
-    int totalDays = index;
-    
-    int years = totalDays / 365;
-    totalDays %= 365;
 
-    int months = totalDays / 30;
-    totalDays %= 30;
-
-    int days = totalDays;
-
-    Date resultDate;
-    resultDate = {baseDate.getDay() + days, baseDate.getMonth() + months, baseDate.getYear() + years};
-
-    return resultDate;
-}
 
 
 void SalesVec::printSalesOnMonth(int month, int year) {

@@ -62,5 +62,5 @@ class SalesVec {
     SalesVec& operator=(const SalesVec& other);
     void printSalesVec();
     void printSalesOnMonth(int,int);
-    Date getDateFromIndex(int index);
+   
 };
