@@ -13,7 +13,7 @@ int main()
     {
       cout << "Restaurant Chain Management System : " << endl;
       cout << "Please Choose What Type Of Information You Want To Show : " << endl;
-      cout << "1. General Informations " << endl;  //displayRestaurant , displayAllRestaurant
+      cout << "1. General Informations " << endl;  
       cout << "2. Report on Restaurant Sales" << endl;
       cout << "3. Prize Winners Cuisines" << endl;
       cout << "4. Ratio of the monthly sales to the publicity cost" << endl;

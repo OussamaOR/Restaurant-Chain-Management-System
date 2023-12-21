@@ -1,4 +1,4 @@
-#include "ratingAVL.h"
+#include "../Header Files/ratingAVL.h"
 #include <algorithm>
 #include <queue>
 #include <iostream>
@@ -13,7 +13,7 @@ ratingAVL::ratingAVL(MonthlyRating &rating) : root(new MonthlyRating(rating)) {}
 // Destructor
 ratingAVL::~ratingAVL()
 {
-    makeEmpty(root);
+ 
 }
 
 // insert functions with different parameters
@@ -208,7 +208,7 @@ MonthlyRating *ratingAVL::insertHelperAVL(MonthlyRating *root, std::pair<int, in
     else
     {
         std::cerr << "Error: The value " << date.first << " " << date.second << " already exists in the tree. Please provide a unique value." << std::endl;
-        return ;
+        return 0;
     }
     root->setHeight(1 + std::max(getHeight(root->getLeftChild()), getHeight(root->getRightChild())));
     return balanceAVL(root);
@@ -328,7 +328,7 @@ double ratingAVL::getAverageratingByYearHelper(MonthlyRating *root, int year, in
         if (countMonth > 12)
         {
             std::cerr << "Error: Exception - countMonth should not exceed 12." << std::endl; // the max value that countMonth could take will be 12
-            return;
+            return -1;
         }
         return (countMonth == 0) ? 0.0 : static_cast<double>(tempYear) / static_cast<double>(countMonth);
     }
