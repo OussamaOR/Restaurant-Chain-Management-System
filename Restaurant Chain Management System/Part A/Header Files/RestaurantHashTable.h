@@ -53,15 +53,26 @@ public:
     pair<Restaurant,float> getIndianCuisineWinnerInDistrict(const std::string &,int,int);
     pair<Restaurant,float> getEuropeanCuisineWinnerInDistrict(const std::string &,int,int);
 
-    //different print functions
-    void displayRestaurant(int );
+    //different print function
     void displayAllRestaurants();
 
-    //report function
+    //report functions for a restaurant
+    void displayRestaurant(int );
     void printRestaurantSales(int ,int ,int );
     void printMonthlySalesToPublicity(int,int,int);
     void printFiveCuisinesWinners(int,int);
 
+    //report functions for a specific wilaya
+    void displayAllRestaurants(const std::string &);
+    void printRestaurantSales(const std::string &,int,int);
+    void printMonthlySalesToPublicity(const std::string &,int,int);
+    void printFiveCuisinesWinners(const std::string &,int,int);
+
+    //report functions for a country
+    void displayAllRestaurants(const std::string &);
+    void printRestaurantSales(const std::string &,int,int);
+    void printMonthlySalesToPublicity(const std::string &,int,int);
+    void printFiveCuisinesWinners(const std::string &,int,int);
 private:
     size_t findIndex(int restaurantId) const;
 };
