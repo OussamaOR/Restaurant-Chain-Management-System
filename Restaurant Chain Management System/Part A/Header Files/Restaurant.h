@@ -112,6 +112,9 @@ public:
 
     //operator overloading
     Restaurant& operator=(const Restaurant& other);
+
+    //print function 
+    void print();
 };
 
 #endif

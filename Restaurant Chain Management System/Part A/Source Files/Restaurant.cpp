@@ -367,3 +367,21 @@ Restaurant &Restaurant::operator=(const Restaurant &other)
     }
     return *this;
 }
+
+void Restaurant::print()  {
+    std::cout << "Restaurant ID: " << restaurantId << std::endl;
+    std::cout << "Restaurant Name: " << restaurantName << std::endl;
+    std::cout << "Number of Employees: " << numOfEmployees << std::endl;
+    std::cout << "Restaurant Type: " << (restaurantType == RestaurantType::OWNED ? "Owned" : "Franchised") << std::endl;
+    std::cout << "Location: District - " << location[district] << ", Wilaya - " << location[wilaya] << ", Country - " << location[country] << std::endl;
+
+    // std::cout << "Cuisines:" << std::endl;
+    // for (int i=0;i<5;i++) {
+    //     cuisines[i].printCuisine();
+    // }
+
+    std::cout << "Daily Costs:" << std::endl;
+    dailyCosts.print_infos(); 
+   
+}
+
