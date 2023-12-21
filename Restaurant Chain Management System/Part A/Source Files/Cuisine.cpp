@@ -66,7 +66,9 @@ float Cuisine::getAveragePrizeOnMonth(int month,int year)
 float Cuisine::getTotalSaleOnMonth(int month , int year){
     return this->dailySales.total_onmonth(month,year);
 }
-
+float Cuisine::getTotalSaleOnPeriod(Date d1, Date d2){
+    return dailySales.total_onperiod(d1,d2);
+}
 //function to parse the date
 Date parseDate(const std::string& dateString) {
     int day, month, year;
