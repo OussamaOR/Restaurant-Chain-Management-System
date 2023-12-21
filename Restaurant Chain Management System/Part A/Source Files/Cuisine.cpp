@@ -92,7 +92,7 @@ Date parseDate(const std::string& dateString) {
 // Function to parse SalesVec from a string
 SalesVec parseSalesVec(const std::string& salesVecString) {
     SalesVec salesVec;
-    std::regex pattern("\\((\\d{2}-\\d{2}-\\d{4}), (\\d+)\\)");
+    std::regex pattern("\\((\\d{2}-\\d{2}-\\d{4}) (\\d+)\\)");
     auto salesBegin = std::sregex_iterator(salesVecString.begin(), salesVecString.end(), pattern);
     auto salesEnd = std::sregex_iterator();
 
