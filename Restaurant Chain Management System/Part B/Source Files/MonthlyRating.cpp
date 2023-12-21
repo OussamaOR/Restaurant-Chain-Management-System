@@ -1,5 +1,5 @@
 // this is the class for the avl part
-#include "..\Restaurant-Chain-Management-System\Restaurant Chain Management System\Part B\Header Files\MonthlyRating.h"
+#include "../Header Files/MonthlyRating.h"
 #include <iostream>
 
 // default constructor

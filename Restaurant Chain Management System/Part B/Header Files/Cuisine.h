@@ -1,7 +1,7 @@
 #pragma once
 #ifndef CUISINE_H
 #define CUISINE_H
-#include "RatingsBST.h"
+#include "ratingAVL.h"
 #include "SalesVec.h"
 
 // THE TYPE OF THE CUISINE
@@ -21,12 +21,12 @@ class Cuisine
 private:
     CuisineType cuisineType;
     SalesVec dailySales;
-    ratingsBST monthlyRating;
+    ratingAVL monthlyRating;
 public:
     //default constructor
     Cuisine();
     //constructor with parameters
-    Cuisine(CuisineType,const SalesVec &,const ratingsBST & );
+    Cuisine(CuisineType,const SalesVec &,const ratingAVL & );
     //copy constructor
     Cuisine(const Cuisine &);
     //move constructor
@@ -35,12 +35,12 @@ public:
     //getters
     CuisineType getCuisineType() const;
     const SalesVec& getDailySales() const;
-    const ratingsBST& getMonthlyRatings() const;
+    const ratingAVL& getMonthlyRatings() const;
 
     //setters
     void setCuisineType(CuisineType );
     void setDailySales(const SalesVec&);
-    void setMonthlyRatings(const ratingsBST&);
+    void setMonthlyRatings(const ratingAVL&);
 
     //operator opverloading
     Cuisine& operator=(const Cuisine& );

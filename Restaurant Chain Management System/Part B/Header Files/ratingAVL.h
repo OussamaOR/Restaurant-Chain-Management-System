@@ -1,4 +1,4 @@
-#include "..\Restaurant-Chain-Management-System\Restaurant Chain Management System\Part B\Header Files\MonthlyRating.h"
+#include "../Header Files/MonthlyRating.h"
 #ifndef RATINGAVL_H
 #define RATINGAVL_H
 

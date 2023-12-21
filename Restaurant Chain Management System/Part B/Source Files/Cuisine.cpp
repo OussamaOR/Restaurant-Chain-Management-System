@@ -8,7 +8,7 @@ using namespace std;
 Cuisine::Cuisine() : cuisineType(CuisineType::ALGERIAN), dailySales(), monthlyRating() {}
 Cuisine::~Cuisine(){}
 //constructor with parameters 
-Cuisine::Cuisine(CuisineType type, const SalesVec & daily,const  ratingsBST & monthly)
+Cuisine::Cuisine(CuisineType type, const SalesVec & daily,const  ratingAVL & monthly)
     : cuisineType(type), dailySales(daily), monthlyRating(monthly) { }
 
 //copy constructor
@@ -28,7 +28,7 @@ const SalesVec& Cuisine::getDailySales() const {
     return dailySales;
 }
 
-const ratingsBST& Cuisine::getMonthlyRatings() const {
+const ratingAVL& Cuisine::getMonthlyRatings() const {
     return monthlyRating;
 }
 
@@ -41,7 +41,7 @@ void Cuisine::setDailySales(const SalesVec& daily) {
     dailySales = daily;
 }
 
-void Cuisine::setMonthlyRatings(const ratingsBST& monthly) {
+void Cuisine::setMonthlyRatings(const ratingAVL& monthly) {
     monthlyRating = monthly;
 }
 
@@ -104,7 +104,7 @@ void Cuisine::printCuisine()  {
         std::cout << "\nDaily Sales:\n";
         dailySales.printSalesVec();
         cout << "\nMonthly Ratings:\n";
-        monthlyRating.print(monthlyRating.getRoot());
+        monthlyRating.printAVL(monthlyRating.getRoot());
 }
 void Cuisine::printCuisineSalesOnMonth(int month,int year)
 {

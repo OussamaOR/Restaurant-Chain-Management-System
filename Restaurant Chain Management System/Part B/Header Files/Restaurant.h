@@ -1,7 +1,6 @@
 #pragma once
 #ifndef RESTAURANT_H
 #define RESTAURANT_H
-#include "BinarySearchTree.h"
 #include "Cuisine.h"
 #include "CostsVec.h"
 
