@@ -7,6 +7,6 @@ int main()
 
     
     // country 
-    Restaurants.displayAllRestaurantsInWilaya("Alger");
+    Restaurants.displayAllRestaurantsInDistrict("abc");
 
 }
