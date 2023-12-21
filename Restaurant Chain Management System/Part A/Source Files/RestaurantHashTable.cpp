@@ -1,7 +1,6 @@
 #include "../Header Files/RestaurantHashTable.h"
 #include <cmath>
-#include <fstream>
-#include <sstream>
+#include "readfiles.cpp"
 // finding prime numbers functions
 bool isPrime(int num)
 {
@@ -231,112 +230,6 @@ void RestaurantHashTable::displayAllRestaurants() {
         }
     }
 }
-//function to read data from costs.csv
-void readCSVAndInsertIntoCostsVec(const std::string& filename, CostsVec& costsVec) {
-    std::ifstream file(filename);
-    if (!file.is_open()) {
-        std::cerr << "Error opening file: " << filename << std::endl;
-        return;
-    }
-
-    std::string line;
-    std::getline(file, line); // Skip the header line
-
-    while (std::getline(file, line)) {
-        std::istringstream ss(line);
-        std::string token;
-        std::vector<std::string> tokens;
-
-        while (getline(ss, token, ',')) {
-            tokens.push_back(token);
-        }
-
-        if (tokens.size() == 11) { // Expecting 11 values in each line
-            // Parse date values
-            int day = std::stoi(tokens[0]);
-            int month = std::stoi(tokens[1]);
-            int year = std::stoi(tokens[2]);
-
-            // Create a Date object
-            Date date(day, month, year);
-
-            // Parse cost values
-            float costs[8];
-            for (int i = 0; i < 8; ++i) {
-                costs[i] = std::stof(tokens[i + 3]); // Skip the first 3 values (day, month, year)
-            }
-
-            // Create a dailyCost object
-            dailyCost dailyCostNode(date, costs);
-
-            // Insert into CostsVec
-            costsVec.insert_dailycost(dailyCostNode);
-        } else {
-            std::cerr
-             << "Invalid number of values in line: " << line << std::endl;
-        }
-    }
-
-    file.close();
-}
-//function to read data from the restaurant csv file
-void readRestaurantCSV(const std::string& filename, RestaurantHashTable& restaurantTable) {
-    std::ifstream file(filename);
-    if (!file.is_open()) {
-        throw std::runtime_error("Failed to open file: " + filename);
-    }
-
-    std::string line;
-     std::string first_line;
-     std::getline(file,first_line);
-    while (std::getline(file, line)) {
-        try {
-         
-            std::istringstream iss(line);
-            std::string token;
-            std::vector<std::string> tokens;
-           
-            while (std::getline(iss, token, ',')) {
-                tokens.push_back(token);
-            }
-
-            if (tokens.size() == 7) {
-                int restaurantId = std::stoi(tokens[0]);
-                std::string restaurantName = tokens[1];
-                int numOfEmployees = std::stoi(tokens[2]);
-                RestaurantType restaurantType;
-                if (tokens[3] == "OWNED") {
-                    restaurantType = OWNED;
-                } else if (tokens[3] == "FRANCHISED") {
-                    restaurantType = FRANCHISED;
-                } else {
-                    throw std::invalid_argument("Invalid restaurant type");
-                }
-
-                std::string district = tokens[4];
-                std::string wilaya = tokens[5];
-                std::string country = tokens[6];
-                
-                CostsVec costsvec;
-                readCSVAndInsertIntoCostsVec("../../Database/dailycosts.csv",costsvec);
-                
-                Restaurant restaurant(restaurantId, numOfEmployees, restaurantType, restaurantName,
-                                      district, wilaya, country, costsvec, Cuisine(),Cuisine(),Cuisine(),Cuisine(),Cuisine());
-
-                
-                restaurantTable.insert(restaurant);
-            } else {
-                throw std::invalid_argument("Invalid number of columns in CSV");
-            }
-        } catch (const std::exception& e) {
-            
-            std::cerr << "Error while processing a line: " << e.what() << std::endl;
-        }
-    }
-
-    file.close();
-}
-/*
 int main()
 {
     RestaurantHashTable Restaurants;
@@ -344,4 +237,4 @@ int main()
 
     Restaurants.displayAllRestaurants();
 }
-*/
+
