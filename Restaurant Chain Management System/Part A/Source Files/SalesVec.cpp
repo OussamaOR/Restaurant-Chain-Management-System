@@ -93,3 +93,35 @@ void SalesVec::printSalesVec() {
         Salesvec[i].printSale();
     }
 }
+Date SalesVec::getDateFromIndex(int index) {
+    Date baseDate = Salesvec[0].getDate();
+    
+    int totalDays = index;
+    
+    int years = totalDays / 365;
+    totalDays %= 365;
+
+    int months = totalDays / 30;
+    totalDays %= 30;
+
+    int days = totalDays;
+
+    Date resultDate;
+    resultDate = {baseDate.getDay() + days, baseDate.getMonth() + months, baseDate.getYear() + years};
+
+    return resultDate;
+}
+
+
+void SalesVec::printSalesOnMonth(int month, int year) {
+    if (getDailySaleIndex(1, month, year) >= Salesvec.size())
+        return;
+    std::cout << "Daily Sales on " << month << "/" << year << ": " << std::endl;
+    for (int i = getDailySaleIndex(1, month, year); i <= std::min(static_cast<int>(Salesvec.size()), getDailySaleIndex(30, month, year)); i++) {
+        Date saleDate = getDateFromIndex(i);
+
+        // Print the actual date along with the daily sale amount
+        std::cout << "Date: " << saleDate.getDay() << "-" << saleDate.getMonth() << "-" << saleDate.getYear()
+                  << ", Daily Sale Amount: " << Salesvec[i].getDailySaleAmount() << std::endl;
+    }
+}

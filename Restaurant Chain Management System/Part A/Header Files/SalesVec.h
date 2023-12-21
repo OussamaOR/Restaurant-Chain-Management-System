@@ -61,4 +61,6 @@ class SalesVec {
     void insert_dailysale(DailySale);
     SalesVec& operator=(const SalesVec& other);
     void printSalesVec();
+    void printSalesOnMonth(int,int);
+    Date getDateFromIndex(int index);
 };
