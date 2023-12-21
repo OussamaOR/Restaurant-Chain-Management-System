@@ -48,10 +48,17 @@ public:
     //destructor 
     ~Cuisine();
 
-    //functions to display the needed results
+    //function to get the Average prize on a month
     float getAveragePrizeOnMonth(int ,int );
-    float getTotalSaleOnMonth(int , int);
 
+    //functions to get the total sale
+    float getTotalSaleOnMonth(int , int);
+    float getTotalSaleOnPeriod(Date , Date);
+    float getTotalSaleOnYear(int);
+
+    //functions to get the average ratings
+    float getAverageRatingOnMonth(int , int);
+    
     //print function 
     void printCuisine() ;
 };

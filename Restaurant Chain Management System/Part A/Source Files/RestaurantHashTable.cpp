@@ -34,11 +34,21 @@ int findPreviousPrime(int num)
 }
 size_t RestaurantHashTable::hashFunction(int key) const
 {
+    if (key <= 0)
+    {
+        cout << "Invalid key" << endl;
+        return maxSize;
+    }
     return key % table.size();
 }
 
 size_t RestaurantHashTable::hashFunction2(int key) const
 {
+    if (key <= 0)
+    {
+        cout << "Invalid key" << endl;
+        return maxSize;
+    }
     return findPreviousPrime(maxSize) - (key % findPreviousPrime(maxSize));
 }
 
@@ -107,6 +117,11 @@ void RestaurantHashTable::insert(const Restaurant &restaurant)
 
 void RestaurantHashTable::remove(int restaurantId)
 {
+    if (restaurantId <= 0)
+    {
+        cout << "Invalid restaurant ID" << endl;
+        return ;
+    }
     size_t index = findIndex(restaurantId);
     if (index != maxSize)
     {
@@ -117,17 +132,28 @@ void RestaurantHashTable::remove(int restaurantId)
 
 bool RestaurantHashTable::search(int restaurantId, Restaurant &result) const
 {
+    if (restaurantId <= 0)
+    {
+        cout << "Invalid restaurant ID" << endl;
+        return false;
+    }
     size_t index = findIndex(restaurantId);
     if (index != maxSize && table[index].getState() == ACTIVE)
     {
         result = table[index];
         return true;
     }
+    cout << "Restaurant not found for ID: " << restaurantId << endl;
     return false;
 }
 
 size_t RestaurantHashTable::findIndex(int restaurantId) const
 {
+    if (restaurantId <= 0)
+    {
+        cout << "Invalid restaurant ID" << endl;
+        return maxSize;
+    }
     size_t index = hashFunction(restaurantId);
     size_t originalIndex = index;
 
@@ -147,6 +173,7 @@ size_t RestaurantHashTable::findIndex(int restaurantId) const
         }
     }
 
+    cout << "Restaurant not found for ID: " << restaurantId << endl;
     return maxSize;
 }
 

@@ -94,24 +94,27 @@ public:
     float getIndiancuisineAveragePrize(int,int);
     float getEuropeancuisineAveragePrize(int,int);
 
-    //function to return the total sale on a given month in a given year
+    //functions to return the total sales 
     float totalSalesOnMonth(int ,int);
+    float totalSalesOnPerid(Date,Date);
 
-    //function to return the total cost on a given month in a given year
+    //functions to return the tostal cost
     double totalCostOnmonth(int,int);
+    double totalCostOnPeriod(Date,Date);
+    double totalCostOnYear(int);
+    double totalPublicityOnMonth(int ,int );
+    double totalPublicityOnPeriod(Date,Date);
 
     /*function to return the ratio of the monthly sales to the amount of money
      spent during any given month on publicity*/
     double getAveragePublicityRatio(int,int);
+    double getAveragePublicityRatio(Date,Date);
 
     //operator overloading
     Restaurant& operator=(const Restaurant& other);
 };
 
 #endif
-// function to return the monthly costs (summing up all the dailycosts for a given month);  ==> month
-// function to return the monthly sale (summing up all the monthly sales of each cuisine); ==> month O(log n)
-// function to return sales during a year (summing up the total sales of each cuisine); ==> year
+
 // function to return the sales of restaurant of a specific district/wiliya or the whole country (sales of cuisines where district == 'x') O(1)
-// function to return the monthlySales/publicity cost for a given month
 // function to return the monthlySales/publicity cost for a given month for a given district/wilaya
