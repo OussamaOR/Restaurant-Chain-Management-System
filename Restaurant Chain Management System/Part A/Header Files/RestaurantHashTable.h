@@ -32,6 +32,27 @@ public:
     // getting the total sales for the whole country
     float totalSalesInCountry(const std::string &, int, int);
 
+    //function to get winner in the coutry
+    pair<Restaurant,float> getAlgerianCuisineWinner(const std::string &,int,int);
+    pair<Restaurant,float> getSyrianCuisineWinner(const std::string &,int,int);
+    pair<Restaurant,float> getChineseCuisineWinner(const std::string &,int,int);
+    pair<Restaurant,float> getIndianCuisineWinner(const std::string &,int,int);
+    pair<Restaurant,float> getEuropeanCuisineWinner(const std::string &,int,int);
+
+    //function to display winner in wilaya
+    pair<Restaurant,float> getAlgerianCuisineWinnerInWilaya(const std::string &,int,int);
+    pair<Restaurant,float> getSyrianCuisineWinnerInWilaya(const std::string &,int,int);
+    pair<Restaurant,float> getChineseCuisineWinnerInWilaya(const std::string &,int,int);
+    pair<Restaurant,float> getIndianCuisineWinnerInWilaya(const std::string &,int,int);
+    pair<Restaurant,float> getEuropeanCuisineWinnerInWilaya(const std::string &,int,int);
+
+    //function to display winner in district
+    pair<Restaurant,float> getAlgerianCuisineWinnerInDistrict(const std::string &,int,int);
+    pair<Restaurant,float> getSyrianCuisineWinnerInDistrict(const std::string &,int,int);
+    pair<Restaurant,float> getChineseCuisineWinnerInDistrict(const std::string &,int,int);
+    pair<Restaurant,float> getIndianCuisineWinnerInDistrict(const std::string &,int,int);
+    pair<Restaurant,float> getEuropeanCuisineWinnerInDistrict(const std::string &,int,int);
+
     //function to display all information about each restaurant
     void displayAllRestaurants();
 
@@ -40,3 +61,4 @@ private:
 };
 
 #endif
+void displayWinnerInfo(pair<Restaurant,float>);
