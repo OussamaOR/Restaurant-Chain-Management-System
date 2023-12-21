@@ -776,7 +776,7 @@ pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInCountry(c
 // report functions for a specific country
 void RestaurantHashTable::displayAllRestaurantsInCountry(const std::string & country)
 {
-    cout<<"all restaurants of the wilaya: "<<country<<endl;
+    cout<<"all restaurants of the country: "<<country<<endl;
     for (int i = 0; i < table.size(); i++)
     {
         if (table[i].getState() == ACTIVE && table[i].getCountry()==country)

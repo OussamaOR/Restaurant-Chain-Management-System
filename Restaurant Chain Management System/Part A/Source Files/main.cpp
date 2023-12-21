@@ -7,6 +7,6 @@ int main()
 
     
     // country 
-    
+    Restaurants.displayAllRestaurantsInCountry("Algeria");
 
 }
