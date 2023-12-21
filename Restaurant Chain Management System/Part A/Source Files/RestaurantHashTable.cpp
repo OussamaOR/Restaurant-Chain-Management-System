@@ -396,11 +396,23 @@ void RestaurantHashTable::printFiveCuisinesWinners(int month,int year)
       cout<<"restaurant id : "<<this->getEuropeanCuisineWinner("Algeria",month,year).first.getRestaurantId()<<endl;
       cout<<"restaurant name : "<<this->getEuropeanCuisineWinner("Algeria",month,year).first.getRestaurantName()<<endl;
 }
+void RestaurantHashTable::printMonthlySalesToPublicity(int key,int month,int year)
+{
+    Restaurant r;
+    if (this->search(key, r))
+    {
+        r.print();
+        cout<<"total publicity cost on: "<<month<<"/"<<year<<": "<<r.totalPublicityOnMonth(month,year)<<endl;
+        cout<<"total sale on: "<<month<<"/"<<year<<": "<<r.totalSalesOnMonth(month,year)<<endl;
+        cout<<" ratio of the monthly sales to the pubicity cost :"<< r.getAveragePublicityRatio(month,year)<<endl;
+        cout<<endl;
+    }
+}
 int main()
 {
     RestaurantHashTable Restaurants;
     readRestaurantCSV("../../Database/restaurant.csv", Restaurants);
 
     //Restaurants.printFiveCuisinesWinners(2,2023);
-    Restaurants.printRestaurantSales(310610000,2,2023);
+    Restaurants.printMonthlySalesToPublicity(310610000,2,2023);
 }

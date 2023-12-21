@@ -375,13 +375,12 @@ void Restaurant::print()  {
     std::cout << "Restaurant Type: " << (restaurantType == RestaurantType::OWNED ? "Owned" : "Franchised") << std::endl;
     std::cout << "Location: District - " << location[district] << ", Wilaya - " << location[wilaya] << ", Country - " << location[country] << std::endl;
 
-    std::cout << "Cuisines:" << std::endl;
-    for (int i=0;i<5;i++) {
-        cuisines[i].printCuisine();
-    }
+    // std::cout << "Cuisines:" << std::endl;
+    // for (int i=0;i<5;i++) {
+    //     cuisines[i].printCuisine();
+    // }
 
-    std::cout << "Daily Costs:" << std::endl;
-    dailyCosts.print_infos(); 
+    // std::cout << "Daily Costs:" << std::endl;
+    // dailyCosts.print_infos(); 
    
 }
-

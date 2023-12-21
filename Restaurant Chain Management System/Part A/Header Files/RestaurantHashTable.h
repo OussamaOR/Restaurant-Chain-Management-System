@@ -59,6 +59,7 @@ public:
 
     //report function
     void printRestaurantSales(int ,int ,int );
+    void printMonthlySalesToPublicity(int,int,int);
     void printFiveCuisinesWinners(int,int);
 
 private:
