@@ -233,6 +233,9 @@ void RestaurantHashTable::displayAllRestaurants()
         }
     }
 }
+
+
+// funcions for reports and listings for a restaurant
 void RestaurantHashTable::displayRestaurant(int key)
 {
     Restaurant r;
@@ -240,119 +243,6 @@ void RestaurantHashTable::displayRestaurant(int key)
         r.print();
 }
 
-// function to get winner in the coutry
-pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInCountry(const std::string &country, int month, int year)
-{
-    Restaurant winner;
-    float maxAveragePrize = 0.0;
-
-    for (int i = 0; i < table.size(); i++)
-    {
-        // Checking if the restaurant is in the specified coutry
-        if (table[i].getCountry() == country)
-        {
-            // Geting the average prize for Algerian cuisine in the restaurant
-            float averagePrize = table[i].getAlgeriancuisineAveragePrize(month, year);
-
-            if (averagePrize > maxAveragePrize)
-            {
-                maxAveragePrize = averagePrize;
-                winner = table[i];
-            }
-        }
-    }
-    return make_pair(winner, maxAveragePrize);
-}
-pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinnerInCountry(const std::string &country, int month, int year)
-{
-    Restaurant winner;
-    float maxAveragePrize = 0.0;
-
-    for (int i = 0; i < table.size(); i++)
-    {
-        // Checking if the restaurant is in the specified coutry
-        if (table[i].getCountry() == country)
-        {
-            // Geting the average prize for Algerian cuisine in the restaurant
-            float averagePrize = table[i].getSyriancuisineAveragePrize(month, year);
-
-            if (averagePrize > maxAveragePrize)
-            {
-                maxAveragePrize = averagePrize;
-                winner = table[i];
-            }
-        }
-    }
-    return make_pair(winner, maxAveragePrize);
-}
-pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinnerInCountry(const std::string &country, int month, int year)
-{
-    Restaurant winner;
-    float maxAveragePrize = 0.0;
-
-    for (int i = 0; i < table.size(); i++)
-    {
-        // Checking if the restaurant is in the specified coutry
-        if (table[i].getCountry() == country)
-        {
-            // Geting the average prize for Algerian cuisine in the restaurant
-            float averagePrize = table[i].getChinesecuisineAveragePrize(month, year);
-
-            if (averagePrize > maxAveragePrize)
-            {
-                maxAveragePrize = averagePrize;
-                winner = table[i];
-            }
-        }
-    }
-    return make_pair(winner, maxAveragePrize);
-}
-pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinnerInCountry(const std::string &country, int month, int year)
-{
-    Restaurant winner;
-    float maxAveragePrize = 0.0;
-
-    for (int i = 0; i < table.size(); i++)
-    {
-        // Checking if the restaurant is in the specified coutry
-        if (table[i].getCountry() == country)
-        {
-            // Geting the average prize for Algerian cuisine in the restaurant
-            float averagePrize = table[i].getIndiancuisineAveragePrize(month, year);
-
-            if (averagePrize > maxAveragePrize)
-            {
-                maxAveragePrize = averagePrize;
-                winner = table[i];
-            }
-        }
-    }
-    return make_pair(winner, maxAveragePrize);
-}
-pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInCountry(const std::string &country, int month, int year)
-{
-    Restaurant winner;
-    float maxAveragePrize = 0.0;
-
-    for (int i = 0; i < table.size(); i++)
-    {
-        // Checking if the restaurant is in the specified coutry
-        if (table[i].getCountry() == country)
-        {
-            // Geting the average prize for Algerian cuisine in the restaurant
-            float averagePrize = table[i].getEuropeancuisineAveragePrize(month, year);
-
-            if (averagePrize > maxAveragePrize)
-            {
-                maxAveragePrize = averagePrize;
-                winner = table[i];
-            }
-        }
-    }
-    return make_pair(winner, maxAveragePrize);
-}
-
-// funcions for reports and listings
 void RestaurantHashTable::printRestaurantSales(int key, int month, int year)
 {
     Restaurant r;
@@ -377,25 +267,7 @@ void RestaurantHashTable::printRestaurantSales(int key, int month, int year)
         cout << endl;
     }
 }
-void RestaurantHashTable::printFiveCuisinesWinners(int month, int year)
-{
-    cout << "the winners for " << month << "/" << year << ": \n";
-    cout << "Algerian cuisine: \n";
-    cout << "restaurant id : " << this->getAlgerianCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantId() << endl;
-    cout << "restaurant name : " << this->getAlgerianCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantName() << endl;
-    cout << "Syrian cuisine: \n";
-    cout << "restaurant id : " << this->getSyrianCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantId() << endl;
-    cout << "restaurant name : " << this->getSyrianCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantName() << endl;
-    cout << "Chines cuisine: \n";
-    cout << "restaurant id : " << this->getChineseCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantId() << endl;
-    cout << "restaurant name : " << this->getChineseCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantName() << endl;
-    cout << "Indian cuisine: \n";
-    cout << "restaurant id : " << this->getIndianCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantId() << endl;
-    cout << "restaurant name : " << this->getIndianCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantName() << endl;
-    cout << "European cuisine: \n";
-    cout << "restaurant id : " << this->getEuropeanCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantId() << endl;
-    cout << "restaurant name : " << this->getEuropeanCuisineWinnerInCountry("Algeria", month, year).first.getRestaurantName() << endl;
-}
+
 void RestaurantHashTable::printMonthlySalesToPublicity(int key, int month, int year)
 {
     Restaurant r;
@@ -787,6 +659,118 @@ void RestaurantHashTable::printFiveCuisinesWinnersInWilaya(const std::string & w
     cout << "European cuisine: \n";
     cout << "restaurant id : " << this->getEuropeanCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getEuropeanCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantName() << endl;
+}
+
+// function to get winner in the coutry
+pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInCountry(const std::string &country, int month, int year)
+{
+    Restaurant winner;
+    float maxAveragePrize = 0.0;
+
+    for (int i = 0; i < table.size(); i++)
+    {
+        // Checking if the restaurant is in the specified coutry
+        if (table[i].getCountry() == country)
+        {
+            // Geting the average prize for Algerian cuisine in the restaurant
+            float averagePrize = table[i].getAlgeriancuisineAveragePrize(month, year);
+
+            if (averagePrize > maxAveragePrize)
+            {
+                maxAveragePrize = averagePrize;
+                winner = table[i];
+            }
+        }
+    }
+    return make_pair(winner, maxAveragePrize);
+}
+pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinnerInCountry(const std::string &country, int month, int year)
+{
+    Restaurant winner;
+    float maxAveragePrize = 0.0;
+
+    for (int i = 0; i < table.size(); i++)
+    {
+        // Checking if the restaurant is in the specified coutry
+        if (table[i].getCountry() == country)
+        {
+            // Geting the average prize for Algerian cuisine in the restaurant
+            float averagePrize = table[i].getSyriancuisineAveragePrize(month, year);
+
+            if (averagePrize > maxAveragePrize)
+            {
+                maxAveragePrize = averagePrize;
+                winner = table[i];
+            }
+        }
+    }
+    return make_pair(winner, maxAveragePrize);
+}
+pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinnerInCountry(const std::string &country, int month, int year)
+{
+    Restaurant winner;
+    float maxAveragePrize = 0.0;
+
+    for (int i = 0; i < table.size(); i++)
+    {
+        // Checking if the restaurant is in the specified coutry
+        if (table[i].getCountry() == country)
+        {
+            // Geting the average prize for Algerian cuisine in the restaurant
+            float averagePrize = table[i].getChinesecuisineAveragePrize(month, year);
+
+            if (averagePrize > maxAveragePrize)
+            {
+                maxAveragePrize = averagePrize;
+                winner = table[i];
+            }
+        }
+    }
+    return make_pair(winner, maxAveragePrize);
+}
+pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinnerInCountry(const std::string &country, int month, int year)
+{
+    Restaurant winner;
+    float maxAveragePrize = 0.0;
+
+    for (int i = 0; i < table.size(); i++)
+    {
+        // Checking if the restaurant is in the specified coutry
+        if (table[i].getCountry() == country)
+        {
+            // Geting the average prize for Algerian cuisine in the restaurant
+            float averagePrize = table[i].getIndiancuisineAveragePrize(month, year);
+
+            if (averagePrize > maxAveragePrize)
+            {
+                maxAveragePrize = averagePrize;
+                winner = table[i];
+            }
+        }
+    }
+    return make_pair(winner, maxAveragePrize);
+}
+pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInCountry(const std::string &country, int month, int year)
+{
+    Restaurant winner;
+    float maxAveragePrize = 0.0;
+
+    for (int i = 0; i < table.size(); i++)
+    {
+        // Checking if the restaurant is in the specified coutry
+        if (table[i].getCountry() == country)
+        {
+            // Geting the average prize for Algerian cuisine in the restaurant
+            float averagePrize = table[i].getEuropeancuisineAveragePrize(month, year);
+
+            if (averagePrize > maxAveragePrize)
+            {
+                maxAveragePrize = averagePrize;
+                winner = table[i];
+            }
+        }
+    }
+    return make_pair(winner, maxAveragePrize);
 }
 
 // report functions for a specific country
