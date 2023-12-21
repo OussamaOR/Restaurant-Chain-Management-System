@@ -360,15 +360,20 @@ void RestaurantHashTable::printRestaurantSales(int key, int month, int year)
     {
         cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
         cout << "Algerian cuisines :\n";
-        cout << (r.getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year);
+        r.getCuisine(ALGERIAN).printCuisineSalesOnMonth(month,year);
+        cout <<"total sale: "<< (r.getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year);
         cout << "Syrian cuisines :\n";
-        cout << (r.getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year);
+        r.getCuisine(SYRIAN).printCuisineSalesOnMonth(month,year);
+        cout <<"total sale: "<< (r.getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year);
         cout << "Chinese cuisines :\n";
-        cout << (r.getCuisine(CHINESE)).getTotalSaleOnMonth(month, year);
+        r.getCuisine(CHINESE).printCuisineSalesOnMonth(month,year);
+        cout <<"total sale: "<< (r.getCuisine(CHINESE)).getTotalSaleOnMonth(month, year);
         cout << "Indian cuisines :\n";
-        cout << (r.getCuisine(INDIAN)).getTotalSaleOnMonth(month, year);
+        r.getCuisine(INDIAN).printCuisineSalesOnMonth(month,year);
+        cout <<"total sale: "<< (r.getCuisine(INDIAN)).getTotalSaleOnMonth(month, year);
         cout << "European cuisines :\n";
-        cout << (r.getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year);
+        r.getCuisine(EUROPEAN).printCuisineSalesOnMonth(month,year);
+        cout <<"total sale: "<< (r.getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year);
         cout << endl;
     }
 }
@@ -396,6 +401,6 @@ int main()
     RestaurantHashTable Restaurants;
     readRestaurantCSV("../../Database/restaurant.csv", Restaurants);
 
-   
-    Restaurants.displayRestaurant(310610000);
+    //Restaurants.printFiveCuisinesWinners(2,2023);
+    Restaurants.printRestaurantSales(310610000,2,2023);
 }

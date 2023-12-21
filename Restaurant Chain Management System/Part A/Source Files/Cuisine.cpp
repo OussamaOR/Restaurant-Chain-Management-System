@@ -106,6 +106,10 @@ void Cuisine::printCuisine()  {
         cout << "\nMonthly Ratings:\n";
         monthlyRating.print(monthlyRating.getRoot());
 }
-
+void Cuisine::printCuisineSalesOnMonth(int month,int year)
+{
+     dailySales.printSalesOnMonth(month,year);
+     cout<<endl;
+}
 
 

@@ -61,6 +61,7 @@ public:
     
     //print function 
     void printCuisine() ;
+    void printCuisineSalesOnMonth(int,int);
 };
 #endif
 
