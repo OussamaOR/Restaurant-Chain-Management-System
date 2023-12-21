@@ -257,24 +257,24 @@ std::pair<Cuisine, float> Restaurant::getCuisineWinner(int month, int year)
 
 float Restaurant::getAlgeriancuisineAveragePrize(int month, int year)
 {
-    cuisines[0].getAveragePrizeOnMonth(month, year);
+   return cuisines[0].getAveragePrizeOnMonth(month, year);
 }
 
 float Restaurant::getSyriancuisineAveragePrize(int month, int year)
 {
-    cuisines[1].getAveragePrizeOnMonth(month, year);
+    return cuisines[1].getAveragePrizeOnMonth(month, year);
 }
 float Restaurant::getChinesecuisineAveragePrize(int month, int year)
 {
-    cuisines[2].getAveragePrizeOnMonth(month, year);
+   return cuisines[2].getAveragePrizeOnMonth(month, year);
 }
 float Restaurant::getIndiancuisineAveragePrize(int month, int year)
 {
-    cuisines[3].getAveragePrizeOnMonth(month, year);
+    return cuisines[3].getAveragePrizeOnMonth(month, year);
 }
 float Restaurant::getEuropeancuisineAveragePrize(int month, int year)
 {
-    cuisines[4].getAveragePrizeOnMonth(month, year);
+   return cuisines[4].getAveragePrizeOnMonth(month, year);
 }
 
 

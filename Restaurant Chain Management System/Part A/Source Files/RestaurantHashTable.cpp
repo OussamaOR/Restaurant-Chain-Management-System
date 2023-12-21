@@ -396,5 +396,5 @@ int main()
     RestaurantHashTable Restaurants;
     readRestaurantCSV("../../Database/restaurant.csv", Restaurants);
 
-    Restaurants.displayAllRestaurants();
+    Restaurants.printFiveCuisinesWinners(2,2023);
 }
