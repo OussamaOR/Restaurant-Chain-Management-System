@@ -1,6 +1,7 @@
 #pragma once
 #include "Date.h"
 #include <iostream>
+#include <iomanip>
 enum costType
 {
     rent,

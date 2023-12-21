@@ -158,7 +158,7 @@ void readCSVAndInsertIntoCostsVec(const std::string& filename, CostsVec& costsVe
 
 int main() {
     CostsVec costsVec;
-    readCSVAndInsertIntoCostsVec("dailycosts.csv", costsVec);
+    readCSVAndInsertIntoCostsVec("../../Database/dailycosts.csv", costsVec);
     costsVec.print_infos();
     return 0;
 }
