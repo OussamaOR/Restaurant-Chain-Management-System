@@ -852,14 +852,3 @@ void RestaurantHashTable::printFiveCuisinesWinnersInWilaya(const std::string & c
 }
 
 
-int main()
-{
-    RestaurantHashTable Restaurants;
-    readRestaurantCSV("../../Database/restaurant.csv", Restaurants);
-
-    // Restaurants.displayRestaurant(310610000);
-    // Restaurants.displayAllRestaurants();
-    // Restaurants.printFiveCuisinesWinners(2,2023);
-    // Restaurants.printRestaurantSales(2,2023)
-    Restaurants.printMonthlySalesToPublicity(310610000, 2, 2023);
-}
