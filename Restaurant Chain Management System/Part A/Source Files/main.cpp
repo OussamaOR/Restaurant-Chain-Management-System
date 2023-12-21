@@ -40,19 +40,20 @@ int main()
             else if(j == '2'){
                 cout << "Enter The District Name  " << endl;
                 string distr;
-                cin >> distr;
+                getline(cin >> ws,distr);
+               
                 Restaurants.displayAllRestaurantsInDistrict(distr);
             }
             else if(j == '3'){
                 cout << "Enter The Wilaya Name " << endl;
                 string wilaya;
-                cin >> wilaya;
+                getline(cin >> ws,wilaya);
                 Restaurants.displayAllRestaurantsInWilaya(wilaya);
             }
             else if(j == '4'){
                 cout << "Enter The Country Name " << endl;
                 string ctry;
-                cin >> ctry;
+                getline(cin >> ws,ctry);
                 Restaurants.displayAllRestaurantsInCountry(ctry);
             }
             else if(j == '5'){
@@ -80,7 +81,7 @@ int main()
         else if(j =='2'){
             cout << "Enter The District Name " << endl;
             string distr;
-            cin >> distr;
+            getline(cin >> ws,distr);
             
             cout << "Enter The Month And The Year " << endl;
             int month,year;
@@ -89,17 +90,17 @@ int main()
         }
         else if(j =='3'){
             cout << "Enter The Wilaya Name " << endl;
-            string wiliya;
-            cin >> wiliya;
+            string wilaya;
+            getline(cin >> ws,wilaya);
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
-            Restaurants.printRestaurantSalesInWilaya(wiliya,month,year);
+            Restaurants.printRestaurantSalesInWilaya(wilaya,month,year);
         }
         else if(j =='4'){
             cout << "Enter The Country Name " << endl;
             string ctr;
-            cin >> ctr;
+           getline(cin >> ws,ctr);
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
@@ -118,7 +119,7 @@ int main()
          if(j =='1'){
             cout << "Enter The District Name " << endl;
             string distr;
-            cin >> distr;
+            getline(cin >> ws,distr);
             
             cout << "Enter The Month And The Year " << endl;
             int month,year;
@@ -127,17 +128,17 @@ int main()
         }
         else if(j =='2'){
             cout << "Enter The Wilaya Name " << endl;
-            string wiliya;
-            cin >> wiliya;
+            string wilaya;
+            getline(cin >> ws,wilaya);
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
-            Restaurants.printFiveCuisinesWinnersInWilaya(wiliya,month,year);
+            Restaurants.printFiveCuisinesWinnersInWilaya(wilaya,month,year);
         }
         else if(j =='3'){
             cout << "Enter The Country Name " << endl;
             string ctr;
-            cin >> ctr;
+            getline(cin >> ws,ctr);
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
@@ -166,7 +167,7 @@ int main()
         else if(j =='2'){
             cout << "Enter The District Name " << endl;
             string distr;
-            cin >> distr;
+            getline(cin >> ws,distr);
             
             cout << "Enter The Month And The Year " << endl;
             int month,year;
@@ -175,17 +176,17 @@ int main()
         }
         else if(j =='3'){
             cout << "Enter The Wilaya Name " << endl;
-            string wiliya;
-            cin >> wiliya;
+            string wilaya;
+            getline(cin >> ws,wilaya);
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
-            Restaurants.printMonthlySalesToPublicityInWilaya(wiliya,month,year);
+            Restaurants.printMonthlySalesToPublicityInWilaya(wilaya,month,year);
         }
         else if(j =='4'){
             cout << "Enter The Country Name " << endl;
             string ctr;
-            cin >> ctr;
+           getline(cin >> ws,ctr);
             cout << "Enter The Month And The Year " << endl;
             int month,year;
             cin >> month >> year;
