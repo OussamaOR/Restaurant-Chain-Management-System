@@ -1,8 +1,4 @@
-#include "RestaurantHashTable.h"
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <regex>
+#include "readfiles.h"
 
 // function to parse the date
 Date parseDate(const std::string &dateString)

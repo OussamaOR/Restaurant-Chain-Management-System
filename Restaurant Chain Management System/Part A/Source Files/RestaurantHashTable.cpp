@@ -1,6 +1,6 @@
 #include "../Header Files/RestaurantHashTable.h"
 #include <cmath>
-#include "readfiles.cpp"
+#include "readfiles.h"
 // finding prime numbers functions
 bool isPrime(int num)
 {
