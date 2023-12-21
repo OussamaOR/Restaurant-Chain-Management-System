@@ -32,12 +32,7 @@ public:
     // getting the total sales for the whole country
     float totalSalesInCountry(const std::string &, int, int);
 
-    //function to get winner in the coutry
-    pair<Restaurant,float> getAlgerianCuisineWinner(const std::string &,int,int);
-    pair<Restaurant,float> getSyrianCuisineWinner(const std::string &,int,int);
-    pair<Restaurant,float> getChineseCuisineWinner(const std::string &,int,int);
-    pair<Restaurant,float> getIndianCuisineWinner(const std::string &,int,int);
-    pair<Restaurant,float> getEuropeanCuisineWinner(const std::string &,int,int);
+    
 
     //function to display winner in district
     pair<Restaurant,float> getAlgerianCuisineWinnerInDistrict(const std::string &,int,int);
@@ -53,7 +48,12 @@ public:
     pair<Restaurant,float> getIndianCuisineWinnerInWilaya(const std::string &,int,int);
     pair<Restaurant,float> getEuropeanCuisineWinnerInWilaya(const std::string &,int,int);
 
-    
+    //function to get winner in the coutry
+    pair<Restaurant,float> getAlgerianCuisineWinnerInCountry(const std::string &,int,int);
+    pair<Restaurant,float> getSyrianCuisineWinnerInCountry(const std::string &,int,int);
+    pair<Restaurant,float> getChineseCuisineWinnerInCountry(const std::string &,int,int);
+    pair<Restaurant,float> getIndianCuisineWinnerInCountry(const std::string &,int,int);
+    pair<Restaurant,float> getEuropeanCuisineWinnerInCountry(const std::string &,int,int);
 
     //different print function
     void displayAllRestaurants();
