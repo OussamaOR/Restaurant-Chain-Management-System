@@ -163,12 +163,10 @@ std::vector<Cuisine> readCuisineFromCSV(const std::string& filePath) {
             MonthlyRating monthlyRating(data.first.first, data.first.second, data.second);
             ratingsBST.insertRating(monthlyRating);
         }
-        // Create Cuisine instance and add it to the vector
+       
         Cuisine cuisine(cuisineType, parseSalesVec(dailySalesStr),ratingsBST);
         cuisineVector.push_back(cuisine);
     }
-
-    // Close the file
     inputFile.close();
 
     return cuisineVector;
