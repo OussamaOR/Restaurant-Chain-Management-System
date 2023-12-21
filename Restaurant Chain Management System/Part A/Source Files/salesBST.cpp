@@ -2,23 +2,7 @@
 #include "../Header Files/Date.h"
 #include <iostream>
 
-//struct DailySale
-DailySale::DailySale() : dailySaleAmount(0.0) {}
-DailySale::~DailySale() {}
-// Constructor with parameters 
-DailySale::DailySale(const Date &date, double dailySaleAmount)
-    : date(date), dailySaleAmount(dailySaleAmount) {}
 
-// Copy constructor 
-DailySale::DailySale(const DailySale &other)
-    : date(other.date), dailySaleAmount(other.dailySaleAmount) {}
-
-// Move constructor 
-DailySale::DailySale(DailySale &&other)
-    : date(other.date), dailySaleAmount(other.dailySaleAmount)
-{
-     other.dailySaleAmount = 0.0;
-}
 // Constructors
 
 salesBST::salesBST() : root(nullptr) {}

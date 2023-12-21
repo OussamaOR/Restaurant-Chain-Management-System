@@ -2,6 +2,7 @@
 #ifndef SALESBST_H
 #define SALESBST_H
 #include "Date.h"
+#include "SalesVec.h"
 #include <iostream>
 #include <functional> 
 // Class representing a Binary Search Tree for sales
