@@ -85,7 +85,7 @@ float Cuisine::getAverageRatingOnMonth(int month, int year){
 //function to parse the date
 Date parseDate(const std::string& dateString) {
     int day, month, year;
-    sscanf(dateString.c_str(), "(%d-%d-%d", &day, &month, &year);
+    sscanf(dateString.c_str(), "%d-%d-%d", &day, &month, &year);
     return Date(day, month, year);
 }
 
