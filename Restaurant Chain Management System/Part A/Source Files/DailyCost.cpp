@@ -66,7 +66,6 @@ float dailyCost::getPublicityCost(){return costs[publicitySpending];}
 
 
 void dailyCost::print_infos(){
-    std::cout << "Date : ";
     date.displayDate();
     std::cout << std::fixed << std::setprecision(2) <<  "Costs : " << std::endl << "Rent: " << costs[0] << std::endl << "employeePayments: " << costs[1] << std::endl << "Electricity: " << costs[2] << std::endl << "Gas: " << costs[3] << std::endl << "Vegetables: " << costs[4] << std::endl << "Meats: " << costs[5] << std::endl << "Other Ingredients: " << costs[6] << std::endl << "Publicity Spending: " << costs[7] << std::endl;
     std:: cout << "Total : " << total << std::endl;

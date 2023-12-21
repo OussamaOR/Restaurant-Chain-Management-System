@@ -1,1 +1,2 @@
 C:\Users\pc\Desktop\sfml projects\experiments project\experiments\x64\Debug\experiments.exe
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\x64\Debug\experiments.exe

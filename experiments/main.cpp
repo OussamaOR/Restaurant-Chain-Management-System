@@ -9,5 +9,5 @@
 #include "curve drawer.h"
 #include "bar charts drawer.h"
 int main() {
-	program_run2();
+	program_run();
 }
