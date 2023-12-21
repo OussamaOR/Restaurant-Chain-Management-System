@@ -21,4 +21,6 @@ class CostsVec {
     double getPublicityCost_onmonth(int,int);
     void print_infos();
     void printCostsOnMonth(int,int);
+
 };
+int getNumberOfDaysInMonth(int month, int year);

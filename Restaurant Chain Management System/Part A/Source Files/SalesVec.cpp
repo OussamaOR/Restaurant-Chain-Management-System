@@ -1,5 +1,7 @@
 #include "../Header Files/SalesVec.h"
+#include "../Header Files/CostsVec.h"
 //struct DailySale
+
 DailySale::DailySale() : dailySaleAmount(0.0) {}
 DailySale::~DailySale() {}
 // Constructor with parameters 
@@ -100,7 +102,7 @@ void SalesVec::printSalesOnMonth(int month, int year) {
     if (getDailySaleIndex(1, month, year) >= Salesvec.size())
         return;
     std::cout << "Daily Sales on " << month << "/" << year << ": " << std::endl;
-    for (int i = getDailySaleIndex(1, month, year); i <= std::min(static_cast<int>(Salesvec.size()), getDailySaleIndex(30, month, year)); i++) {
+    for (int i = getDailySaleIndex(1, month, year); i <= std::min(static_cast<int>(Salesvec.size()), getDailySaleIndex(getNumberOfDaysInMonth(month,year), month, year)); i++) {
        Salesvec[i].printSale();
     }
 }

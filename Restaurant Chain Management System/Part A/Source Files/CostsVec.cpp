@@ -4,6 +4,24 @@
 #include <iomanip>
 #include <sstream>
 using namespace std;
+
+int getNumberOfDaysInMonth(int month, int year) {
+    // Check if the month is within the valid range (1 to 12)
+    if (month < 1 || month > 12) {
+        throw std::invalid_argument("Invalid month. Month must be between 1 and 12.");
+    }
+
+    // Array to store the number of days in each month (ignoring leap years)
+    int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    // Adjust for February in leap years
+    if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))) {
+        return 29; // February has 29 days in a leap year
+    } else {
+        return daysInMonth[month];
+    }
+}
+
 CostsVec::CostsVec(){}
 CostsVec::~CostsVec(){}
 int CostsVec::getDailyCostIndex(int day,int month,int year){
@@ -31,7 +49,7 @@ double CostsVec::total_onmonth(int month, int year) {
     double total = 0.f;
     if(getDailyCostIndex(1,month,year) >= Costsvec.size()) return 0;
     // Use the getDailyCostIndex function to get the starting and ending indices for the month
-    for (int i = getDailyCostIndex(1, month, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(30, month, year)); i++) {
+    for (int i = getDailyCostIndex(1, month, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(getNumberOfDaysInMonth(month,year), month, year)); i++) {
         total += Costsvec[i].totalDailyCost();
     }
     return total;
@@ -41,7 +59,7 @@ double CostsVec::total_onyear(int year) {
     float total = 0.f;
     if(getDailyCostIndex(1,1,year) >= Costsvec.size()) return 0;
     // Use the getDailyCostIndex function to get the starting and ending indices for the year
-    for (int i = getDailyCostIndex(1, 1, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(30, 12, year)); i++) {
+    for (int i = getDailyCostIndex(1, 1, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(1, 12, year)); i++) {
         total += Costsvec[i].totalDailyCost();
     }
     return total;
@@ -73,7 +91,7 @@ double CostsVec::getPublicityCost_onperiod(Date start_date,Date end_date){
 double CostsVec::getPublicityCost_onmonth(int month,int year){
     double total = 0.f;
     if(getDailyCostIndex(1,month,year) >= Costsvec.size()) return 0;
-    for (int i = getDailyCostIndex(1, month, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(30, month, year)); i++) {
+    for (int i = getDailyCostIndex(1, month, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(getNumberOfDaysInMonth(month,year), month, year)); i++) {
         total += Costsvec[i].getPublicityCost();
     }
     return total;
@@ -86,7 +104,7 @@ void CostsVec::print_infos(){
 
 void CostsVec::printCostsOnMonth(int month,int year){
         if(getDailyCostIndex(1,month,year) >= Costsvec.size()) return ;
-     for (int i = getDailyCostIndex(1, month, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(30, month, year)); i++) {
+     for (int i = getDailyCostIndex(1, month, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(getNumberOfDaysInMonth(month,year), month, year)); i++) {
         Costsvec[i].print_infos();
     }
 }
