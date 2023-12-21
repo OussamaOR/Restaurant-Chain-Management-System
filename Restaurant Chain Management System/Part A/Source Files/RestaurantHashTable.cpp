@@ -234,7 +234,6 @@ void RestaurantHashTable::displayAllRestaurants()
     }
 }
 
-
 // funcions for reports and listings for a restaurant
 void RestaurantHashTable::displayRestaurant(int key)
 {
@@ -286,12 +285,13 @@ pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInDistrict(
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getDistrict() == district)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getAlgeriancuisineAveragePrize(month, year);
 
@@ -302,18 +302,21 @@ pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInDistrict(
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for district: " << district << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getDistrict() == district)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getSyriancuisineAveragePrize(month, year);
 
@@ -324,18 +327,21 @@ pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinnerInDistrict(co
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for district: " << district << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getDistrict() == district)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getChinesecuisineAveragePrize(month, year);
 
@@ -346,18 +352,21 @@ pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinnerInDistrict(c
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for district: " << district << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getDistrict() == district)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getIndiancuisineAveragePrize(month, year);
 
@@ -368,18 +377,21 @@ pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinnerInDistrict(co
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for district: " << district << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInDistrict(const std::string &district, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getDistrict() == district)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getEuropeancuisineAveragePrize(month, year);
 
@@ -390,69 +402,80 @@ pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInDistrict(
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for district: " << district << endl;
     return make_pair(winner, maxAveragePrize);
 }
 
 // report functions for a specific district
-void RestaurantHashTable::displayAllRestaurantsInDistrict(const std::string & district)
+void RestaurantHashTable::displayAllRestaurantsInDistrict(const std::string &district)
 {
-    cout<<"all restaurants of the district: "<<district<<endl;
+    int count = 0;
+    cout << "all restaurants of the district: " << district << endl;
     for (int i = 0; i < table.size(); i++)
     {
-        if (table[i].getState() == ACTIVE && table[i].getDistrict()==district)
+        if (table[i].getState() == ACTIVE && table[i].getDistrict() == district)
         {
             table[i].print();
+            count++;
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the district: " << district << endl;
 }
-void RestaurantHashTable::printRestaurantSalesInDistrict(const std::string & district, int month, int year)
+void RestaurantHashTable::printRestaurantSalesInDistrict(const std::string &district, int month, int year)
 {
-    cout<<"report on restaurants sales for the district: "<<district<<endl;
-    for(int i=0;i<table.size();i++)
+    int count = 0;
+    cout << "report on restaurants sales for the district: " << district << endl;
+    for (int i = 0; i < table.size(); i++)
     {
-        if(table[i].getState()==ACTIVE && table[i].getDistrict()==district)
+        if (table[i].getState() == ACTIVE && table[i].getDistrict() == district)
         {
-        cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
-        cout << "Algerian cuisines :\n";
-        table[i].getCuisine(ALGERIAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "Syrian cuisines :\n";
-        table[i].getCuisine(SYRIAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "Chinese cuisines :\n";
-        table[i].getCuisine(CHINESE).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(CHINESE)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "Indian cuisines :\n";
-        table[i].getCuisine(INDIAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(INDIAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "European cuisines :\n";
-        table[i].getCuisine(EUROPEAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << endl;
+            count++;
+            cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
+            cout << "Algerian cuisines :\n";
+            table[i].getCuisine(ALGERIAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "Syrian cuisines :\n";
+            table[i].getCuisine(SYRIAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "Chinese cuisines :\n";
+            table[i].getCuisine(CHINESE).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(CHINESE)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "Indian cuisines :\n";
+            table[i].getCuisine(INDIAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(INDIAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "European cuisines :\n";
+            table[i].getCuisine(EUROPEAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << endl;
         }
-        
     }
+    if (count == 0)
+        cout << "no restaurants found for the district: " << district << endl;
 }
-void RestaurantHashTable::printMonthlySalesToPublicityInDistrict(const std::string & district, int month, int year)
+void RestaurantHashTable::printMonthlySalesToPublicityInDistrict(const std::string &district, int month, int year)
 {
-    cout<<"ratio of the monthly sales to the pubicity cost for the district: "<<district<<endl;
-    for(int i=0;i<table.size();i++)
+    int count = 0;
+    cout << "ratio of the monthly sales to the pubicity cost for the district: " << district << endl;
+    for (int i = 0; i < table.size(); i++)
     {
-        if(table[i].getState()==ACTIVE && table[i].getDistrict()==district)
+        if (table[i].getState() == ACTIVE && table[i].getDistrict() == district)
         {
-        table[i].print();
-        cout << "total publicity cost on: " << month << "/" << year << ": " << table[i].totalPublicityOnMonth(month, year) << endl;
-        cout << "total sale on: " << month << "/" << year << ": " << table[i].totalSalesOnMonth(month, year) << endl;
-        cout << " ratio of the monthly sales to the pubicity cost :" << table[i].getAveragePublicityRatio(month, year) << endl;
-        cout << endl;
+            table[i].print();
+            cout << "total publicity cost on: " << month << "/" << year << ": " << table[i].totalPublicityOnMonth(month, year) << endl;
+            cout << "total sale on: " << month << "/" << year << ": " << table[i].totalSalesOnMonth(month, year) << endl;
+            cout << " ratio of the monthly sales to the pubicity cost :" << table[i].getAveragePublicityRatio(month, year) << endl;
+            cout << endl;
+            count++;
         }
     }
-       
-    
+    if (count == 0)
+        cout << "no restaurants found for the district: " << district << endl;
 }
-void RestaurantHashTable::printFiveCuisinesWinnersInDistrict(const std::string & district, int month, int year)
+void RestaurantHashTable::printFiveCuisinesWinnersInDistrict(const std::string &district, int month, int year)
 {
-    cout<<"the winners for the district :"<<district<<endl;
+    cout << "the winners for the district :" << district << endl;
     cout << "the winners for " << month << "/" << year << ": \n";
     cout << "Algerian cuisine: \n";
     cout << "restaurant id : " << this->getAlgerianCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
@@ -476,12 +499,13 @@ pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInWilaya(co
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getWilaya() == wilaya)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getAlgeriancuisineAveragePrize(month, year);
 
@@ -492,18 +516,21 @@ pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInWilaya(co
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the wilaya: " << wilaya << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinnerInWilaya(const std::string &wilaya, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getWilaya() == wilaya)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getSyriancuisineAveragePrize(month, year);
 
@@ -514,18 +541,21 @@ pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinnerInWilaya(cons
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the wilaya: " << wilaya << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinnerInWilaya(const std::string &wilaya, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getWilaya() == wilaya)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getChinesecuisineAveragePrize(month, year);
 
@@ -536,18 +566,21 @@ pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinnerInWilaya(con
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the wilaya: " << wilaya << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinnerInWilaya(const std::string &wilaya, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getWilaya() == wilaya)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getIndiancuisineAveragePrize(month, year);
 
@@ -558,18 +591,21 @@ pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinnerInWilaya(cons
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the wilaya: " << wilaya << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInWilaya(const std::string &wilaya, int month, int year)
 {
-   Restaurant winner;
+    Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getWilaya() == wilaya)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getEuropeancuisineAveragePrize(month, year);
 
@@ -580,72 +616,82 @@ pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInWilaya(co
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the wilaya: " << wilaya << endl;
     return make_pair(winner, maxAveragePrize);
 }
 
 // report functions for a specific wilaya
-void RestaurantHashTable::displayAllRestaurantsInWilaya(const std::string & wilaya)
+void RestaurantHashTable::displayAllRestaurantsInWilaya(const std::string &wilaya)
 {
-    cout<<"all restaurants of the wilaya: "<<wilaya<<endl;
+    int count = 0;
+    cout << "all restaurants of the wilaya: " << wilaya << endl;
     for (int i = 0; i < table.size(); i++)
     {
-        if(i == 91){
-            cout << table[i].getWilaya() << table[i].getState() << endl;
-        }
-        if (table[i].getState() == ACTIVE && table[i].getWilaya()==wilaya)
+
+        if (table[i].getState() == ACTIVE && table[i].getWilaya() == wilaya)
         {
+            count++;
             table[i].print();
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the wilaya: " << wilaya << endl;
 }
-void RestaurantHashTable::printRestaurantSalesInWilaya(const std::string & wilaya, int month, int year)
+void RestaurantHashTable::printRestaurantSalesInWilaya(const std::string &wilaya, int month, int year)
 {
-    cout<<"report on restaurants sales for the wilaya: "<<wilaya<<endl;
-    for(int i=0;i<table.size();i++)
+    int count = 0;
+    cout << "report on restaurants sales for the wilaya: " << wilaya << endl;
+    for (int i = 0; i < table.size(); i++)
     {
-        if(table[i].getState()==ACTIVE && table[i].getWilaya()==wilaya)
+        if (table[i].getState() == ACTIVE && table[i].getWilaya() == wilaya)
         {
-        cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
-        cout << "Algerian cuisines :\n";
-        table[i].getCuisine(ALGERIAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "Syrian cuisines :\n";
-        table[i].getCuisine(SYRIAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "Chinese cuisines :\n";
-        table[i].getCuisine(CHINESE).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(CHINESE)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "Indian cuisines :\n";
-        table[i].getCuisine(INDIAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(INDIAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "European cuisines :\n";
-        table[i].getCuisine(EUROPEAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << endl;
-        }
-        
-    }
-}
-void RestaurantHashTable::printMonthlySalesToPublicityInWilaya(const std::string & wilaya, int month, int year)
-{
-    cout<<"ratio of the monthly sales to the pubicity cost for the wilaya: "<<wilaya<<endl;
-    for(int i=0;i<table.size();i++)
-    {
-        if(table[i].getState()==ACTIVE && table[i].getWilaya()==wilaya)
-        {
-        table[i].print();
-        cout << "total publicity cost on: " << month << "/" << year << ": " << table[i].totalPublicityOnMonth(month, year) << endl;
-        cout << "total sale on: " << month << "/" << year << ": " << table[i].totalSalesOnMonth(month, year) << endl;
-        cout << " ratio of the monthly sales to the pubicity cost :" << table[i].getAveragePublicityRatio(month, year) << endl;
-        cout << endl;
+            count++;
+            cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
+            cout << "Algerian cuisines :\n";
+            table[i].getCuisine(ALGERIAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "Syrian cuisines :\n";
+            table[i].getCuisine(SYRIAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "Chinese cuisines :\n";
+            table[i].getCuisine(CHINESE).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(CHINESE)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "Indian cuisines :\n";
+            table[i].getCuisine(INDIAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(INDIAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "European cuisines :\n";
+            table[i].getCuisine(EUROPEAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << endl;
         }
     }
-       
-    
+    if (count == 0)
+        cout << "no restaurants found for the wilaya: " << wilaya << endl;
 }
-void RestaurantHashTable::printFiveCuisinesWinnersInWilaya(const std::string & wilaya, int month, int year)
+void RestaurantHashTable::printMonthlySalesToPublicityInWilaya(const std::string &wilaya, int month, int year)
 {
-    cout<<"the winners for the wilaya :"<<wilaya<<endl;
+    int count = 0;
+    cout << "ratio of the monthly sales to the pubicity cost for the wilaya: " << wilaya << endl;
+    for (int i = 0; i < table.size(); i++)
+    {
+        if (table[i].getState() == ACTIVE && table[i].getWilaya() == wilaya)
+        {
+            count++;
+            table[i].print();
+            cout << "total publicity cost on: " << month << "/" << year << ": " << table[i].totalPublicityOnMonth(month, year) << endl;
+            cout << "total sale on: " << month << "/" << year << ": " << table[i].totalSalesOnMonth(month, year) << endl;
+            cout << " ratio of the monthly sales to the pubicity cost :" << table[i].getAveragePublicityRatio(month, year) << endl;
+            cout << endl;
+        }
+    }
+    if (count == 0)
+        cout << "no restaurants found for the wilaya: " << wilaya << endl;
+}
+void RestaurantHashTable::printFiveCuisinesWinnersInWilaya(const std::string &wilaya, int month, int year)
+{
+
+    cout << "the winners for the wilaya :" << wilaya << endl;
     cout << "the winners for " << month << "/" << year << ": \n";
     cout << "Algerian cuisine: \n";
     cout << "restaurant id : " << this->getAlgerianCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantId() << endl;
@@ -669,12 +715,13 @@ pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInCountry(c
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getCountry() == country)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getAlgeriancuisineAveragePrize(month, year);
 
@@ -685,18 +732,21 @@ pair<Restaurant, float> RestaurantHashTable::getAlgerianCuisineWinnerInCountry(c
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the country: " << country << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinnerInCountry(const std::string &country, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getCountry() == country)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getSyriancuisineAveragePrize(month, year);
 
@@ -707,18 +757,21 @@ pair<Restaurant, float> RestaurantHashTable::getSyrianCuisineWinnerInCountry(con
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the country: " << country << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinnerInCountry(const std::string &country, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getCountry() == country)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getChinesecuisineAveragePrize(month, year);
 
@@ -729,18 +782,21 @@ pair<Restaurant, float> RestaurantHashTable::getChineseCuisineWinnerInCountry(co
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the country: " << country << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinnerInCountry(const std::string &country, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getCountry() == country)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getIndiancuisineAveragePrize(month, year);
 
@@ -751,18 +807,21 @@ pair<Restaurant, float> RestaurantHashTable::getIndianCuisineWinnerInCountry(con
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the country: " << country << endl;
     return make_pair(winner, maxAveragePrize);
 }
 pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInCountry(const std::string &country, int month, int year)
 {
     Restaurant winner;
     float maxAveragePrize = 0.0;
-
+    int count = 0;
     for (int i = 0; i < table.size(); i++)
     {
         // Checking if the restaurant is in the specified coutry
         if (table[i].getCountry() == country)
         {
+            count++;
             // Geting the average prize for Algerian cuisine in the restaurant
             float averagePrize = table[i].getEuropeancuisineAveragePrize(month, year);
 
@@ -773,69 +832,81 @@ pair<Restaurant, float> RestaurantHashTable::getEuropeanCuisineWinnerInCountry(c
             }
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the country: " << country << endl;
     return make_pair(winner, maxAveragePrize);
 }
 
 // report functions for a specific country
-void RestaurantHashTable::displayAllRestaurantsInCountry(const std::string & country)
+void RestaurantHashTable::displayAllRestaurantsInCountry(const std::string &country)
 {
-    cout<<"all restaurants of the country: "<<country<<endl;
+    int count = 0;
+    cout << "all restaurants of the country: " << country << endl;
     for (int i = 0; i < table.size(); i++)
     {
-        if (table[i].getState() == ACTIVE && table[i].getCountry()==country)
+        if (table[i].getState() == ACTIVE && table[i].getCountry() == country)
         {
+            count++;
             table[i].print();
         }
     }
+    if (count == 0)
+        cout << "no restaurants found for the country: " << country << endl;
 }
-void RestaurantHashTable::printRestaurantSalesInCountry(const std::string & country, int month, int year)
+void RestaurantHashTable::printRestaurantSalesInCountry(const std::string &country, int month, int year)
 {
-    cout<<"report on restaurants sales for the country: "<<country<<endl;
-    for(int i=0;i<table.size();i++)
+    int count = 0;
+    cout << "report on restaurants sales for the country: " << country << endl;
+    for (int i = 0; i < table.size(); i++)
     {
-        if(table[i].getState()==ACTIVE && table[i].getCountry()==country)
+        if (table[i].getState() == ACTIVE && table[i].getCountry() == country)
         {
-        cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
-        cout << "Algerian cuisines :\n";
-        table[i].getCuisine(ALGERIAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "Syrian cuisines :\n";
-        table[i].getCuisine(SYRIAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "Chinese cuisines :\n";
-        table[i].getCuisine(CHINESE).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(CHINESE)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "Indian cuisines :\n";
-        table[i].getCuisine(INDIAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(INDIAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << "European cuisines :\n";
-        table[i].getCuisine(EUROPEAN).printCuisineSalesOnMonth(month, year);
-        cout << "total sale: " << (table[i].getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year) << endl;
-        cout << endl;
-        }
-        
-    }
-}
-void RestaurantHashTable::printMonthlySalesToPublicityInCountry(const std::string & country, int month, int year)
-{
-    cout<<"ratio of the monthly sales to the pubicity cost for the country: "<<country<<endl;
-    for(int i=0;i<table.size();i++)
-    {
-        if(table[i].getState()==ACTIVE && table[i].getCountry()==country)
-        {
-        table[i].print();
-        cout << "total publicity cost on: " << month << "/" << year << ": " << table[i].totalPublicityOnMonth(month, year) << endl;
-        cout << "total sale on: " << month << "/" << year << ": " << table[i].totalSalesOnMonth(month, year) << endl;
-        cout << " ratio of the monthly sales to the pubicity cost :" << table[i].getAveragePublicityRatio(month, year) << endl;
-        cout << endl;
+            count++;
+            cout << "-- report of sales for each cuisine for " << month << "/" << year << endl;
+            cout << "Algerian cuisines :\n";
+            table[i].getCuisine(ALGERIAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(ALGERIAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "Syrian cuisines :\n";
+            table[i].getCuisine(SYRIAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(SYRIAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "Chinese cuisines :\n";
+            table[i].getCuisine(CHINESE).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(CHINESE)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "Indian cuisines :\n";
+            table[i].getCuisine(INDIAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(INDIAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << "European cuisines :\n";
+            table[i].getCuisine(EUROPEAN).printCuisineSalesOnMonth(month, year);
+            cout << "total sale: " << (table[i].getCuisine(EUROPEAN)).getTotalSaleOnMonth(month, year) << endl;
+            cout << endl;
         }
     }
-       
-    
+    if (count == 0)
+        cout << "no restaurants found for the country: " << country << endl;
 }
-void RestaurantHashTable::printFiveCuisinesWinnersInCountry(const std::string & country, int month, int year)
+void RestaurantHashTable::printMonthlySalesToPublicityInCountry(const std::string &country, int month, int year)
 {
-    cout<<"the winners for the country :"<<country<<endl;
+    int count = 0;
+    cout << "ratio of the monthly sales to the pubicity cost for the country: " << country << endl;
+    for (int i = 0; i < table.size(); i++)
+    {
+
+        if (table[i].getState() == ACTIVE && table[i].getCountry() == country)
+        {
+            count++;
+            table[i].print();
+            cout << "total publicity cost on: " << month << "/" << year << ": " << table[i].totalPublicityOnMonth(month, year) << endl;
+            cout << "total sale on: " << month << "/" << year << ": " << table[i].totalSalesOnMonth(month, year) << endl;
+            cout << " ratio of the monthly sales to the pubicity cost :" << table[i].getAveragePublicityRatio(month, year) << endl;
+            cout << endl;
+        }
+    }
+    if (count == 0)
+        cout << "no restaurants found for the country: " << country << endl;
+}
+void RestaurantHashTable::printFiveCuisinesWinnersInCountry(const std::string &country, int month, int year)
+{
+    cout << "the winners for the country :" << country << endl;
     cout << "the winners for " << month << "/" << year << ": \n";
     cout << "Algerian cuisine: \n";
     cout << "restaurant id : " << this->getAlgerianCuisineWinnerInCountry(country, month, year).first.getRestaurantId() << endl;
@@ -853,5 +924,3 @@ void RestaurantHashTable::printFiveCuisinesWinnersInCountry(const std::string & 
     cout << "restaurant id : " << this->getEuropeanCuisineWinnerInCountry(country, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getEuropeanCuisineWinnerInCountry(country, month, year).first.getRestaurantName() << endl;
 }
-
-
