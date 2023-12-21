@@ -20,4 +20,5 @@ class CostsVec {
     double getPublicityCost_onperiod(Date,Date);
     double getPublicityCost_onmonth(int,int);
     void print_infos();
+    void printCostsOnMonth(int,int);
 };

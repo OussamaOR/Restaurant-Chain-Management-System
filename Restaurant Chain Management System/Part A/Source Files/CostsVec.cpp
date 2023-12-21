@@ -84,7 +84,12 @@ void CostsVec::print_infos(){
     }
 }
 
-
+void CostsVec::printCostsOnMonth(int month,int year){
+        if(getDailyCostIndex(1,month,year) >= Costsvec.size()) return ;
+     for (int i = getDailyCostIndex(1, month, year); i <= std::min(static_cast<int>(Costsvec.size()), getDailyCostIndex(30, month, year)); i++) {
+        Costsvec[i].print_infos();
+    }
+}
 
 
 
