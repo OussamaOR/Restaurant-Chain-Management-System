@@ -119,5 +119,4 @@ public:
 
 #endif
 
-// function to return the sales of restaurant of a specific district/wiliya or the whole country (sales of cuisines where district == 'x') O(1)
-// function to return the monthlySales/publicity cost for a given month for a given district/wilaya
+
