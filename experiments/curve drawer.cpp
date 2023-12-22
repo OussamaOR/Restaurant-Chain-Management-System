@@ -30,7 +30,7 @@ std::vector<int> get_dailycosts_values(std::vector<dailyCost> costs) {
     }
     return dailycosts;
 }
-std::vector<int>& get_dailycosts(int restaurant_id,RestaurantHashTable& restaurants) {
+std::vector<int> get_dailycosts(int restaurant_id,RestaurantHashTable& restaurants) {
     Restaurant restaurant;
     restaurants.search(restaurant_id, restaurant);
     return get_dailycosts_values(restaurant.getDailyCosts().getDailyCosts());
@@ -58,7 +58,7 @@ void initialize_plan(sf::VertexArray& plan) {
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125 - 10, W_HEIGHT * 0.2)));          // max value label
 }
 
-void draw_curve(std::vector<unsigned>& values, sf::VertexArray& curve) {     // noise reduction version
+void draw_curve(std::vector<int>& values, sf::VertexArray& curve) {     // noise reduction version
     unsigned maximum = values[0];
 
     for (auto num : values) {
@@ -87,7 +87,7 @@ void draw_curve(std::vector<unsigned>& values, sf::VertexArray& curve) {     // 
 }
 
 
-void draw_curve2(std::vector<unsigned>& values, sf::VertexArray& curve) {                  // plotting the real graph 
+void draw_curve2(std::vector<int>& values, sf::VertexArray& curve) {                  // plotting the real graph 
     unsigned maximum = values[0];
 
     for (auto num : values) {
@@ -105,10 +105,14 @@ void draw_curve2(std::vector<unsigned>& values, sf::VertexArray& curve) {       
 
 }
 
-std::vector<unsigned> values(300);
+
 
 void program_run() {
-    
+    RestaurantHashTable restaurants;
+    readRestaurantCSV("../Restaurant Chain Management System/Database/restaurant.csv");
+    std::vector<unsigned> values(30) = get_dailycosts(310610000, restaurants);
+
+
     sf::Font font;
     font.loadFromFile("Roboto-Medium.ttf");
     sf::Text start_date("2023/01/01", font, 15);
@@ -132,7 +136,7 @@ void program_run() {
     sf::VertexArray plan(sf::Lines);
     initialize_plan(plan);
 
-    fill_vector(values, 14000, 30000);
+   
 
     sf::VertexArray curve(sf::LinesStrip);
     draw_curve(values, curve);
