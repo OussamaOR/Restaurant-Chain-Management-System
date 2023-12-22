@@ -5,6 +5,10 @@
 #include "curve drawer.h"
 #include "constants.h"
 #include <fstream>
+#include <vector>
+#include "../Restaurant Chain Management System/Part A/Header Files/readfiles.h"
+#include "../Restaurant Chain Management System/Database/dailycosts.csv"
+#include "../Restaurant Chain Management System//Part A/Header Files/RestaurantHashTable.h"
 // the origin of the plan is (WINDOW_WIDTH * 0.125, WINDOW_HEIGHT * 0.8)
 // end of y-axis is (WINDOW_WIDTH * 0.125 , WINDOW_HEIGHT * 0.2)
 // end of x-axis is (WINDOW_WIDTH * 0.75 , WINDOW_HEIGHT * 0.8)
@@ -19,7 +23,18 @@ void fill_vector(std::vector<unsigned>& vec, unsigned low , unsigned high) {
 		vec[i] = generate_random_interv(low, high);
 	}
 }
-
+std::vector<int> get_dailycosts_values(std::vector<dailyCost> costs) {
+    std::vector<int> dailycosts;
+    for (int i = 0;i < costs.size();i++) {
+        dailycosts[i] = costs[i].getTotal();
+    }
+    return dailycosts;
+}
+std::vector<int>& get_dailycosts(int restaurant_id,RestaurantHashTable& restaurants) {
+    Restaurant restaurant;
+    restaurants.search(restaurant_id, restaurant);
+    return get_dailycosts_values(restaurant.getDailyCosts().getDailyCosts());
+}
 void initialize_plan(sf::VertexArray& plan) {
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125, W_HEIGHT * 0.8)));
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125, W_HEIGHT * 0.15)));      // y-axis

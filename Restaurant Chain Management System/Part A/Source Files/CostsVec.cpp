@@ -24,6 +24,7 @@ int getNumberOfDaysInMonth(int month, int year) {
 
 CostsVec::CostsVec(){}
 CostsVec::~CostsVec(){}
+
 int CostsVec::getDailyCostIndex(int day,int month,int year){
     return (year - Costsvec[0].getDate().getYear())*365  + (month - Costsvec[0].getDate().getMonth())*30 +  day - Costsvec[0].getDate().getDay();
 }
@@ -111,7 +112,7 @@ void CostsVec::printCostsOnMonth(int month,int year){
 
 
 
-void program(){
+void program(){         // program to test 
     ifstream costs("../../Database/dailycosts.csv");
     if(!costs.is_open()){
         cout << "couldnt open dailycosts.csv file" << endl;

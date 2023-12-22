@@ -8,6 +8,7 @@
 #include "utilities.h"
 #include "curve drawer.h"
 #include "bar charts drawer.h"
+
 int main() {
 	program_run();
 }

@@ -10,6 +10,7 @@ class CostsVec {
     CostsVec();
     ~CostsVec();
     CostsVec(std::vector<dailyCost>&&);
+    std::vector<dailyCost>& getDailyCosts(){return Costsvec;};
     int getDailyCostIndex(int,int,int);
     float max_cost();
     float min_cost();
