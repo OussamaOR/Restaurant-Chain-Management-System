@@ -82,7 +82,7 @@ void RestaurantHashTable::rehash()
     }
 }
 
-RestaurantHashTable::RestaurantHashTable() : currentSize(0), maxSize(2000), loadFactor(0.75)
+RestaurantHashTable::RestaurantHashTable() : currentSize(0), maxSize(2003), loadFactor(0.75)
 {
     table.resize(maxSize);
 }
