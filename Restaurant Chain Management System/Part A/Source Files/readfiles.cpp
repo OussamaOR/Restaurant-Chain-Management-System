@@ -1,4 +1,3 @@
-
 #include "../Header Files/readfiles.h"
 // function to parse the date
 Date parseDate(const std::string &dateString)
@@ -29,7 +28,7 @@ SalesVec parseSalesVec(const std::string &salesVecString)
 }
 
 // function to read data from costs.csv file
-void readCSVAndInsertIntoCostsVec(const std::string &filename, CostsVec &costsVec,int restaurantIndex)
+void readCSVAndInsertIntoCostsVec(const std::string &filename, CostsVec &costsVec, int restaurantIndex)
 {
     std::ifstream file(filename);
     if (!file.is_open())
@@ -37,21 +36,21 @@ void readCSVAndInsertIntoCostsVec(const std::string &filename, CostsVec &costsVe
         std::cerr << "Error opening file: " << filename << std::endl;
         return;
     }
-    
+
     for (int i = 0; i < restaurantIndex * 29; ++i)
     {
-      
+
         std::string line;
         std::getline(file, line);
     }
-    
 
     for (int i = 0; i < 29; ++i)
     {
-    
+
         std::string line;
         std::getline(file, line);
-        if(i == 0) continue;
+        if (i == 0)
+            continue;
         std::istringstream ss(line);
         std::string token;
         std::vector<std::string> tokens;
@@ -61,7 +60,7 @@ void readCSVAndInsertIntoCostsVec(const std::string &filename, CostsVec &costsVe
             tokens.push_back(token);
         }
 
-        if (tokens.size() == 11 )
+        if (tokens.size() == 11)
         { // Expecting 11 values in each line
             // Parse date values
             int day = std::stoi(tokens[0]);
@@ -243,7 +242,7 @@ void readRestaurantCSV(const std::string &filename, RestaurantHashTable &restaur
                 std::string country = tokens[6];
 
                 CostsVec costsvec;
-                readCSVAndInsertIntoCostsVec("../../Database/dailycosts.csv", costsvec,restaurantIndex);
+                readCSVAndInsertIntoCostsVec("../../Database/dailycosts.csv", costsvec, restaurantIndex);
 
                 Cuisine cuisine1 = readCuisineFromCSV("../../Database/cuisine.csv", cuisineIndex++);
                 Cuisine cuisine2 = readCuisineFromCSV("../../Database/cuisine.csv", cuisineIndex++);
@@ -251,7 +250,7 @@ void readRestaurantCSV(const std::string &filename, RestaurantHashTable &restaur
                 Cuisine cuisine4 = readCuisineFromCSV("../../Database/cuisine.csv", cuisineIndex++);
                 Cuisine cuisine5 = readCuisineFromCSV("../../Database/cuisine.csv", cuisineIndex++);
                 Restaurant restaurant(restaurantId, numOfEmployees, restaurantType, restaurantName,
-                                      district, wilaya, country, costsvec,cuisine1,cuisine2,cuisine3,cuisine4,cuisine5);
+                                      district, wilaya, country, costsvec, cuisine1, cuisine2, cuisine3, cuisine4, cuisine5);
 
                 restaurantTable.insert(restaurant);
                 ++restaurantIndex;

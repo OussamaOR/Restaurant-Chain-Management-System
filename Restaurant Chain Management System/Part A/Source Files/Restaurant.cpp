@@ -4,14 +4,14 @@ using namespace std;
 #include <utility>
 
 // Default constructor
-Restaurant::Restaurant(): restaurantId(0), numOfEmployees(0), 
-restaurantType(RestaurantType::OWNED), state(EntryState::EMPTY) {}
+Restaurant::Restaurant() : restaurantId(0), numOfEmployees(0),
+                           restaurantType(RestaurantType::OWNED), state(EntryState::EMPTY) {}
 
 // Constructor with parameters
-Restaurant::Restaurant( int id, int numEmployees, RestaurantType type, const string &name,
-string loc[], const CostsVec &costs, const Cuisine cuisines[]): restaurantId(id),
- restaurantName(name), numOfEmployees(numEmployees),restaurantType(type), 
- dailyCosts(costs), state(EntryState::EMPTY)
+Restaurant::Restaurant(int id, int numEmployees, RestaurantType type, const string &name,
+                       string loc[], const CostsVec &costs, const Cuisine cuisines[]) : restaurantId(id),
+                                                                                        restaurantName(name), numOfEmployees(numEmployees), restaurantType(type),
+                                                                                        dailyCosts(costs), state(EntryState::EMPTY)
 {
     for (int i = 0; i < 3; ++i)
     {
@@ -24,11 +24,10 @@ string loc[], const CostsVec &costs, const Cuisine cuisines[]): restaurantId(id)
 }
 
 // Constructor to initialize location and cuisines one by one
-Restaurant::Restaurant( int id, int numEmployees, RestaurantType type, const string &name,
-string district, string wilaya, string country,const CostsVec &costs, Cuisine cuisine1,
- Cuisine cuisine2,Cuisine cuisine3, Cuisine cuisine4, Cuisine cuisine5): restaurantId(id)
- ,restaurantName(name), numOfEmployees(numEmployees),restaurantType(type),
-dailyCosts(costs), state(EntryState::EMPTY)
+Restaurant::Restaurant(int id, int numEmployees, RestaurantType type, const string &name,
+                       string district, string wilaya, string country, const CostsVec &costs, Cuisine cuisine1,
+                       Cuisine cuisine2, Cuisine cuisine3, Cuisine cuisine4, Cuisine cuisine5) : restaurantId(id), restaurantName(name), numOfEmployees(numEmployees), restaurantType(type),
+                                                                                                 dailyCosts(costs), state(EntryState::EMPTY)
 {
     location[Location::district] = district;
     location[Location::wilaya] = wilaya;
@@ -57,8 +56,8 @@ Restaurant::Restaurant(const Restaurant &other)
     }
 }
 
-//destructor declaration
-Restaurant::~Restaurant(){}
+// destructor declaration
+Restaurant::~Restaurant() {}
 
 // Move constructor
 Restaurant::Restaurant(Restaurant &&other)
@@ -81,9 +80,8 @@ Restaurant::Restaurant(Restaurant &&other)
     }
 }
 
-
 // Getters
- int Restaurant::getRestaurantId() const
+int Restaurant::getRestaurantId() const
 {
     return restaurantId;
 }
@@ -144,7 +142,6 @@ const Cuisine *Restaurant::getAllCuisines() const
 {
     return cuisines;
 }
-
 
 // Setters
 void Restaurant::setRestaurantId(int id)
@@ -257,7 +254,7 @@ std::pair<Cuisine, float> Restaurant::getCuisineWinner(int month, int year)
 
 float Restaurant::getAlgeriancuisineAveragePrize(int month, int year)
 {
-   return cuisines[0].getAveragePrizeOnMonth(month, year);
+    return cuisines[0].getAveragePrizeOnMonth(month, year);
 }
 
 float Restaurant::getSyriancuisineAveragePrize(int month, int year)
@@ -266,7 +263,7 @@ float Restaurant::getSyriancuisineAveragePrize(int month, int year)
 }
 float Restaurant::getChinesecuisineAveragePrize(int month, int year)
 {
-   return cuisines[2].getAveragePrizeOnMonth(month, year);
+    return cuisines[2].getAveragePrizeOnMonth(month, year);
 }
 float Restaurant::getIndiancuisineAveragePrize(int month, int year)
 {
@@ -274,9 +271,8 @@ float Restaurant::getIndiancuisineAveragePrize(int month, int year)
 }
 float Restaurant::getEuropeancuisineAveragePrize(int month, int year)
 {
-   return cuisines[4].getAveragePrizeOnMonth(month, year);
+    return cuisines[4].getAveragePrizeOnMonth(month, year);
 }
-
 
 // function to return the total sale for all the cuisines on a given month in a given year
 float Restaurant::totalSalesOnMonth(int month, int year)
@@ -289,12 +285,12 @@ float Restaurant::totalSalesOnMonth(int month, int year)
     return totalSale;
 }
 // function to return the total sale for all the cuisines on a given period
-float  Restaurant::totalSalesOnPerid(Date d1, Date d2)
+float Restaurant::totalSalesOnPerid(Date d1, Date d2)
 {
-      int totalSale = 0;
+    int totalSale = 0;
     for (int i = 0; i < 5; i++)
     {
-        totalSale += cuisines[i].getTotalSaleOnPeriod(d1,d2);
+        totalSale += cuisines[i].getTotalSaleOnPeriod(d1, d2);
     }
     return totalSale;
 }
@@ -305,25 +301,25 @@ double Restaurant::totalCostOnmonth(int month, int year)
     return dailyCosts.total_onmonth(month, year);
 }
 // function to return the total cost on a given period
-double Restaurant::totalCostOnPeriod(Date d1,Date d2)
+double Restaurant::totalCostOnPeriod(Date d1, Date d2)
 {
-    return dailyCosts.total_onperiod(d1,d2);
+    return dailyCosts.total_onperiod(d1, d2);
 }
 // function to return the total cost on a year
 double Restaurant::totalCostOnYear(int year)
 {
     return dailyCosts.total_onyear(year);
 }
-//function to return the publicity cost on a given month in a given year
-double Restaurant::totalPublicityOnMonth(int month,int year){
-     return dailyCosts.getPublicityCost_onmonth(month,year);
-}
-//function to return the publicity cost on a given period
-double Restaurant::totalPublicityOnPeriod(Date d1,Date d2)
+// function to return the publicity cost on a given month in a given year
+double Restaurant::totalPublicityOnMonth(int month, int year)
 {
-    return dailyCosts.getPublicityCost_onperiod(d1,d2);
+    return dailyCosts.getPublicityCost_onmonth(month, year);
 }
-
+// function to return the publicity cost on a given period
+double Restaurant::totalPublicityOnPeriod(Date d1, Date d2)
+{
+    return dailyCosts.getPublicityCost_onperiod(d1, d2);
+}
 
 /*function to return the ratio of the monthly sales to the amount of money
 spent during any given month on publicity*/
@@ -335,14 +331,13 @@ double Restaurant::getAveragePublicityRatio(int month, int year)
 
     return static_cast<double>(sales) / cost;
 }
-double Restaurant::getAveragePublicityRatio(Date d1,Date d2)
+double Restaurant::getAveragePublicityRatio(Date d1, Date d2)
 {
-    float sales = totalSalesOnPerid(d1,d2);
+    float sales = totalSalesOnPerid(d1, d2);
     double cost = totalPublicityOnPeriod(d1, d2);
 
     return static_cast<double>(sales) / cost;
 }
-
 
 // operator oveloading
 Restaurant &Restaurant::operator=(const Restaurant &other)
@@ -368,7 +363,8 @@ Restaurant &Restaurant::operator=(const Restaurant &other)
     return *this;
 }
 
-void Restaurant::print()  {
+void Restaurant::print()
+{
     std::cout << "Restaurant ID: " << restaurantId << std::endl;
     std::cout << "Restaurant Name: " << restaurantName << std::endl;
     std::cout << "Number of Employees: " << numOfEmployees << std::endl;
@@ -381,7 +377,5 @@ void Restaurant::print()  {
     // }
 
     // std::cout << "Daily Costs:" << std::endl;
-    // dailyCosts.print_infos(); 
-   
+    // dailyCosts.print_infos();
 }
-

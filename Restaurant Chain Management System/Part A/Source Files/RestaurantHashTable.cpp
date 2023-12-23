@@ -82,7 +82,7 @@ void RestaurantHashTable::rehash()
     }
 }
 
-RestaurantHashTable::RestaurantHashTable() : currentSize(0), maxSize(2000), loadFactor(0.75)
+RestaurantHashTable::RestaurantHashTable() : currentSize(0), maxSize(2003), loadFactor(0.75)
 {
     table.resize(maxSize);
 }
@@ -222,8 +222,6 @@ float RestaurantHashTable::totalSalesInCountry(const std::string &country, int m
 
     return totalSales;
 }
-
-
 
 // function to display all the restaurants in the hashtable
 void RestaurantHashTable::displayAllRestaurants()
@@ -485,23 +483,23 @@ void RestaurantHashTable::printFiveCuisinesWinnersInDistrict(const std::string &
     cout << "Algerian cuisine: \n";
     cout << "restaurant id : " << this->getAlgerianCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getAlgerianCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getAlgerianCuisineWinnerInDistrict(district, month, year).second<<endl;
+    cout << "average prize amount: " << this->getAlgerianCuisineWinnerInDistrict(district, month, year).second << endl;
     cout << "Syrian cuisine: \n";
     cout << "restaurant id : " << this->getSyrianCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getSyrianCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getSyrianCuisineWinnerInDistrict(district, month, year).second<<endl;
+    cout << "average prize amount: " << this->getSyrianCuisineWinnerInDistrict(district, month, year).second << endl;
     cout << "Chinese cuisine: \n";
     cout << "restaurant id : " << this->getChineseCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getChineseCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getChineseCuisineWinnerInDistrict(district, month, year).second<<endl;
+    cout << "average prize amount: " << this->getChineseCuisineWinnerInDistrict(district, month, year).second << endl;
     cout << "Indian cuisine: \n";
     cout << "restaurant id : " << this->getIndianCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getIndianCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getIndianCuisineWinnerInDistrict(district, month, year).second<<endl;
+    cout << "average prize amount: " << this->getIndianCuisineWinnerInDistrict(district, month, year).second << endl;
     cout << "European cuisine: \n";
     cout << "restaurant id : " << this->getEuropeanCuisineWinnerInDistrict(district, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getEuropeanCuisineWinnerInDistrict(district, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getEuropeanCuisineWinnerInDistrict(district, month, year).second<<endl;
+    cout << "average prize amount: " << this->getEuropeanCuisineWinnerInDistrict(district, month, year).second << endl;
 }
 
 // getting the winners of a cuisine for a wilaya
@@ -707,23 +705,23 @@ void RestaurantHashTable::printFiveCuisinesWinnersInWilaya(const std::string &wi
     cout << "Algerian cuisine: \n";
     cout << "restaurant id : " << this->getAlgerianCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getAlgerianCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getAlgerianCuisineWinnerInDistrict(wilaya, month, year).second<<endl;
+    cout << "average prize amount: " << this->getAlgerianCuisineWinnerInDistrict(wilaya, month, year).second << endl;
     cout << "Syrian cuisine: \n";
     cout << "restaurant id : " << this->getSyrianCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getSyrianCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getSyrianCuisineWinnerInWilaya(wilaya, month, year).second<<endl;
+    cout << "average prize amount: " << this->getSyrianCuisineWinnerInWilaya(wilaya, month, year).second << endl;
     cout << "Chinese cuisine: \n";
     cout << "restaurant id : " << this->getChineseCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getChineseCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getChineseCuisineWinnerInWilaya(wilaya, month, year).second<<endl;
+    cout << "average prize amount: " << this->getChineseCuisineWinnerInWilaya(wilaya, month, year).second << endl;
     cout << "Indian cuisine: \n";
     cout << "restaurant id : " << this->getIndianCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getIndianCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getIndianCuisineWinnerInWilaya(wilaya, month, year).second<<endl;
+    cout << "average prize amount: " << this->getIndianCuisineWinnerInWilaya(wilaya, month, year).second << endl;
     cout << "European cuisine: \n";
     cout << "restaurant id : " << this->getEuropeanCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getEuropeanCuisineWinnerInWilaya(wilaya, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getEuropeanCuisineWinnerInWilaya(wilaya, month, year).second<<endl;
+    cout << "average prize amount: " << this->getEuropeanCuisineWinnerInWilaya(wilaya, month, year).second << endl;
 }
 
 // function to get winner in the coutry
@@ -928,21 +926,21 @@ void RestaurantHashTable::printFiveCuisinesWinnersInCountry(const std::string &c
     cout << "Algerian cuisine: \n";
     cout << "restaurant id : " << this->getAlgerianCuisineWinnerInCountry(country, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getAlgerianCuisineWinnerInCountry(country, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getAlgerianCuisineWinnerInDistrict(country, month, year).second<<endl;
+    cout << "average prize amount: " << this->getAlgerianCuisineWinnerInDistrict(country, month, year).second << endl;
     cout << "Syrian cuisine: \n";
     cout << "restaurant id : " << this->getSyrianCuisineWinnerInCountry(country, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getSyrianCuisineWinnerInCountry(country, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getSyrianCuisineWinnerInCountry(country, month, year).second<<endl;
+    cout << "average prize amount: " << this->getSyrianCuisineWinnerInCountry(country, month, year).second << endl;
     cout << "Chines cuisine: \n";
     cout << "restaurant id : " << this->getChineseCuisineWinnerInCountry(country, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getChineseCuisineWinnerInCountry(country, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getChineseCuisineWinnerInCountry(country, month, year).second<<endl;
+    cout << "average prize amount: " << this->getChineseCuisineWinnerInCountry(country, month, year).second << endl;
     cout << "Indian cuisine: \n";
     cout << "restaurant id : " << this->getIndianCuisineWinnerInCountry(country, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getIndianCuisineWinnerInCountry(country, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getIndianCuisineWinnerInCountry(country, month, year).second<<endl;
+    cout << "average prize amount: " << this->getIndianCuisineWinnerInCountry(country, month, year).second << endl;
     cout << "European cuisine: \n";
     cout << "restaurant id : " << this->getEuropeanCuisineWinnerInCountry(country, month, year).first.getRestaurantId() << endl;
     cout << "restaurant name : " << this->getEuropeanCuisineWinnerInCountry(country, month, year).first.getRestaurantName() << endl;
-    cout<<"average prize amount: "<<this->getEuropeanCuisineWinnerInCountry(country, month, year).second<<endl;
+    cout << "average prize amount: " << this->getEuropeanCuisineWinnerInCountry(country, month, year).second << endl;
 }

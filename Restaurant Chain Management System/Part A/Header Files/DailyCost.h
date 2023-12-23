@@ -34,7 +34,4 @@ class dailyCost
     float getPublicityCost();
     void print_infos();
     
-    // getters
-    // setters
-    // function to retun total daily cost (summing all the elements of the array)
 };

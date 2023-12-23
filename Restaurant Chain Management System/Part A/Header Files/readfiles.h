@@ -4,6 +4,9 @@
 #include <vector>
 #include <regex>
 
+// declaration of functions to be used for data retrieval from a csv file 
+
+
 // function to parse the date
 Date parseDate(const std::string &);
 
