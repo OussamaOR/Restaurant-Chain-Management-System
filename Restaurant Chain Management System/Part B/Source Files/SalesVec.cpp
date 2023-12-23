@@ -100,7 +100,7 @@ float SalesVec::total_onyear(int year)
 float SalesVec::total_onperiod(Date start_date, Date end_date)
 {
     float total = 0.f;
-    if (getDailySaleIndex(getDailySaleIndex(start_date.getDay(), start_date.getMonth(), start_date.getYear())) >= Salesvec.size())
+    if (getDailySaleIndex(start_date.getDay(), start_date.getMonth(), start_date.getYear()) >= Salesvec.size())
         return 0;
     for (int i = getDailySaleIndex(start_date.getDay(), start_date.getMonth(), start_date.getYear()); i <= std::min(static_cast<int>(Salesvec.size()), getDailySaleIndex(end_date.getDay(), end_date.getMonth(), end_date.getYear())); i++)
     {

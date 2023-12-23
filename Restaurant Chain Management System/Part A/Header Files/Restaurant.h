@@ -63,7 +63,7 @@ public:
     string getWilaya() const;
     string getCountry() const;
     const string *getFullLocation() const;
-    const CostsVec & getDailyCosts() const;
+     CostsVec  getDailyCosts() const;
     Cuisine getCuisine(CuisineType) const;
     const Cuisine *getAllCuisines() const;
 

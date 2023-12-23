@@ -283,7 +283,7 @@ int main()
            
         }
       }
-     
+     else {if(i != '5')cout << "Input not valid" << endl;}
     } while (i != '5');
     
     
