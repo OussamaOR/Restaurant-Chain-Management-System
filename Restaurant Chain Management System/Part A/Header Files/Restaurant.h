@@ -19,13 +19,18 @@ enum RestaurantType
     OWNED,
     FRANCHISED,
 };
-//entry state 
-enum EntryState { ACTIVE, DELETED, EMPTY };
+// entry state
+enum EntryState
+{
+    ACTIVE,
+    DELETED,
+    EMPTY
+};
 // restaurant class
-class Restaurant 
+class Restaurant
 {
 private:
-     int restaurantId;
+    int restaurantId;
     int numOfEmployees;
     RestaurantType restaurantType;
     string restaurantName;
@@ -33,7 +38,7 @@ private:
     CostsVec dailyCosts;
     Cuisine cuisines[5];
 
-    //the state is needed for the hashtable
+    // the state is needed for the hashtable
     EntryState state;
 
 public:
@@ -50,7 +55,7 @@ public:
     Restaurant(Restaurant &&);
 
     // Getters
-     int getRestaurantId() const;
+    int getRestaurantId() const;
     string getRestaurantName() const;
     int getNumOfEmployees() const;
     RestaurantType getRestaurantType() const;
@@ -58,65 +63,65 @@ public:
     string getWilaya() const;
     string getCountry() const;
     const string *getFullLocation() const;
-     CostsVec  getDailyCosts() const;
+    const CostsVec & getDailyCosts() const;
     Cuisine getCuisine(CuisineType) const;
     const Cuisine *getAllCuisines() const;
 
-    //setters
-    void setRestaurantId( int id);
+    // setters
+    void setRestaurantId(int id);
     void setRestaurantName(const string &name);
     void setNumOfEmployees(int employees);
     void setRestaurantType(RestaurantType type);
-    void setDistrict(string );
-    void setWilaya(string ) ;
-    void setCountry(string ) ;
-    void setFullLocation(string ,string ,string);
-    void setFullLocation(const Location []);
+    void setDistrict(string);
+    void setWilaya(string);
+    void setCountry(string);
+    void setFullLocation(string, string, string);
+    void setFullLocation(const Location[]);
     void setDailyCosts(const CostsVec &CostsVec);
-    void setCuisine(Cuisine );
+    void setCuisine(Cuisine);
     void setAllCuisines(const Cuisine cuisineArray[5]);
-    //functions to be used in the hashtable 
-    void setState(EntryState );
+    // functions to be used in the hashtable
+    void setState(EntryState);
     EntryState getState() const;
 
     // Destructor
     ~Restaurant();
 
-    //functions needed to display the results
+    // functions needed to display the results
 
-    //function to get the cuisine winner among the five cuisines in a restaurant
-    std::pair<Cuisine,float> getCuisineWinner(int , int);
+    // function to get the cuisine winner among the five cuisines in a restaurant
+    std::pair<Cuisine, float> getCuisineWinner(int, int);
 
-    //functions to return the average prize for each of the five cuisines
-    float getAlgeriancuisineAveragePrize(int,int);
-    float getSyriancuisineAveragePrize(int,int);
-    float getChinesecuisineAveragePrize(int,int);
-    float getIndiancuisineAveragePrize(int,int);
-    float getEuropeancuisineAveragePrize(int,int);
+    // functions to return the average prize for each of the five cuisines
+    float getAlgeriancuisineAveragePrize(int, int);
+    float getSyriancuisineAveragePrize(int, int);
+    float getChinesecuisineAveragePrize(int, int);
+    float getIndiancuisineAveragePrize(int, int);
+    float getEuropeancuisineAveragePrize(int, int);
 
-    //functions to return the total sales 
-    float totalSalesOnMonth(int ,int);
-    float totalSalesOnPerid(Date,Date);
+    // functions to return the total sales
+    float totalSalesOnMonth(int, int);
+    float totalSalesOnPerid(Date, Date);
 
-    //functions to return the tostal cost
-    double totalCostOnmonth(int,int);
-    double totalCostOnPeriod(Date,Date);
+    // functions to return the total cost
+    double totalCostOnmonth(int, int);
+    double totalCostOnPeriod(Date, Date);
     double totalCostOnYear(int);
-    double totalPublicityOnMonth(int ,int );
-    double totalPublicityOnPeriod(Date,Date);
+
+    // functions to return the total publicity cost
+    double totalPublicityOnMonth(int, int);
+    double totalPublicityOnPeriod(Date, Date);
 
     /*function to return the ratio of the monthly sales to the amount of money
      spent during any given month on publicity*/
-    double getAveragePublicityRatio(int,int);
-    double getAveragePublicityRatio(Date,Date);
+    double getAveragePublicityRatio(int, int);
+    double getAveragePublicityRatio(Date, Date);
 
-    //operator overloading
-    Restaurant& operator=(const Restaurant& other);
+    // operator overloading
+    Restaurant &operator=(const Restaurant &other);
 
-    //print function 
+    // print function
     void print();
 };
 
 #endif
-
-
