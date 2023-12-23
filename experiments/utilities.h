@@ -1,5 +1,11 @@
 #pragma once
 #include <iostream>
 #include <vector>
-unsigned generate_random_interv(unsigned x, unsigned y);
-void fill_vector(std::vector<unsigned>& vec, unsigned low, unsigned high);
+#include <sstream>
+#include <fstream>
+#include "../Restaurant Chain Management System//Part A/Header Files/RestaurantHashTable.h"
+int daysInMonth(int year, int month);
+std::pair<int,int> extractMonthYear(const std::string& date);
+std::string getRestauName(std::string,std::string);
+//std::string CastDateToString(Date date);
+//std::vector<int> CastSalesvecToIntVec(SalesVec);

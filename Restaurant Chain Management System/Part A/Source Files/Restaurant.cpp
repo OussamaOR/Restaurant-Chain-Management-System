@@ -123,7 +123,7 @@ const string *Restaurant::getFullLocation() const
     return location;
 }
 
-const CostsVec &Restaurant::getDailyCosts() const
+CostsVec Restaurant::getDailyCosts() const
 {
     return dailyCosts;
 }

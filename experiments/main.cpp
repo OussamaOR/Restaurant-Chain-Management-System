@@ -5,10 +5,9 @@
 #include <algorithm>
 #include <cmath>
 #include <ctime>
-#include "utilities.h"
 #include "curve drawer.h"
-#include "bar charts drawer.h"
+
 
 int main() {
-	program_run();
+	program_run("310610000",DailyCosts);
 }

@@ -130,19 +130,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bar charts drawer.cpp" />
     <ClCompile Include="curve drawer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bar charts drawer.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="curve drawer.h" />
     <ClInclude Include="utilities.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="dailycosts.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

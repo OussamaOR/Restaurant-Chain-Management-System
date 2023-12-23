@@ -1,40 +1,78 @@
 
-#include <algorithm>
-#include <cmath>
-#include <ctime>
+
 #include "curve drawer.h"
-#include "constants.h"
-#include <fstream>
-#include <vector>
-#include "../Restaurant Chain Management System/Part A/Header Files/readfiles.h"
-#include "../Restaurant Chain Management System/Database/dailycosts.csv"
-#include "../Restaurant Chain Management System//Part A/Header Files/RestaurantHashTable.h"
+using namespace std;
 // the origin of the plan is (WINDOW_WIDTH * 0.125, WINDOW_HEIGHT * 0.8)
 // end of y-axis is (WINDOW_WIDTH * 0.125 , WINDOW_HEIGHT * 0.2)
 // end of x-axis is (WINDOW_WIDTH * 0.75 , WINDOW_HEIGHT * 0.8)
 // 
 
-unsigned generate_random_interv(unsigned x, unsigned y) {        // including both
-	if (x > y) std::swap(x, y);
-	return (rand() % (y - x + 1)) + x;
-}
-void fill_vector(std::vector<unsigned>& vec, unsigned low , unsigned high) {
-	for (int i = 0;i < vec.size();i++) {
-		vec[i] = generate_random_interv(low, high);
-	}
-}
-std::vector<int> get_dailycosts_values(std::vector<dailyCost> costs) {
-    std::vector<int> dailycosts;
-    for (int i = 0;i < costs.size();i++) {
-        dailycosts[i] = costs[i].getTotal();
+
+int getRestaurantIndex(const std::string& restaurantId, const std::string& csvFilePath) {
+    std::ifstream file(csvFilePath);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file: " << csvFilePath << std::endl;
+        return -1; // return -1 to indicate an error
     }
-    return dailycosts;
+    std::string first_line;
+    std::getline(file, first_line);
+    std::string line;
+    int index = 0;
+
+    while (std::getline(file, line)) {
+
+        std::istringstream iss(line);
+        std::string currentId;
+        std::getline(iss, currentId, ',');
+        if (currentId == restaurantId) {
+            file.close();
+            return index;
+        }
+        ++index;
+    }
+
+    file.close();
+    return -1; // return -1 if the restaurant ID is not found
 }
-std::vector<int> get_dailycosts(int restaurant_id,RestaurantHashTable& restaurants) {
-    Restaurant restaurant;
-    restaurants.search(restaurant_id, restaurant);
-    return get_dailycosts_values(restaurant.getDailyCosts().getDailyCosts());
+
+// function to calculate total costs for a given restaurant index
+std::vector<int> calculateTotalCosts(int restaurantIndex, const std::string& csvFilePath) {
+    std::ifstream file(csvFilePath);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file: " << csvFilePath << std::endl;
+        return {}; // return an empty vector to indicate an error
+    }
+
+    std::vector<int> totalCosts(28, 0);
+
+    for (int i = 0; i < restaurantIndex * 29; ++i) {
+        std::string line;
+        std::getline(file, line);
+    }
+    std::string first_line;
+    std::getline(file, first_line);
+    for (int i = 0; i < 28; ++i) {
+        std::string line;
+        std::getline(file, line);
+
+        std::istringstream iss(line);
+        std::string token;
+        int categoryIndex = 0;
+
+        // skip the first 3 values (day, month, year)
+        while (std::getline(iss, token, ',')) {
+            if (categoryIndex >= 3) {
+                totalCosts[i] += std::stoi(token);
+            }
+            ++categoryIndex;
+        }
+    }
+
+    file.close();
+    return totalCosts;
 }
+
+
 void initialize_plan(sf::VertexArray& plan) {
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125, W_HEIGHT * 0.8)));
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125, W_HEIGHT * 0.15)));      // y-axis
@@ -56,24 +94,26 @@ void initialize_plan(sf::VertexArray& plan) {
 
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125, W_HEIGHT * 0.2)));
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125 - 10, W_HEIGHT * 0.2)));          // max value label
+
+   
 }
 
 void draw_curve(std::vector<int>& values, sf::VertexArray& curve) {     // noise reduction version
-    unsigned maximum = values[0];
+    int maximum = values[0];
 
     for (auto num : values) {
-        if (maximum < num) maximum = num;
+        if (maximum < num) maximum = num;           // getting the max
     }
 
-    unsigned int x_values = 0;
-    int step = std::max(1, static_cast<int>(std::floor(values.size() / 30.0)));
+     int x_values = 0;
+    int step = std::max(1, static_cast<int>(std::floor(values.size() / 30.0)));         // calculating the step such that there is 30 points to draw
 
     for (int i = 0; i < values.size(); i += step) {
         int sum = 0;
         int numElements = std::min(step, static_cast<int>(values.size()) - i);
 
         for (int j = i; j < i + numElements; j++) {
-            sum += values[j];
+            sum += values[j];                                       // summing elements in each step
         }
 
         int y = -static_cast<double>(sum/numElements) / maximum * 0.6 * W_HEIGHT + W_HEIGHT * 0.8;
@@ -84,16 +124,17 @@ void draw_curve(std::vector<int>& values, sf::VertexArray& curve) {     // noise
 
         std::cout << "x : " << x << "  y : " << y << std::endl;
     }
+   
 }
 
 
 void draw_curve2(std::vector<int>& values, sf::VertexArray& curve) {                  // plotting the real graph 
-    unsigned maximum = values[0];
+    int maximum = values[0];
 
     for (auto num : values) {
         if (maximum < num) maximum = num;
     }
-    unsigned int x_values = 0;
+     int x_values = 0;
     for (auto num : values) {
         std::cout << num << std::endl;
         int x = x_values * 0.625 * W_WIDTH / values.size() + W_WIDTH * 0.125;
@@ -105,65 +146,162 @@ void draw_curve2(std::vector<int>& values, sf::VertexArray& curve) {            
 
 }
 
+std::pair<std::string,std::string> get_dailycosts_dates(std::string filepath, int restaurantIndex) {
+    ifstream input(filepath);
+    std::string first_line;
+    std::getline(input, first_line);
+    std::string line;
+    // got to loop x times such that x is related to restaurant index, we read lines until we find an empty line
+    // empty line -> new restaurant
+    int resto_counts = 0;
+    if(restaurantIndex)              // if index == 0 we dont have to read lines
+    {
+        while (std::getline(input, line)) {
+            {
+                if (line == "") resto_counts++;
+                if (resto_counts == restaurantIndex) break;
+            }
+
+        }
+    }
+    std::getline(input, line);
+    // we need to parse date by reading 3 commas
+    int commas = 0;
+    std::string start_date;
+    for (int i = 0;i < line.length();i++) {
+        if (line[i] == ',') commas++;
+        
+        
+        if (commas == 3) {
+            start_date = line.substr(0, i);
+            break;
+        }
+        
+    }
+    for (int i = 0;i < start_date.length();i++) {
+        if (start_date[i] == ',') start_date[i] = '/';
+    }
+
+    // we need to get number of days of that month to know when to stop reading , from utilities.h
 
 
-void program_run() {
-    RestaurantHashTable restaurants;
-    readRestaurantCSV("../Restaurant Chain Management System/Database/restaurant.csv");
-    std::vector<unsigned> values(30) = get_dailycosts(310610000, restaurants);
+    commas = 0;
+    for (int i = 1;i <= daysInMonth(extractMonthYear(start_date).first, extractMonthYear(start_date).second)-1;i++) {
+        std::getline(input, line);
+    }
+    std::string end_date;
+    for (int i = 0;i < line.length();i++) {
+        if (line[i] == ',') commas++;
+        
+        if (commas == 3) {
+            end_date = line.substr(0, i);
+            break;
+        }
+        
+    }
+    for (int i = 0;i < end_date.length();i++) {
+        if (end_date[i] == ',') end_date[i] = '/';
+    }
+    return std::make_pair(start_date, end_date);
+}
+
+int parseDailySalesData(std::string token) {   // (01-02-2023 2300)
+    istringstream iss(token);
+   
+    char openpare, closedpare;
+    string date,valuee;
+    iss >> openpare >> date >> valuee >> closedpare;
+    return stoi(valuee);
+}
 
 
+
+void draw_DailyCosts(std::string restaurantId) {
+    std::string restaurantName = getRestauName(restaurantId, "../Restaurant Chain Management System/Database/restaurant.csv");
+    int restaurantIndex = getRestaurantIndex(restaurantId, "../Restaurant Chain Management System/Database/restaurant.csv");
+    if (restaurantIndex) {
+        std::cout << "Restaurant Not Found";
+        return;
+    }
+    std::pair<std::string, std::string> dates = get_dailycosts_dates("../Restaurant Chain Management System/Database/dailycosts.csv", restaurantIndex);
+
+    std::vector<int> totalCosts = calculateTotalCosts(restaurantIndex, "../Restaurant Chain Management System/Database/dailycosts.csv");
     sf::Font font;
     font.loadFromFile("Roboto-Medium.ttf");
-    sf::Text start_date("2023/01/01", font, 15);
+    // function to determine the start date from the csv file
+    sf::Text start_date(dates.first, font, 15);
     start_date.setPosition(sf::Vector2f(W_WIDTH * 0.125, W_HEIGHT * 0.8));
+    start_date.setFillColor(sf::Color::Black);
 
     sf::Text start_date_label("Start Date", font, 15);
     start_date_label.setPosition(sf::Vector2f(W_WIDTH * 0.125, W_HEIGHT * 0.8 + 20));
+    start_date_label.setFillColor(sf::Color::Black);
 
-    sf::Text end_date("2023/12/30", font, 15);
+    sf::Text end_date(dates.second, font, 15);
     end_date.setPosition(sf::Vector2f(W_WIDTH * 0.75, W_HEIGHT * 0.8));
+    end_date.setFillColor(sf::Color::Black);
 
     sf::Text end_date_label("End Date", font, 15);
     end_date_label.setPosition(sf::Vector2f(W_WIDTH * 0.75, W_HEIGHT * 0.8 + 20));
+    end_date_label.setFillColor(sf::Color::Black);
 
     sf::Text yaxis_label("Daily Cost (DA)", font, 15);
     yaxis_label.setPosition(sf::Vector2f(W_WIDTH * 0.125 - 45, W_HEIGHT * 0.15 - 30));
-
+    yaxis_label.setFillColor(sf::Color::Black);
 
 
     sf::RenderWindow window(sf::VideoMode(W_WIDTH, W_HEIGHT), "Plotting Program");
     sf::VertexArray plan(sf::Lines);
     initialize_plan(plan);
 
-   
+
 
     sf::VertexArray curve(sf::LinesStrip);
-    draw_curve(values, curve);
+    draw_curve(totalCosts, curve);
 
-    unsigned minimum = *std::min_element(values.begin(), values.end());
-    unsigned maximum = *std::max_element(values.begin(), values.end());
+    unsigned minimum = *std::min_element(totalCosts.begin(), totalCosts.end());
+    unsigned maximum = *std::max_element(totalCosts.begin(), totalCosts.end());
     sf::Text min_value(std::to_string(minimum), font, 15);
     min_value.setOrigin(min_value.getGlobalBounds().getPosition().x + min_value.getGlobalBounds().width, min_value.getGlobalBounds().getPosition().y);
     min_value.setPosition(sf::Vector2f(W_WIDTH * 0.125 - 15, -static_cast<double>(minimum) / maximum * 0.6 * W_HEIGHT + W_HEIGHT * 0.8 - 8));
-
+    min_value.setFillColor(sf::Color::Black);
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125, -static_cast<double>(minimum) / maximum * 0.6 * W_HEIGHT + W_HEIGHT * 0.8)));
     plan.append(sf::Vertex(sf::Vector2f(W_WIDTH * 0.125 - 10, -static_cast<double>(minimum) / maximum * 0.6 * W_HEIGHT + W_HEIGHT * 0.8)));
 
 
-    sf::Text max_value(std::to_string(*std::max_element(values.begin(), values.end())), font, 15);
+    sf::Text max_value(std::to_string(*std::max_element(totalCosts.begin(), totalCosts.end())), font, 15);
+    max_value.setFillColor(sf::Color::Black);
     max_value.setOrigin(max_value.getGlobalBounds().getPosition().x + max_value.getGlobalBounds().width, max_value.getGlobalBounds().getPosition().y);
     max_value.setPosition(sf::Vector2f(W_WIDTH * 0.125 - 15, W_HEIGHT * 0.2 - 8));
 
+    for (int i = 0; i < curve.getVertexCount(); ++i) {
+        curve[i].color = sf::Color::Blue;
+    }
+
+    for (int i = 0; i < plan.getVertexCount(); ++i) {
+        plan[i].color = sf::Color::Black;
+    }
+    sf::Text restoID("Restaurant ID : " + restaurantId, font, 12);
+    restoID.setFillColor(sf::Color::Black);
+    restoID.setPosition(60, 540);
+
+    sf::Text restoName("Restaurant Name : " + restaurantName, font, 12);
+    restoName.setFillColor(sf::Color::Black);
+    restoName.setPosition(60, 560);
+
+    sf::Text curveTitle("Daily Costs of " + restaurantName + " From " + dates.first + " To " + dates.second, font, 24);
+    curveTitle.setFillColor(sf::Color::Black);
+    curveTitle.setPosition(68, 10);
+
     sf::Event event;
     while (window.isOpen()) {
-        
+
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
 
-        window.clear();
+        window.clear(sf::Color::White);
 
 
 
@@ -176,12 +314,25 @@ void program_run() {
         window.draw(yaxis_label);
         window.draw(max_value);
         window.draw(min_value);
+        window.draw(restoID);
+        window.draw(restoName);
+        window.draw(curveTitle);
         window.display();
     }
 
 
 
 
+
+
 }
+void program_run(std::string restaurantId, CurveType curveType) {
+    if (curveType == DailyCosts) {
+        draw_DailyCosts(restaurantId);
+    }
+}
+
+
+
 
 

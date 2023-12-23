@@ -1,2 +1,41 @@
-﻿  main.cpp
+﻿  curve drawer.cpp
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(119,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(120,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(122,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(122,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(140,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(141,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(143,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(143,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(302,136): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(304,115): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\curve drawer.cpp(305,120): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   experiments.vcxproj -> C:\Users\pc\Desktop\sfml projects\dsa project 2\Restaurant-Chain-Management-System\experiments\x64\Debug\experiments.exe
